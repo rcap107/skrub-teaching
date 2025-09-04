@@ -34,8 +34,6 @@ I don't like the sea ![](images/nice.jpg){width=250}
 - skrub is fully compatible with pandas and polars
 - skrub transformers are fully compatible with scikit-learn
 
-skrub is intended to reduce the effort required for common data preprocessing tasks, with either of the major dataframe libraries. 
-
 ## An example pipeline
 1. Gather some data
 2. Explore the data
@@ -636,9 +634,9 @@ model = skrub.tabular_pipeline(Ridge())
 ## What if...
 
 - Your data is spread over multiple tables? 
+- You want to avoid data leakage? 
 - You want to tune more than just the hyperparameters of your model? 
 - You want to guarantee that your pipeline is replayed exactly on new data? 
-- You want to avoid data leakage? 
 
 ## `skrub` DataOps
 When a normal pipe is not enough...
@@ -704,9 +702,10 @@ order and with the same arguments on unseen data.
 
 ```{python}
 #| echo: true
+import skrub
 data = skrub.datasets.fetch_credit_fraud()
 
-baskets = skrub.var("baskets", data.baskets)
+baskets = skrub.var("baskets", data.baskets).skb.subsample()
 X = baskets[["ID"]].skb.mark_as_X()
 y = baskets["fraud_flag"].skb.mark_as_y()
 
@@ -719,37 +718,53 @@ products = skrub.var("products", data.products) # add a new variable
 :::
 
 ##  Building a full data plan
-```{.python code-line-numbers="|4,5|1,5|6|7|8|9|"}
+```{python}
+#| echo: true
 from skrub import selectors as s
 from sklearn.ensemble import ExtraTreesClassifier  
 
 vectorizer = skrub.TableVectorizer(high_cardinality=skrub.StringEncoder(), n_jobs=-1)
 vectorized_products = products.skb.apply(vectorizer, cols=s.all() - "basket_ID")
+```
+
+##  Building a full data plan {auto-animate="true"}
+```{python}
+#| echo: true
 aggregated_products = vectorized_products.groupby("basket_ID").agg("mean").reset_index()
 features = X.merge(aggregated_products, left_on="ID", right_on="basket_ID")
 features = features.drop(columns=["ID", "basket_ID"])
+```
+
+##  Building a full data plan {auto-animate="true"}
+```{python}
+#| echo: true
 predictions = features.skb.apply(ExtraTreesClassifier(n_jobs=-1), y=y)
 ```
 
 ## Inspecting the data plan
-```{python}
+```{.python}
 predictions.skb.full_report()
 ```
 <br/>
 
-<a href="expression_report/index.html" target="_blank">report</a>
+<a href="dataop_report/index.html" target="_blank">report</a>
 
 ## Exporting the plan in a `learner` {.smaller}
 The data plan can be exported as a `learner`:
 ```{python}
+#| echo: true
 # anywhere
-learner = predictions.skb.make_learner()
+learner = predictions.skb.make_learner(fitted=True)
+```
+
+```{.python}
 # search is a HPO object
 best_learner = search.skb.best_learner_
 ```
 ::: {.fragment}
 Then, the `learner` can be pickled ...
 ```{python}
+#| echo: true
 import pickle
 
 with open("learner.bin", "wb") as fp:
@@ -762,9 +777,13 @@ with open("learner.bin", "wb") as fp:
 ... and loaded
 
 ```{python}
+#| echo: true
 with open("learner.bin", "rb") as fp:
     learner = pickle.load(fp)
 
+data = skrub.datasets.fetch_credit_fraud(split="test")
+new_baskets = data.baskets
+new_products = data.products
 learner.predict({"baskets": new_baskets, "products": new_products})
 ```
 :::
@@ -855,12 +874,11 @@ regressor.skb.get_randomized_search(scoring="roc_auc", fitted=True)
 ```{python}
 import pandas as pd
 import skrub
-
+```
+```{python}
+#| echo: true
 df = pd.DataFrame(
-    {
-        "subject": ["math", "math", "art", "history"],
-        "grade": [10, 8, 4, 6]
-    }
+    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
 )
 
 df_do = skrub.var("grades", df)
@@ -873,7 +891,10 @@ agg_grades.skb.describe_param_grid()
 ```{python}
 import polars as pl
 import skrub
+```
 
+```{python}
+#| echo: true
 df = pl.DataFrame(
     {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
 )
@@ -886,6 +907,7 @@ agg_grades = df_do.group_by("subject").agg(
 agg_grades.skb.describe_param_grid()
 ```
 
+:::
 
 ## Observe the impact of the hyperparameters {auto-animate="true"} 
 
@@ -902,7 +924,13 @@ search.plot_parallel_coord()
 - [Tutorial](https://github.com/skrub-data/EuroSciPy2025) on timeseries 
 forecasting at Euroscipy 2025
 
-# That's it!
+# Wrapping up
+
+## {auto-animate="true"}
+![](images/powerpuff_girls_1.png)
+
+## {auto-animate="true"}
+![](images/powerpuff_girls_2.png)
 
 ##  Getting involved
 ::: {.nonincremental}

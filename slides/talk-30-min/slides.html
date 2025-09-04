@@ -9,7 +9,7 @@
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.39">
 
-  <meta name="author" content="Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre">
+  <meta name="author" content="Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaître">
   <meta name="dcterms.date" content="2025-10-01">
   <title>Skrub</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -203,7 +203,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre 
+Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaître 
 </div>
         <p class="quarto-title-affiliation">
             Inria P16, Probabl.
@@ -216,7 +216,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <section id="whoami" class="slide level2">
 <h2><code>whoami</code></h2>
 <ul>
-<li class="fragment">I am a research engineer as part of Inria P16, and I am the lead developer of skrub <img data-src="images/skrub.svg" width="150"></li>
+<li class="fragment">I am a research engineer at Inria in the P16 team, and I am the lead developer of skrub <img data-src="images/skrub.svg" width="150"></li>
 <li class="fragment">I’m Italian, but I don’t drink coffee, wine, and I like pizza with fries <img data-src="images/raora.png" width="50"></li>
 <li class="fragment">I did my PhD in Côte d’Azur, and I moved away because it was too sunny and I don’t like the sea <img data-src="images/nice.jpg" width="250"></li>
 </ul>
@@ -229,18 +229,17 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <section id="on-compatibility" class="slide level2">
 <h2>On compatibility</h2>
 <ul>
-<li class="fragment">Skrub is fully compatible with pandas and polars</li>
-<li class="fragment">Skrub transformers are fully compatible with scikit-learn</li>
+<li class="fragment">skrub is fully compatible with pandas and polars</li>
+<li class="fragment">skrub transformers are fully compatible with scikit-learn</li>
 </ul>
-<p>Skrub is intended to save the effort required to perform common data preprocessing, with either of the dataframe libraries.</p>
 </section>
 <section id="an-example-pipeline" class="slide level2">
 <h2>An example pipeline</h2>
 <ol type="1">
 <li class="fragment">Gather some data</li>
 <li class="fragment">Explore the data</li>
-<li class="fragment">Pre-process the data</li>
-<li class="fragment">Perform feature engineering with Pandas or Polars</li>
+<li class="fragment">Preprocess the data</li>
+<li class="fragment">Perform feature engineering with pandas or polars</li>
 <li class="fragment">Build a scikit-learn pipeline</li>
 <li class="fragment">???</li>
 <li class="fragment">Profit?</li>
@@ -307,12 +306,12 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </section>
 <section id="data-cleaning-with-pandas" class="slide level2 smaller" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Data cleaning with Pandas</h2>
+<h2 data-id="quarto-animate-title">Data cleaning with pandas</h2>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Pandas</a></li><li><a href="#tabset-1-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="180dd806" class="cell" data-execution_count="2">
+<div id="27de9904" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href=""></a>data <span class="op">=</span> {</span>
@@ -395,7 +394,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="2e5d8156" class="cell" data-execution_count="3">
+<div id="dc5065dc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb4-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href=""></a>data <span class="op">=</span> {</span>
@@ -478,12 +477,12 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </section>
 <section id="data-cleaning-with-pandaspolars" class="slide level2 smaller" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Data cleaning with Pandas/Polars</h2>
+<h2 data-id="quarto-animate-title">Data cleaning with pandas/polars</h2>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Pandas</a></li><li><a href="#tabset-2-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div id="0e37ca22" class="cell" data-execution_count="4">
+<div id="f49f1f7c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
 <span id="cb5-2"><a href=""></a>df_pd[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df_pd[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
 <span id="cb5-3"><a href=""></a></span>
@@ -504,7 +503,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-2-2">
-<div id="9de482af" class="cell" data-execution_count="5">
+<div id="5e35f47e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
 <span id="cb6-2"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns([</span>
 <span id="cb6-3"><a href=""></a>    pl.col(<span class="st">"Date"</span>).<span class="bu">str</span>.strptime(pl.Date, <span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y"</span>, strict<span class="op">=</span><span class="va">False</span>).alias(<span class="st">"Date"</span>)</span>
@@ -550,7 +549,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Pandas</a></li><li><a href="#tabset-3-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div id="2c72a644" class="cell" data-execution_count="6">
+<div id="0b473023" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
 <span id="cb7-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
 <span id="cb7-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pd)</span>
@@ -607,7 +606,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-3-2">
-<div id="fbb1cc5b" class="cell" data-execution_count="7">
+<div id="829a48d6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
 <span id="cb8-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
 <span id="cb8-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pl)</span>
@@ -667,7 +666,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <div id="tabset-4-1">
 <div class="columns">
 <div class="column">
-<div id="42fe82a3" class="cell" data-execution_count="9">
+<div id="fe3e9611" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="bu">print</span>(df_pd_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   B  D       Date
@@ -677,7 +676,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 </div><div class="column">
-<div id="af6fecf3" class="cell" data-execution_count="10">
+<div id="8ebc79d9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   B  D       Date
@@ -691,7 +690,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <div id="tabset-4-2">
 <div class="columns">
 <div class="column">
-<div id="1782c607" class="cell" data-execution_count="11">
+<div id="e79d7868" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="bu">print</span>(df_pl_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 3)
@@ -707,7 +706,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 </div><div class="column">
-<div id="cc699c46" class="cell" data-execution_count="13">
+<div id="1498922d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="bu">print</span>(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 3)
@@ -729,12 +728,12 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </section>
 <section id="encoding-datetime-features-with-pandaspolars" class="slide level2 smaller">
-<h2>Encoding datetime features with Pandas/Polars</h2>
+<h2>Encoding datetime features with pandas/polars</h2>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Pandas</a></li><li><a href="#tabset-5-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div id="ac2d00cd" class="cell" data-execution_count="14">
+<div id="61f775fe" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb17-2"><a href=""></a>data <span class="op">=</span> {</span>
 <span id="cb17-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
@@ -753,7 +752,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-5-2">
-<div id="7b12fbdd" class="cell" data-execution_count="15">
+<div id="9e459ad0" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb18-2"><a href=""></a>data <span class="op">=</span> {</span>
 <span id="cb18-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
@@ -776,12 +775,12 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </section>
 <section id="adding-periodic-features-with-pandaspolars" class="slide level2 smaller">
-<h2>Adding periodic features with Pandas/Polars</h2>
+<h2>Adding periodic features with pandas/polars</h2>
 <div class="panel-tabset">
 <ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Pandas</a></li><li><a href="#tabset-6-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
-<div id="7c13458b" class="cell" data-execution_count="17">
+<div id="486bbb1d" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a>df_pd[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
 <span id="cb19-2"><a href=""></a>df_pd[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
 <span id="cb19-3"><a href=""></a></span>
@@ -790,7 +789,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-6-2">
-<div id="23fc36ed" class="cell" data-execution_count="18">
+<div id="a1769709" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
 <span id="cb20-2"><a href=""></a>    hour_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
 <span id="cb20-3"><a href=""></a>    hour_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
@@ -805,7 +804,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="encoding-datetime-features-skrub.datetimeencoder" class="slide level2 smaller" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Encoding datetime features <code>skrub.DatetimeEncoder</code></h2>
-<div id="cc466f19" class="cell" data-execution_count="20">
+<div id="4a7aaca8" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
 <span id="cb21-2" class="hljs-ln-code"><a href=""></a></span>
 <span id="cb21-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
@@ -891,7 +890,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="build-a-predictive-pipeline-with-tabular_pipeline" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Build a predictive pipeline with <code>tabular_pipeline</code></h2>
-<div id="d1f72b2c" class="cell" data-execution_count="23">
+<div id="9ce8b31f" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb26-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub</span>
 <span id="cb26-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
 <span id="cb26-3" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> skrub.tabular_pipeline(Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -938,9 +937,9 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <h2>What if…</h2>
 <ul>
 <li class="fragment">Your data is spread over multiple tables?</li>
+<li class="fragment">You want to avoid data leakage?</li>
 <li class="fragment">You want to tune more than just the hyperparameters of your model?</li>
 <li class="fragment">You want to guarantee that your pipeline is replayed exactly on new data?</li>
-<li class="fragment">You want to avoid data leakage?</li>
 </ul>
 </section>
 <section id="skrub-dataops" class="slide level2">
@@ -1020,14 +1019,15 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="starting-with-the-dataops" class="slide level2">
 <h2>Starting with the <code>DataOps</code></h2>
-<div id="dde69bb4" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a>data <span class="op">=</span> skrub.datasets.fetch_credit_fraud()</span>
-<span id="cb27-2"><a href=""></a></span>
-<span id="cb27-3"><a href=""></a>baskets <span class="op">=</span> skrub.var(<span class="st">"baskets"</span>, data.baskets)</span>
-<span id="cb27-4"><a href=""></a>X <span class="op">=</span> baskets[[<span class="st">"ID"</span>]].skb.mark_as_X()</span>
-<span id="cb27-5"><a href=""></a>y <span class="op">=</span> baskets[<span class="st">"fraud_flag"</span>].skb.mark_as_y()</span>
-<span id="cb27-6"><a href=""></a></span>
-<span id="cb27-7"><a href=""></a>products <span class="op">=</span> skrub.var(<span class="st">"products"</span>, data.products) <span class="co"># add a new variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d29cda08" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a><span class="im">import</span> skrub</span>
+<span id="cb27-2"><a href=""></a>data <span class="op">=</span> skrub.datasets.fetch_credit_fraud()</span>
+<span id="cb27-3"><a href=""></a></span>
+<span id="cb27-4"><a href=""></a>baskets <span class="op">=</span> skrub.var(<span class="st">"baskets"</span>, data.baskets).skb.subsample()</span>
+<span id="cb27-5"><a href=""></a>X <span class="op">=</span> baskets[[<span class="st">"ID"</span>]].skb.mark_as_X()</span>
+<span id="cb27-6"><a href=""></a>y <span class="op">=</span> baskets[<span class="st">"fraud_flag"</span>].skb.mark_as_y()</span>
+<span id="cb27-7"><a href=""></a></span>
+<span id="cb27-8"><a href=""></a>products <span class="op">=</span> skrub.var(<span class="st">"products"</span>, data.products) <span class="co"># add a new variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <ul>
@@ -1038,42 +1038,66 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="building-a-full-data-plan" class="slide level2">
 <h2>Building a full data plan</h2>
-<div class="sourceCode" id="cb28" data-code-line-numbers="|4,5|1,5|6|7|8|9|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> selectors <span class="im">as</span> s</span>
+<div id="470ed331" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> selectors <span class="im">as</span> s</span>
 <span id="cb28-2"><a href=""></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier  </span>
 <span id="cb28-3"><a href=""></a></span>
 <span id="cb28-4"><a href=""></a>vectorizer <span class="op">=</span> skrub.TableVectorizer(high_cardinality<span class="op">=</span>skrub.StringEncoder(), n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb28-5"><a href=""></a>vectorized_products <span class="op">=</span> products.skb.<span class="bu">apply</span>(vectorizer, cols<span class="op">=</span>s.<span class="bu">all</span>() <span class="op">-</span> <span class="st">"basket_ID"</span>)</span>
-<span id="cb28-6"><a href=""></a>aggregated_products <span class="op">=</span> vectorized_products.groupby(<span class="st">"basket_ID"</span>).agg(<span class="st">"mean"</span>).reset_index()</span>
-<span id="cb28-7"><a href=""></a>features <span class="op">=</span> X.merge(aggregated_products, left_on<span class="op">=</span><span class="st">"ID"</span>, right_on<span class="op">=</span><span class="st">"basket_ID"</span>)</span>
-<span id="cb28-8"><a href=""></a>features <span class="op">=</span> features.drop(columns<span class="op">=</span>[<span class="st">"ID"</span>, <span class="st">"basket_ID"</span>])</span>
-<span id="cb28-9"><a href=""></a>predictions <span class="op">=</span> features.skb.<span class="bu">apply</span>(ExtraTreesClassifier(n_jobs<span class="op">=-</span><span class="dv">1</span>), y<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-5"><a href=""></a>vectorized_products <span class="op">=</span> products.skb.<span class="bu">apply</span>(vectorizer, cols<span class="op">=</span>s.<span class="bu">all</span>() <span class="op">-</span> <span class="st">"basket_ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="building-a-full-data-plan-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Building a full data plan</h2>
+<div id="6c46fc21" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb29-1" class="hljs-ln-code"><a href=""></a>aggregated_products <span class="op">=</span> vectorized_products.groupby(<span class="st">"basket_ID"</span>).agg(<span class="st">"mean"</span>).reset_index()</span>
+<span id="cb29-2" class="hljs-ln-code"><a href=""></a>features <span class="op">=</span> X.merge(aggregated_products, left_on<span class="op">=</span><span class="st">"ID"</span>, right_on<span class="op">=</span><span class="st">"basket_ID"</span>)</span>
+<span id="cb29-3" class="hljs-ln-code"><a href=""></a>features <span class="op">=</span> features.drop(columns<span class="op">=</span>[<span class="st">"ID"</span>, <span class="st">"basket_ID"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="building-a-full-data-plan-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Building a full data plan</h2>
+<div id="3118db86" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb30-1" class="hljs-ln-code"><a href=""></a>predictions <span class="op">=</span> features.skb.<span class="bu">apply</span>(ExtraTreesClassifier(n_jobs<span class="op">=-</span><span class="dv">1</span>), y<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="inspecting-the-data-plan" class="slide level2">
 <h2>Inspecting the data plan</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a>predictions.skb.full_report()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a>predictions.skb.full_report()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
-<p><a href="expression_report/index.html" target="_blank">report</a></p>
+<p><a href="dataop_report/index.html" target="_blank">report</a></p>
 </section>
 <section id="exporting-the-plan-in-a-learner" class="slide level2 smaller">
 <h2>Exporting the plan in a <code>learner</code></h2>
 <p>The data plan can be exported as a <code>learner</code>:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="co"># anywhere</span></span>
-<span id="cb30-2"><a href=""></a>learner <span class="op">=</span> predictions.skb.make_learner()</span>
-<span id="cb30-3"><a href=""></a><span class="co"># search is a HPO object</span></span>
-<span id="cb30-4"><a href=""></a>best_learner <span class="op">=</span> search.skb.best_learner_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1f14556e" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="co"># anywhere</span></span>
+<span id="cb32-2"><a href=""></a>learner <span class="op">=</span> predictions.skb.make_learner(fitted<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a><span class="co"># search is a HPO object</span></span>
+<span id="cb33-2"><a href=""></a>best_learner <span class="op">=</span> search.skb.best_learner_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Then, the <code>learner</code> can be pickled …</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a><span class="im">import</span> pickle</span>
-<span id="cb31-2"><a href=""></a></span>
-<span id="cb31-3"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fp:</span>
-<span id="cb31-4"><a href=""></a>    pickle.dump(learner, fp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="132d851c" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a><span class="im">import</span> pickle</span>
+<span id="cb34-2"><a href=""></a></span>
+<span id="cb34-3"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fp:</span>
+<span id="cb34-4"><a href=""></a>    pickle.dump(learner, fp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <div class="fragment">
 <p>… and loaded</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"rb"</span>) <span class="im">as</span> fp:</span>
-<span id="cb32-2"><a href=""></a>    learner <span class="op">=</span> pickle.load(fp)</span>
-<span id="cb32-3"><a href=""></a></span>
-<span id="cb32-4"><a href=""></a>learner.predict({<span class="st">"baskets"</span>: new_baskets, <span class="st">"products"</span>: new_products})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a7db2550" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"rb"</span>) <span class="im">as</span> fp:</span>
+<span id="cb35-2"><a href=""></a>    learner <span class="op">=</span> pickle.load(fp)</span>
+<span id="cb35-3"><a href=""></a></span>
+<span id="cb35-4"><a href=""></a>data <span class="op">=</span> skrub.datasets.fetch_credit_fraud(split<span class="op">=</span><span class="st">"test"</span>)</span>
+<span id="cb35-5"><a href=""></a>new_baskets <span class="op">=</span> data.baskets</span>
+<span id="cb35-6"><a href=""></a>new_products <span class="op">=</span> data.products</span>
+<span id="cb35-7"><a href=""></a>learner.predict({<span class="st">"baskets"</span>: new_baskets, <span class="st">"products"</span>: new_products})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>array([0, 0, 0, ..., 0, 0, 0], shape=(31549,))</code></pre>
+</div>
+</div>
 </div>
 </section>
 <section id="hyperparameter-tuning-in-a-data-plan" class="slide level2">
@@ -1090,67 +1114,67 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <section id="hyperparameter-tuning-in-a-data-plan-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Hyperparameter tuning in a Data Plan</h2>
 <p>It’s possible to nest these functions to create complex grids:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb33-1" class="hljs-ln-code"><a href=""></a>X.skb.<span class="bu">apply</span>(</span>
-<span id="cb33-2" class="hljs-ln-code"><a href=""></a>    skrub.choose_from(</span>
-<span id="cb33-3" class="hljs-ln-code"><a href=""></a>        {</span>
-<span id="cb33-4" class="hljs-ln-code"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
-<span id="cb33-5" class="hljs-ln-code"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
-<span id="cb33-6" class="hljs-ln-code"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
-<span id="cb33-7" class="hljs-ln-code"><a href=""></a>    )</span>
-<span id="cb33-8" class="hljs-ln-code"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb37-1" class="hljs-ln-code"><a href=""></a>X.skb.<span class="bu">apply</span>(</span>
+<span id="cb37-2" class="hljs-ln-code"><a href=""></a>    skrub.choose_from(</span>
+<span id="cb37-3" class="hljs-ln-code"><a href=""></a>        {</span>
+<span id="cb37-4" class="hljs-ln-code"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
+<span id="cb37-5" class="hljs-ln-code"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
+<span id="cb37-6" class="hljs-ln-code"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
+<span id="cb37-7" class="hljs-ln-code"><a href=""></a>    )</span>
+<span id="cb37-8" class="hljs-ln-code"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tuning-in-scikit-learn-can-be-complex" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Tuning in <code>scikit-learn</code> can be complex</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb34-1" class="hljs-ln-code"><a href=""></a>pipe <span class="op">=</span> Pipeline([(<span class="st">"dim_reduction"</span>, PCA()), (<span class="st">"regressor"</span>, Ridge())])</span>
-<span id="cb34-2" class="hljs-ln-code"><a href=""></a>grid <span class="op">=</span> [</span>
-<span id="cb34-3" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb34-4" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
-<span id="cb34-5" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb34-6" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
-<span id="cb34-7" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
-<span id="cb34-8" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb34-9" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb34-10" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
-<span id="cb34-11" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb34-12" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
-<span id="cb34-13" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
-<span id="cb34-14" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb34-15" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb34-16" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
-<span id="cb34-17" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb34-18" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
-<span id="cb34-19" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
-<span id="cb34-20" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb34-21" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb34-22" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
-<span id="cb34-23" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb34-24" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
-<span id="cb34-25" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
-<span id="cb34-26" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb34-27" class="hljs-ln-code"><a href=""></a>]</span>
-<span id="cb34-28" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> RandomizedSearchCV(pipe, grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb38-1" class="hljs-ln-code"><a href=""></a>pipe <span class="op">=</span> Pipeline([(<span class="st">"dim_reduction"</span>, PCA()), (<span class="st">"regressor"</span>, Ridge())])</span>
+<span id="cb38-2" class="hljs-ln-code"><a href=""></a>grid <span class="op">=</span> [</span>
+<span id="cb38-3" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb38-4" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
+<span id="cb38-5" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb38-6" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
+<span id="cb38-7" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
+<span id="cb38-8" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb38-9" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb38-10" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
+<span id="cb38-11" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb38-12" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
+<span id="cb38-13" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
+<span id="cb38-14" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb38-15" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb38-16" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
+<span id="cb38-17" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb38-18" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
+<span id="cb38-19" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
+<span id="cb38-20" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb38-21" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb38-22" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
+<span id="cb38-23" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb38-24" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
+<span id="cb38-25" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
+<span id="cb38-26" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb38-27" class="hljs-ln-code"><a href=""></a>]</span>
+<span id="cb38-28" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> RandomizedSearchCV(pipe, grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tuning-with-dataops-is-simple" class="slide level2 smaller">
 <h2>Tuning with <code>DataOps</code> is simple!</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>dim_reduction <span class="op">=</span> X.skb.<span class="bu">apply</span>(</span>
-<span id="cb35-2"><a href=""></a>    skrub.choose_from(</span>
-<span id="cb35-3"><a href=""></a>        {</span>
-<span id="cb35-4"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
-<span id="cb35-5"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
-<span id="cb35-6"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
-<span id="cb35-7"><a href=""></a>    )</span>
-<span id="cb35-8"><a href=""></a>)</span>
-<span id="cb35-9"><a href=""></a>regressor <span class="op">=</span> dim_reduction.skb.<span class="bu">apply</span>(</span>
-<span id="cb35-10"><a href=""></a>    skrub.choose_from(</span>
-<span id="cb35-11"><a href=""></a>        {</span>
-<span id="cb35-12"><a href=""></a>            <span class="st">"Ridge"</span>: Ridge(alpha<span class="op">=</span>skrub.choose_float(<span class="fl">0.1</span>, <span class="fl">10.0</span>, log<span class="op">=</span><span class="va">True</span>)),</span>
-<span id="cb35-13"><a href=""></a>            <span class="st">"RandomForest"</span>: RandomForestClassifier(</span>
-<span id="cb35-14"><a href=""></a>                n_estimators<span class="op">=</span>skrub.choose_int(<span class="dv">20</span>, <span class="dv">200</span>, log<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb35-15"><a href=""></a>            )</span>
-<span id="cb35-16"><a href=""></a>        }, name<span class="op">=</span><span class="st">"regressor"</span></span>
-<span id="cb35-17"><a href=""></a>    )</span>
-<span id="cb35-18"><a href=""></a>)</span>
-<span id="cb35-19"><a href=""></a>regressor.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a>dim_reduction <span class="op">=</span> X.skb.<span class="bu">apply</span>(</span>
+<span id="cb39-2"><a href=""></a>    skrub.choose_from(</span>
+<span id="cb39-3"><a href=""></a>        {</span>
+<span id="cb39-4"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
+<span id="cb39-5"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
+<span id="cb39-6"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
+<span id="cb39-7"><a href=""></a>    )</span>
+<span id="cb39-8"><a href=""></a>)</span>
+<span id="cb39-9"><a href=""></a>regressor <span class="op">=</span> dim_reduction.skb.<span class="bu">apply</span>(</span>
+<span id="cb39-10"><a href=""></a>    skrub.choose_from(</span>
+<span id="cb39-11"><a href=""></a>        {</span>
+<span id="cb39-12"><a href=""></a>            <span class="st">"Ridge"</span>: Ridge(alpha<span class="op">=</span>skrub.choose_float(<span class="fl">0.1</span>, <span class="fl">10.0</span>, log<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb39-13"><a href=""></a>            <span class="st">"RandomForest"</span>: RandomForestClassifier(</span>
+<span id="cb39-14"><a href=""></a>                n_estimators<span class="op">=</span>skrub.choose_int(<span class="dv">20</span>, <span class="dv">200</span>, log<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-15"><a href=""></a>            )</span>
+<span id="cb39-16"><a href=""></a>        }, name<span class="op">=</span><span class="st">"regressor"</span></span>
+<span id="cb39-17"><a href=""></a>    )</span>
+<span id="cb39-18"><a href=""></a>)</span>
+<span id="cb39-19"><a href=""></a>regressor.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tunings-with-dataops-is-not-limited-to-estimators" class="slide level2">
 <h2>Tunings with <code>DataOps</code> is not limited to estimators</h2>
@@ -1158,40 +1182,67 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Pandas</a></li><li><a href="#tabset-7-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1">
-<div id="3f0827de" class="cell" data-execution_count="25">
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div id="8c707541" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb40-2"><a href=""></a>    {<span class="st">"subject"</span>: [<span class="st">"math"</span>, <span class="st">"math"</span>, <span class="st">"art"</span>, <span class="st">"history"</span>], <span class="st">"grade"</span>: [<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">6</span>]}</span>
+<span id="cb40-3"><a href=""></a>)</span>
+<span id="cb40-4"><a href=""></a></span>
+<span id="cb40-5"><a href=""></a>df_do <span class="op">=</span> skrub.var(<span class="st">"grades"</span>, df)</span>
+<span id="cb40-6"><a href=""></a></span>
+<span id="cb40-7"><a href=""></a>agg_grades <span class="op">=</span> df_do.groupby(<span class="st">"subject"</span>).agg(skrub.choose_from([<span class="st">"count"</span>, <span class="st">"mean"</span>]))</span>
+<span id="cb40-8"><a href=""></a>agg_grades.skb.describe_param_grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>"- choose_from(['count', 'mean']): ['count', 'mean']\n"</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-7-2">
-<div id="48f0b634" class="cell" data-execution_count="26">
-<div class="cell-output cell-output-display" data-execution_count="52">
-<pre><code>'- choose_from([&lt;Expr [\'col("grade").mean()\'] at 0x7A1E481D5E10&gt;, &lt;Expr [\'col("grade").count()\'] at 0x7A1E50C3FD90&gt;]): [&lt;Expr [\'col("grade").mean()\'] at 0x7A1E481D5E10&gt;, &lt;Expr [\'col("grade").count()\'] at 0x7A1E50C3FD90&gt;]\n'</code></pre>
+<div id="b9550323" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>df <span class="op">=</span> pl.DataFrame(</span>
+<span id="cb42-2"><a href=""></a>    {<span class="st">"subject"</span>: [<span class="st">"math"</span>, <span class="st">"math"</span>, <span class="st">"art"</span>, <span class="st">"history"</span>], <span class="st">"grade"</span>: [<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">6</span>]}</span>
+<span id="cb42-3"><a href=""></a>)</span>
+<span id="cb42-4"><a href=""></a></span>
+<span id="cb42-5"><a href=""></a>df_do <span class="op">=</span> skrub.var(<span class="st">"grades"</span>, df)</span>
+<span id="cb42-6"><a href=""></a></span>
+<span id="cb42-7"><a href=""></a>agg_grades <span class="op">=</span> df_do.group_by(<span class="st">"subject"</span>).agg(</span>
+<span id="cb42-8"><a href=""></a>    skrub.choose_from([pl.mean(<span class="st">"grade"</span>), pl.count(<span class="st">"grade"</span>)])</span>
+<span id="cb42-9"><a href=""></a>)</span>
+<span id="cb42-10"><a href=""></a>agg_grades.skb.describe_param_grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>'- choose_from([&lt;Expr [\'col("grade").mean()\'] at 0x7DA520191B50&gt;, &lt;Expr [\'col("grade").count()\'] at 0x7DA520191290&gt;]): [&lt;Expr [\'col("grade").mean()\'] at 0x7DA520191B50&gt;, &lt;Expr [\'col("grade").count()\'] at 0x7DA520191290&gt;]\n'</code></pre>
 </div>
 </div>
-<section id="observe-the-impact-of-the-hyperparameters" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Observe the impact of the hyperparameters</h2>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb38-1" class="hljs-ln-code"><a href=""></a>search <span class="op">=</span> pred.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb38-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb38-3" class="hljs-ln-code"><a href=""></a>search.plot_parallel_coord()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/plot-parallel-coord.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
+</div>
+</div>
 </div>
 </section>
+<section id="observe-the-impact-of-the-hyperparameters" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Observe the impact of the hyperparameters</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb44-1" class="hljs-ln-code"><a href=""></a>search <span class="op">=</span> pred.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb44-3" class="hljs-ln-code"><a href=""></a>search.plot_parallel_coord()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="images/plot-parallel-coord.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="more-data-ops-examples" class="slide level2">
 <h2>More Data Ops examples</h2>
 <ul>
 <li class="fragment">Skrub <a href="https://skrub-data.org/stable/auto_examples/data_ops/index.html">example gallery</a></li>
 <li class="fragment"><a href="https://github.com/skrub-data/EuroSciPy2025">Tutorial</a> on timeseries forecasting at Euroscipy 2025</li>
 </ul>
-</section>
-<section id="thats-it" class="title-slide slide level1 center">
-<h1>That’s it!</h1>
+</section></section>
+<section>
+<section id="wrapping-up" class="title-slide slide level1 center">
+<h1>Wrapping up</h1>
 
 </section>
+<section id="section-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+
+<img data-src="images/powerpuff_girls_1.png" class="r-stretch"></section>
+<section id="section-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+
+<img data-src="images/powerpuff_girls_2.png" class="r-stretch"></section>
 <section id="getting-involved" class="slide level2">
 <h2>Getting involved</h2>
 <div>
@@ -1220,11 +1271,6 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </ul>
 </div>
 
-</section>
-
-</div>
-</div>
-</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
