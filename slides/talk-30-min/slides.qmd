@@ -336,7 +336,7 @@ print(df_cleaned)
 
 ### Pandas
 ```{python}
-#| echo: true
+#|echo: true
 import pandas as pd
 data = {
     'date': ['2023-01-01 12:34:56', '2023-02-15 08:45:23', '2023-03-20 18:12:45'],
@@ -356,8 +356,7 @@ df_pd['second'] = df_pd[datetime_column].dt.second
 
 ### Polars
 ```{python}
-#! echo: true
-
+#|echo: true
 import polars as pl
 data = {
     'date': ['2023-01-01 12:34:56', '2023-02-15 08:45:23', '2023-03-20 18:12:45'],
@@ -378,7 +377,7 @@ df_pl = df_pl.with_columns(
 
 :::
 
-## Encoding datetime features with Pandas {.smaller}
+## Adding periodic features with Pandas/Polars{.smaller}
 :::{.panel-tabset}
 
 ### Pandas
@@ -390,7 +389,6 @@ data = {
 }
 ```
 ```{python}
-
 #| echo: true
 df_pd['hour_sin'] = np.sin(2 * np.pi * df_pd['hour'] / 24)
 df_pd['hour_cos'] = np.cos(2 * np.pi * df_pd['hour'] / 24)
@@ -401,7 +399,6 @@ df_pd['month_cos'] = np.cos(2 * np.pi * df_pd['month'] / 12)
 
 ### Polars
 ```{python}
-
 #| echo: true
 df_pl = df_pl.with_columns(
     hour_sin = np.sin(2 * np.pi * pl.col("hour") / 24),
@@ -439,6 +436,7 @@ print(X_enc)
 
 ## Encoding numerical features with `skrub.SquashingScaler`
 ```{python}
+#| fig-align: center
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -473,7 +471,7 @@ axs.annotate(
 
 x_outlier, y_outlier = np.argmax(values), np.max(values)
 desc = "There are large\noutliers throughout."
-axs.annotate(
+_ = axs.annotate(
     desc,
     xy=(x_outlier, y_outlier),
     xytext=(0.6, 0.85),
@@ -485,6 +483,7 @@ axs.annotate(
 
 ## Encoding numerical features with `skrub.SquashingScaler`
 ```{python}
+#| fig-align: center
 from sklearn.preprocessing import QuantileTransformer, RobustScaler, StandardScaler
 from skrub import SquashingScaler
 
@@ -546,7 +545,7 @@ axs[0].annotate(
 )
 
 desc = "The SquashingScaler is\nclipped to a finite value"
-axs[1].annotate(
+_ = axs[1].annotate(
     desc,
     xy=(0, -3),
     xytext=(0.4, 0.2),
@@ -603,7 +602,7 @@ ct = make_column_transformer(
 
 model = make_pipeline(ct, SimpleImputer(), Ridge())
 ```
-## Build a predictive pipeline with `tabular_learner` {auto-animate="true" .smaller}
+## Build a predictive pipeline with `tabular_pipeline` {auto-animate="true" .smaller}
 ```{python}
 #| echo: true
 import skrub
@@ -627,7 +626,7 @@ model = skrub.tabular_pipeline(Ridge())
 4. Perform feature engineering
     - `skrub.TableVectorizer`, `TextEncoder`, `StringEncoder `...
 5. Build a scikit-learn pipeline
-    - `tabular_learner`, `sklearn.pipeline.make_pipeline` ... 
+    - `tabular_pipeline`, `sklearn.pipeline.make_pipeline` ... 
 6. ???
 7. Profit 📈 
 

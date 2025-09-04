@@ -309,7 +309,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Pandas</a></li><li><a href="#tabset-1-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="201030b9" class="cell" data-execution_count="2">
+<div id="bc21baa8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href=""></a>data <span class="op">=</span> {</span>
@@ -392,7 +392,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="1b66222e" class="cell" data-execution_count="3">
+<div id="9e156d09" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb4-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href=""></a>data <span class="op">=</span> {</span>
@@ -480,7 +480,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Pandas</a></li><li><a href="#tabset-2-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div id="f26bbecd" class="cell" data-execution_count="4">
+<div id="8e7de376" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
 <span id="cb5-2"><a href=""></a>df_pd[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df_pd[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
 <span id="cb5-3"><a href=""></a></span>
@@ -501,7 +501,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-2-2">
-<div id="71407281" class="cell" data-execution_count="5">
+<div id="4d82c493" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
 <span id="cb6-2"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns([</span>
 <span id="cb6-3"><a href=""></a>    pl.col(<span class="st">"Date"</span>).<span class="bu">str</span>.strptime(pl.Date, <span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y"</span>, strict<span class="op">=</span><span class="va">False</span>).alias(<span class="st">"Date"</span>)</span>
@@ -547,7 +547,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Pandas</a></li><li><a href="#tabset-3-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div id="4937c7c5" class="cell" data-execution_count="6">
+<div id="4ae60aa5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
 <span id="cb7-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
 <span id="cb7-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pd)</span>
@@ -604,7 +604,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-3-2">
-<div id="12140ddc" class="cell" data-execution_count="7">
+<div id="2e5eec52" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
 <span id="cb8-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
 <span id="cb8-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pl)</span>
@@ -664,7 +664,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <div id="tabset-4-1">
 <div class="columns">
 <div class="column">
-<div id="59f66c8c" class="cell" data-execution_count="9">
+<div id="f0833c2f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="bu">print</span>(df_pd_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   B  D       Date
@@ -674,7 +674,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 </div><div class="column">
-<div id="af596cd4" class="cell" data-execution_count="10">
+<div id="f02aabd8" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   B  D       Date
@@ -688,7 +688,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <div id="tabset-4-2">
 <div class="columns">
 <div class="column">
-<div id="b4bf828b" class="cell" data-execution_count="11">
+<div id="78688e69" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="bu">print</span>(df_pl_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 3)
@@ -704,7 +704,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 </div><div class="column">
-<div id="3841ce7c" class="cell" data-execution_count="13">
+<div id="99d32f32" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="bu">print</span>(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 3)
@@ -731,7 +731,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Pandas</a></li><li><a href="#tabset-5-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div id="b8ea1cd6" class="cell" data-execution_count="14">
+<div id="d51be03b" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb17-2"><a href=""></a>data <span class="op">=</span> {</span>
 <span id="cb17-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
@@ -750,34 +750,51 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 <div id="tabset-5-2">
-
+<div id="73dd5550" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb18-2"><a href=""></a>data <span class="op">=</span> {</span>
+<span id="cb18-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
+<span id="cb18-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb18-5"><a href=""></a>}</span>
+<span id="cb18-6"><a href=""></a>df_pl <span class="op">=</span> pl.DataFrame(data)</span>
+<span id="cb18-7"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(date<span class="op">=</span>pl.col(<span class="st">"date"</span>).<span class="bu">str</span>.to_datetime())</span>
+<span id="cb18-8"><a href=""></a></span>
+<span id="cb18-9"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
+<span id="cb18-10"><a href=""></a>    year<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.year(),</span>
+<span id="cb18-11"><a href=""></a>    month<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.month(),</span>
+<span id="cb18-12"><a href=""></a>    day<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.day(),</span>
+<span id="cb18-13"><a href=""></a>    hour<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.hour(),</span>
+<span id="cb18-14"><a href=""></a>    minute<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.minute(),</span>
+<span id="cb18-15"><a href=""></a>    second<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.second(),</span>
+<span id="cb18-16"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="encoding-datetime-features-with-pandas" class="slide level2 smaller">
-<h2>Encoding datetime features with Pandas</h2>
+<section id="adding-periodic-features-with-pandaspolars" class="slide level2 smaller">
+<h2>Adding periodic features with Pandas/Polars</h2>
 <div class="panel-tabset">
 <ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Pandas</a></li><li><a href="#tabset-6-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
-<div id="fadbd51e" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>df_pd[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
-<span id="cb18-2"><a href=""></a>df_pd[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
-<span id="cb18-3"><a href=""></a></span>
-<span id="cb18-4"><a href=""></a>df_pd[<span class="st">'month_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
-<span id="cb18-5"><a href=""></a>df_pd[<span class="st">'month_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b06a0ce8" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a>df_pd[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
+<span id="cb19-2"><a href=""></a>df_pd[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
+<span id="cb19-3"><a href=""></a></span>
+<span id="cb19-4"><a href=""></a>df_pd[<span class="st">'month_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
+<span id="cb19-5"><a href=""></a>df_pd[<span class="st">'month_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-6-2">
-<div id="257743ec" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
-<span id="cb19-2"><a href=""></a>    hour_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
-<span id="cb19-3"><a href=""></a>    hour_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
-<span id="cb19-4"><a href=""></a>    </span>
-<span id="cb19-5"><a href=""></a>    month_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
-<span id="cb19-6"><a href=""></a>    month_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
-<span id="cb19-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="29bd4ba4" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
+<span id="cb20-2"><a href=""></a>    hour_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
+<span id="cb20-3"><a href=""></a>    hour_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
+<span id="cb20-4"><a href=""></a>    </span>
+<span id="cb20-5"><a href=""></a>    month_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
+<span id="cb20-6"><a href=""></a>    month_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
+<span id="cb20-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -785,13 +802,13 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="encoding-datetime-features-skrub.datetimeencoder" class="slide level2 smaller" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Encoding datetime features <code>skrub.DatetimeEncoder</code></h2>
-<div id="ff6ee605" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
-<span id="cb20-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb20-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
-<span id="cb20-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(periodic_encoding<span class="op">=</span><span class="st">"circular"</span>)</span>
-<span id="cb20-5" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
-<span id="cb20-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4ba92e9d" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
+<span id="cb21-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb21-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
+<span id="cb21-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(periodic_encoding<span class="op">=</span><span class="st">"circular"</span>)</span>
+<span id="cb21-5" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
+<span id="cb21-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 8)
 ┌───────────┬────────────┬────────────┬────────────┬───────────┬───────────┬───────────┬───────────┐
@@ -817,13 +834,12 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <img data-src="images/periodic_features.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="encoding-numerical-features-with-skrub.squashingscaler" class="slide level2">
 <h2>Encoding numerical features with <code>skrub.SquashingScaler</code></h2>
-<div id="150541c0" class="cell" data-execution_count="21">
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>Text(0.02, 0.5, 'Value')</code></pre>
-</div>
 
-</div>
-<img data-src="slides_files/figure-revealjs/cell-22-output-2.png" class="r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/cell-22-output-1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="encoding-numerical-features-with-skrub.squashingscaler-1" class="slide level2">
+<h2>Encoding numerical features with <code>skrub.SquashingScaler</code></h2>
+
+<img data-src="slides_files/figure-revealjs/cell-23-output-1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="encoding-categorical-features" class="slide level2">
 <h2>Encoding categorical features</h2>
 <ul>
@@ -870,9 +886,9 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 <span id="cb25-16" class="hljs-ln-code"><a href=""></a></span>
 <span id="cb25-17" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(ct, SimpleImputer(), Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="build-a-predictive-pipeline-with-tabular_learner" class="slide level2 smaller" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Build a predictive pipeline with <code>tabular_learner</code></h2>
-<div id="7d9a3b6b" class="cell" data-execution_count="22">
+<section id="build-a-predictive-pipeline-with-tabular_pipeline" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Build a predictive pipeline with <code>tabular_pipeline</code></h2>
+<div id="c8fc5efb" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb26-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub</span>
 <span id="cb26-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
 <span id="cb26-3" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> skrub.tabular_pipeline(Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -904,7 +920,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </ul></li>
 <li class="fragment">Build a scikit-learn pipeline
 <ul>
-<li class="fragment"><code>tabular_learner</code>, <code>sklearn.pipeline.make_pipeline</code> …</li>
+<li class="fragment"><code>tabular_pipeline</code>, <code>sklearn.pipeline.make_pipeline</code> …</li>
 </ul></li>
 <li class="fragment">???</li>
 <li class="fragment">Profit 📈</li>
@@ -992,7 +1008,7 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="starting-with-the-dataops" class="slide level2">
 <h2>Starting with the <code>DataOps</code></h2>
-<div id="5bea815a" class="cell" data-execution_count="23">
+<div id="0cf05678" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a>data <span class="op">=</span> skrub.datasets.fetch_credit_fraud()</span>
 <span id="cb27-2"><a href=""></a></span>
 <span id="cb27-3"><a href=""></a>baskets <span class="op">=</span> skrub.var(<span class="st">"baskets"</span>, data.baskets)</span>
