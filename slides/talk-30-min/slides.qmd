@@ -3,7 +3,7 @@ title: "Skrub"
 title-block-banner: true
 date: 2025-10-01
 subtitle: "Machine learning with dataframes"
-author: "Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre"
+author: "Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaître"
 institute: "Inria P16, Probabl."
 format: 
     revealjs:
@@ -21,7 +21,7 @@ incremental: true
 ---
 
 ## `whoami`
-- I am a research engineer as part of Inria P16, and I am the lead developer of skrub ![](images/skrub.svg){width=150}
+- I am a research engineer at Inria in the P16 team, and I am the lead developer of skrub ![](images/skrub.svg){width=150}
 - I'm Italian, but I don't drink coffee, wine, and I like pizza with fries ![](images/raora.png){width=50}
 - I did my PhD in Côte d'Azur, and I moved away because it was too sunny and 
 I don't like the sea ![](images/nice.jpg){width=250}
@@ -31,24 +31,23 @@ I don't like the sea ![](images/nice.jpg){width=250}
 `skrub` simplifies many tedious data preparation operations
 
 ## On compatibility
-Skrub is fully compatible with pandas and polars, and the transformers it provides
-are fully compatible with scikit-learn, and can be used directly in scikit-learn pipelines.
+- skrub is fully compatible with pandas and polars
+- skrub transformers are fully compatible with scikit-learn
 
-Skrub is intended to save the effort required to perform common data preprocessing, 
-with either of the dataframe libraries. 
+skrub is intended to reduce the effort required for common data preprocessing tasks, with either of the major dataframe libraries. 
 
 ## An example pipeline
 1. Gather some data
 2. Explore the data
-3. Pre-process the data 
-4. Perform feature engineering with Pandas or Polars
+3. Preprocess the data 
+4. Perform feature engineering with pandas or polars
 5. Build a scikit-learn pipeline
 6. ???
 7. Profit?  
 
 
 ## Exploring the data {.smaller auto-animate="true"}
-```python
+```{.python}
 import pandas as pd
 import matplotlib.pyplot as plt
 import skrub
@@ -86,6 +85,7 @@ plt.show()
 ## Exploring the data {.smaller auto-animate="true"}
 
 ```{python}
+#| echo: false
 import pandas as pd
 import matplotlib.pyplot as plt
 import skrub
@@ -149,7 +149,7 @@ Main features:
 
 :::
 
-## Data cleaning with Pandas {.smaller auto-animate="true"}
+## Data cleaning with pandas {.smaller auto-animate="true"}
 
 ::: {.panel-tabset}
 
@@ -194,7 +194,7 @@ display(df_pl)
 :::
 
 
-## Data cleaning with Pandas/Polars {.smaller auto-animate="true"}
+## Data cleaning with pandas/polars {.smaller auto-animate="true"}
 
 :::{.panel-tabset}
 ### Pandas
@@ -331,7 +331,7 @@ print(df_cleaned)
 <!-- end columns -->
 :::
 
-## Encoding datetime features with Pandas/Polars {.smaller}
+## Encoding datetime features with pandas/polars {.smaller}
 :::{.panel-tabset}
 
 ### Pandas
@@ -377,7 +377,7 @@ df_pl = df_pl.with_columns(
 
 :::
 
-## Adding periodic features with Pandas/Polars{.smaller}
+## Adding periodic features with pandas/polars{.smaller}
 :::{.panel-tabset}
 
 ### Pandas
@@ -732,7 +732,7 @@ predictions = features.skb.apply(ExtraTreesClassifier(n_jobs=-1), y=y)
 ```
 
 ## Inspecting the data plan
-```{.python}
+```{python}
 predictions.skb.full_report()
 ```
 <br/>
@@ -741,7 +741,7 @@ predictions.skb.full_report()
 
 ## Exporting the plan in a `learner` {.smaller}
 The data plan can be exported as a `learner`:
-```{.python}
+```{python}
 # anywhere
 learner = predictions.skb.make_learner()
 # search is a HPO object
@@ -749,7 +749,7 @@ best_learner = search.skb.best_learner_
 ```
 ::: {.fragment}
 Then, the `learner` can be pickled ...
-```{.python}
+```{python}
 import pickle
 
 with open("learner.bin", "wb") as fp:
@@ -761,7 +761,7 @@ with open("learner.bin", "wb") as fp:
 
 ... and loaded
 
-```{.python}
+```{python}
 with open("learner.bin", "rb") as fp:
     learner = pickle.load(fp)
 
