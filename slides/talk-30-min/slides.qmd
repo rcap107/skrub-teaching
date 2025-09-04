@@ -631,7 +631,21 @@ model = skrub.tabular_pipeline(Ridge())
 7. Profit 📈 
 
 
-# What if we had a *better* pipeline? 
+# What if this is not enough?? 
+
+## What if...
+
+- Your data is spread over multiple tables? 
+- You want to tune more than just the hyperparameters of your model? 
+- You want to guarantee that your pipeline is replayed exactly on new data? 
+- You want to avoid data leakage? 
+
+## `skrub` DataOps
+When a normal pipe is not enough...
+
+::: {.fragment style="font-size:2em;"}
+... the `skrub` DataOps come to the rescue 🚒
+:::
 
 ## A realistic scenario
 A data scientist needs to train a ML model, but features are spread across 
@@ -651,29 +665,26 @@ Many issues with this!
 - Persisting and reproducing operations is complex
 :::
 
-## `skrub` DataOps
-When a normal pipe is not enough...
-
-::: {.fragment style="font-size:2em;"}
-... the `skrub` DataOps come to the rescue 🚒
-:::
 
 
 ## DataOps...
 - Extend the `scikit-learn` machinery to complex multi-table operations
-- Track all operations with a computational graph (a *data plan*)
+- Track all operations with a computational graph (a *Data Ops plan*)
 - Allow tuning any operation in the data plan
 - Can be persisted and shared easily by generating a `learner`
 
-## DataOps, Data Plans, `learner`s: oh my!  
+## DataOps, Plans, `learner`s: oh my!  
 - A `DataOp` (singular) wraps a single operation, and can be combined and concatenated with other `DataOps`. 
 
-- The **Data Plan** is a collective name for a sequence and combination of `DataOps`. 
+- The **Data Ops** Plan is a collective name for the directed computational graph
+that tracks a sequence and combination of `DataOps`. 
 
-- The Data Plan can be exported as a standalone object called `learner`. The `learner` takes a dictionary of values rather than just `X` and `y`. 
+- The plan can be exported as a standalone object called `learner`. The `learner` 
+works like a scikit-learn estimator that takes a dictionary of values rather 
+than just `X` and `y`. 
 
 
-## How do DataOps work, though? 
+## How do DataOps work, though?  {.smaller}
 DataOps **wrap** around *user operations*, where user operations are:
 
 - any dataframe operation (e.g., merge, group by, aggregate etc.)
@@ -724,7 +735,6 @@ predictions = features.skb.apply(ExtraTreesClassifier(n_jobs=-1), y=y)
 ```{.python}
 predictions.skb.full_report()
 ```
-
 <br/>
 
 <a href="expression_report/index.html" target="_blank">report</a>
@@ -839,6 +849,43 @@ regressor = dim_reduction.skb.apply(
 )
 regressor.skb.get_randomized_search(scoring="roc_auc", fitted=True)
 ```
+## Tunings with `DataOps` is not limited to estimators
+::: {.panel-tabset}
+### Pandas
+```{python}
+import pandas as pd
+import skrub
+
+df = pd.DataFrame(
+    {
+        "subject": ["math", "math", "art", "history"],
+        "grade": [10, 8, 4, 6]
+    }
+)
+
+df_do = skrub.var("grades", df)
+
+agg_grades = df_do.groupby("subject").agg(skrub.choose_from(["count", "mean"]))
+agg_grades.skb.describe_param_grid()
+```
+
+### Polars
+```{python}
+import polars as pl
+import skrub
+
+df = pl.DataFrame(
+    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
+)
+
+df_do = skrub.var("grades", df)
+
+agg_grades = df_do.group_by("subject").agg(
+    skrub.choose_from([pl.mean("grade"), pl.count("grade")])
+)
+agg_grades.skb.describe_param_grid()
+```
+
 
 ## Observe the impact of the hyperparameters {auto-animate="true"} 
 
@@ -850,16 +897,10 @@ search.plot_parallel_coord()
 
 ![](images/plot-parallel-coord.png){fig-align="center"}
 
-
-## tl;dw
-`skrub` provides
-
-::: {.nonincremental}
-- interactive data exploration
-- automated pre-processing of pandas and polars dataframes
-- powerful feature engineering
-- soon™️, DataOps, data plans, hyperparameter tuning, (almost) no leakage 
-:::
+## More Data Ops examples
+- Skrub [example gallery](https://skrub-data.org/stable/auto_examples/data_ops/index.html)
+- [Tutorial](https://github.com/skrub-data/EuroSciPy2025) on timeseries 
+forecasting at Euroscipy 2025
 
 # That's it!
 
@@ -873,3 +914,15 @@ search.plot_parallel_coord()
 :::
 
 ![](images/qr-code.png){.absolute bottom=0 right=0 width="250" height="250"}
+
+## Sprint on friday! 
+
+## tl;dw
+`skrub` provides
+
+::: {.nonincremental}
+- interactive data exploration
+- automated pre-processing of pandas and polars dataframes
+- powerful feature engineering
+- DataOps, plans, hyperparameter tuning, (almost) no leakage 
+:::
