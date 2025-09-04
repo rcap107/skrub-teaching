@@ -215,21 +215,11 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="whoami" class="slide level2">
 <h2><code>whoami</code></h2>
-<div class="grid">
-<div class="g-col-6">
 <ul>
-<li class="fragment"><p>I am a research engineer as part of Inria P16, and I am the lead developer of skrub ::: {.fragment} <img data-src="images/skrub.svg" width="150"></p>
-<p>:::</p></li>
-<li class="fragment"><p>I’m Italian, but I don’t drink coffee, wine, and I like pizza with fries ::: {.fragment} <img data-src="images/raora.png" width="50"></p>
-<p>:::</p></li>
-<li class="fragment"><p>I did my PhD in Côte d’Azur, and I moved away because it was too sunny and I don’t like the sea ::: {.fragment} <img data-src="images/nice.jpg" width="250"></p>
-<p>:::</p></li>
+<li class="fragment">I am a research engineer as part of Inria P16, and I am the lead developer of skrub <img data-src="images/skrub.svg" width="150"></li>
+<li class="fragment">I’m Italian, but I don’t drink coffee, wine, and I like pizza with fries <img data-src="images/raora.png" width="50"></li>
+<li class="fragment">I did my PhD in Côte d’Azur, and I moved away because it was too sunny and I don’t like the sea <img data-src="images/nice.jpg" width="250"></li>
 </ul>
-</div>
-<div class="g-col-6">
-<!-- Images will appear in sync with the list items via fragments above -->
-</div>
-</div>
 </section>
 <section>
 <section id="boost-your-productivity-with-skrub" class="title-slide slide level1 center" data-auto-animate="true">
@@ -315,21 +305,25 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="data-cleaning-with-pandas" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Data cleaning with Pandas</h2>
-<div id="0e776b0d" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb3-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2" class="hljs-ln-code"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb3-4" class="hljs-ln-code"><a href=""></a>data <span class="op">=</span> {</span>
-<span id="cb3-5" class="hljs-ln-code"><a href=""></a>    <span class="st">'Constant int'</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],  <span class="co"># Single unique value</span></span>
-<span id="cb3-6" class="hljs-ln-code"><a href=""></a>    <span class="st">'B'</span>: [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>],  <span class="co"># Multiple unique values</span></span>
-<span id="cb3-7" class="hljs-ln-code"><a href=""></a>    <span class="st">'Constant str'</span>: [<span class="st">'x'</span>, <span class="st">'x'</span>, <span class="st">'x'</span>],  <span class="co"># Single unique value</span></span>
-<span id="cb3-8" class="hljs-ln-code"><a href=""></a>    <span class="st">'D'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],  <span class="co"># Multiple unique values</span></span>
-<span id="cb3-9" class="hljs-ln-code"><a href=""></a>    <span class="st">'All nan'</span>: [np.nan, np.nan, np.nan],  <span class="co"># All missing values </span></span>
-<span id="cb3-10" class="hljs-ln-code"><a href=""></a>    <span class="st">'All empty'</span>: [<span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>],  <span class="co"># All empty strings</span></span>
-<span id="cb3-11" class="hljs-ln-code"><a href=""></a>    <span class="st">'Date'</span>: [<span class="st">'01/01/2023'</span>, <span class="st">'02/01/2023'</span>, <span class="st">'03/01/2023'</span>],</span>
-<span id="cb3-12" class="hljs-ln-code"><a href=""></a>}</span>
-<span id="cb3-13" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb3-14" class="hljs-ln-code"><a href=""></a>display(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Pandas</a></li><li><a href="#tabset-1-2">Polars</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div id="201030b9" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href=""></a>data <span class="op">=</span> {</span>
+<span id="cb3-4"><a href=""></a>    <span class="st">'Constant int'</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],  <span class="co"># Single unique value</span></span>
+<span id="cb3-5"><a href=""></a>    <span class="st">'B'</span>: [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>],  <span class="co"># Multiple unique values</span></span>
+<span id="cb3-6"><a href=""></a>    <span class="st">'Constant str'</span>: [<span class="st">'x'</span>, <span class="st">'x'</span>, <span class="st">'x'</span>],  <span class="co"># Single unique value</span></span>
+<span id="cb3-7"><a href=""></a>    <span class="st">'D'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],  <span class="co"># Multiple unique values</span></span>
+<span id="cb3-8"><a href=""></a>    <span class="st">'All nan'</span>: [np.nan, np.nan, np.nan],  <span class="co"># All missing values </span></span>
+<span id="cb3-9"><a href=""></a>    <span class="st">'All empty'</span>: [<span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>],  <span class="co"># All empty strings</span></span>
+<span id="cb3-10"><a href=""></a>    <span class="st">'Date'</span>: [<span class="st">'01/01/2023'</span>, <span class="st">'02/01/2023'</span>, <span class="st">'03/01/2023'</span>],</span>
+<span id="cb3-11"><a href=""></a>}</span>
+<span id="cb3-12"><a href=""></a></span>
+<span id="cb3-13"><a href=""></a>df_pd <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb3-14"><a href=""></a>display(df_pd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <style scoped="">
@@ -396,86 +390,168 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </div>
 </div>
 </div>
-</section>
-<section id="data-cleaning-with-pandas-1" class="slide level2 smaller" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Data cleaning with Pandas</h2>
-<div id="fa5ab2f9" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb4-1" class="hljs-ln-code"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
-<span id="cb4-2" class="hljs-ln-code"><a href=""></a>df[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
-<span id="cb4-3" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb4-4" class="hljs-ln-code"><a href=""></a><span class="co"># Drop columns with only a single unique value</span></span>
-<span id="cb4-5" class="hljs-ln-code"><a href=""></a>df_cleaned <span class="op">=</span> df.loc[:, df.nunique(dropna<span class="op">=</span><span class="va">True</span>) <span class="op">&gt;</span> <span class="dv">1</span>]</span>
-<span id="cb4-6" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb4-7" class="hljs-ln-code"><a href=""></a><span class="co"># Function to drop columns with only missing values or empty strings</span></span>
-<span id="cb4-8" class="hljs-ln-code"><a href=""></a><span class="kw">def</span> drop_empty_columns(df):</span>
-<span id="cb4-9" class="hljs-ln-code"><a href=""></a>    <span class="co"># Drop columns with only missing values</span></span>
-<span id="cb4-10" class="hljs-ln-code"><a href=""></a>    df_cleaned <span class="op">=</span> df.dropna(axis<span class="op">=</span><span class="dv">1</span>, how<span class="op">=</span><span class="st">'all'</span>)</span>
-<span id="cb4-11" class="hljs-ln-code"><a href=""></a>    <span class="co"># Drop columns with only empty strings</span></span>
-<span id="cb4-12" class="hljs-ln-code"><a href=""></a>    empty_string_cols <span class="op">=</span> df_cleaned.columns[df_cleaned.eq(<span class="st">''</span>).<span class="bu">all</span>()]</span>
-<span id="cb4-13" class="hljs-ln-code"><a href=""></a>    df_cleaned <span class="op">=</span> df_cleaned.drop(columns<span class="op">=</span>empty_string_cols)</span>
-<span id="cb4-14" class="hljs-ln-code"><a href=""></a>    <span class="cf">return</span> df_cleaned</span>
-<span id="cb4-15" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb4-16" class="hljs-ln-code"><a href=""></a><span class="co"># Apply the function to the DataFrame</span></span>
-<span id="cb4-17" class="hljs-ln-code"><a href=""></a>df_cleaned <span class="op">=</span> drop_empty_columns(df_cleaned)</span>
-<span id="cb4-18" class="hljs-ln-code"><a href=""></a>display(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2">
+<div id="1b66222e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb4-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href=""></a>data <span class="op">=</span> {</span>
+<span id="cb4-4"><a href=""></a>    <span class="st">'Constant int'</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],  <span class="co"># Single unique value</span></span>
+<span id="cb4-5"><a href=""></a>    <span class="st">'B'</span>: [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>],  <span class="co"># Multiple unique values</span></span>
+<span id="cb4-6"><a href=""></a>    <span class="st">'Constant str'</span>: [<span class="st">'x'</span>, <span class="st">'x'</span>, <span class="st">'x'</span>],  <span class="co"># Single unique value</span></span>
+<span id="cb4-7"><a href=""></a>    <span class="st">'D'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],  <span class="co"># Multiple unique values</span></span>
+<span id="cb4-8"><a href=""></a>    <span class="st">'All nan'</span>: [np.nan, np.nan, np.nan],  <span class="co"># All missing values </span></span>
+<span id="cb4-9"><a href=""></a>    <span class="st">'All empty'</span>: [<span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>],  <span class="co"># All empty strings</span></span>
+<span id="cb4-10"><a href=""></a>    <span class="st">'Date'</span>: [<span class="st">'01/01/2023'</span>, <span class="st">'02/01/2023'</span>, <span class="st">'03/01/2023'</span>],</span>
+<span id="cb4-11"><a href=""></a>}</span>
+<span id="cb4-12"><a href=""></a></span>
+<span id="cb4-13"><a href=""></a>df_pl <span class="op">=</span> pl.DataFrame(data)</span>
+<span id="cb4-14"><a href=""></a>display(df_pl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-
+<small>shape: (3, 7)</small>
 <table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
 <thead>
-<tr class="header" style="text-align: right;">
-<th data-quarto-table-cell-role="th"></th>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Constant int</th>
 <th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">Constant str</th>
 <th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">All nan</th>
+<th data-quarto-table-cell-role="th">All empty</th>
 <th data-quarto-table-cell-role="th">Date</th>
+</tr>
+<tr class="even">
+<th>i64</th>
+<th>i64</th>
+<th>str</th>
+<th>i64</th>
+<th>f64</th>
+<th>str</th>
+<th>str</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
 <td>2</td>
+<td>"x"</td>
 <td>4</td>
-<td>2023-01-01</td>
+<td>NaN</td>
+<td>""</td>
+<td>"01/01/2023"</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
 <td>3</td>
+<td>"x"</td>
 <td>5</td>
-<td>2023-01-02</td>
+<td>NaN</td>
+<td>""</td>
+<td>"02/01/2023"</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
 <td>2</td>
+<td>"x"</td>
 <td>6</td>
-<td>2023-01-03</td>
+<td>NaN</td>
+<td>""</td>
+<td>"03/01/2023"</td>
 </tr>
 </tbody>
 </table>
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-cleaning-with-pandaspolars" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Data cleaning with Pandas/Polars</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Pandas</a></li><li><a href="#tabset-2-2">Polars</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div id="f26bbecd" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
+<span id="cb5-2"><a href=""></a>df_pd[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df_pd[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="co"># Drop columns with only a single unique value</span></span>
+<span id="cb5-5"><a href=""></a>df_pd_cleaned <span class="op">=</span> df_pd.loc[:, df_pd.nunique(dropna<span class="op">=</span><span class="va">True</span>) <span class="op">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="co"># Function to drop columns with only missing values or empty strings</span></span>
+<span id="cb5-8"><a href=""></a><span class="kw">def</span> drop_empty_columns(df):</span>
+<span id="cb5-9"><a href=""></a>    <span class="co"># Drop columns with only missing values</span></span>
+<span id="cb5-10"><a href=""></a>    df_cleaned <span class="op">=</span> df.dropna(axis<span class="op">=</span><span class="dv">1</span>, how<span class="op">=</span><span class="st">'all'</span>)</span>
+<span id="cb5-11"><a href=""></a>    <span class="co"># Drop columns with only empty strings</span></span>
+<span id="cb5-12"><a href=""></a>    empty_string_cols <span class="op">=</span> df_cleaned.columns[df_cleaned.eq(<span class="st">''</span>).<span class="bu">all</span>()]</span>
+<span id="cb5-13"><a href=""></a>    df_cleaned <span class="op">=</span> df_cleaned.drop(columns<span class="op">=</span>empty_string_cols)</span>
+<span id="cb5-14"><a href=""></a>    <span class="cf">return</span> df_cleaned</span>
+<span id="cb5-15"><a href=""></a></span>
+<span id="cb5-16"><a href=""></a><span class="co"># Apply the function to the DataFrame</span></span>
+<span id="cb5-17"><a href=""></a>df_pd_cleaned <span class="op">=</span> drop_empty_columns(df_pd_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div id="71407281" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
+<span id="cb6-2"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns([</span>
+<span id="cb6-3"><a href=""></a>    pl.col(<span class="st">"Date"</span>).<span class="bu">str</span>.strptime(pl.Date, <span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y"</span>, strict<span class="op">=</span><span class="va">False</span>).alias(<span class="st">"Date"</span>)</span>
+<span id="cb6-4"><a href=""></a>])</span>
+<span id="cb6-5"><a href=""></a></span>
+<span id="cb6-6"><a href=""></a><span class="co"># Drop columns with only a single unique value</span></span>
+<span id="cb6-7"><a href=""></a>df_pl_cleaned <span class="op">=</span> df_pl.select([</span>
+<span id="cb6-8"><a href=""></a>    col <span class="cf">for</span> col <span class="kw">in</span> df_pl.columns <span class="cf">if</span> df_pl[col].n_unique() <span class="op">&gt;</span> <span class="dv">1</span></span>
+<span id="cb6-9"><a href=""></a>])</span>
+<span id="cb6-10"><a href=""></a></span>
+<span id="cb6-11"><a href=""></a><span class="co"># Import selectors for dtype selection</span></span>
+<span id="cb6-12"><a href=""></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
+<span id="cb6-13"><a href=""></a></span>
+<span id="cb6-14"><a href=""></a><span class="co"># Drop columns with only missing values or only empty strings</span></span>
+<span id="cb6-15"><a href=""></a><span class="kw">def</span> drop_empty_columns(df):</span>
+<span id="cb6-16"><a href=""></a>    all_nan <span class="op">=</span> df.select(</span>
+<span id="cb6-17"><a href=""></a>        [</span>
+<span id="cb6-18"><a href=""></a>            col <span class="cf">for</span> col <span class="kw">in</span> df.select(cs.numeric()).columns <span class="cf">if</span> </span>
+<span id="cb6-19"><a href=""></a>            df [col].is_nan().<span class="bu">all</span>()</span>
+<span id="cb6-20"><a href=""></a>        ]</span>
+<span id="cb6-21"><a href=""></a>    ).columns</span>
+<span id="cb6-22"><a href=""></a>    </span>
+<span id="cb6-23"><a href=""></a>    all_empty <span class="op">=</span> df.select(</span>
+<span id="cb6-24"><a href=""></a>        [</span>
+<span id="cb6-25"><a href=""></a>            col <span class="cf">for</span> col <span class="kw">in</span> df.select(cs.string()).columns <span class="cf">if</span> </span>
+<span id="cb6-26"><a href=""></a>            (df[col].<span class="bu">str</span>.strip_chars().<span class="bu">str</span>.len_chars()<span class="op">==</span><span class="dv">0</span>).<span class="bu">all</span>()</span>
+<span id="cb6-27"><a href=""></a>        ]</span>
+<span id="cb6-28"><a href=""></a>    ).columns</span>
+<span id="cb6-29"><a href=""></a></span>
+<span id="cb6-30"><a href=""></a>    to_drop <span class="op">=</span> all_nan <span class="op">+</span> all_empty</span>
+<span id="cb6-31"><a href=""></a></span>
+<span id="cb6-32"><a href=""></a>    <span class="cf">return</span> df.drop(to_drop)</span>
+<span id="cb6-33"><a href=""></a></span>
+<span id="cb6-34"><a href=""></a>df_pl_cleaned <span class="op">=</span> drop_empty_columns(df_pl_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
 </section>
 <section id="lightweight-data-cleaning-cleaner" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Lightweight data cleaning: <code>Cleaner</code></h2>
-<div id="dc2faddf" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb5-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
-<span id="cb5-2" class="hljs-ln-code"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
-<span id="cb5-3" class="hljs-ln-code"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df)</span>
-<span id="cb5-4" class="hljs-ln-code"><a href=""></a>display(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Pandas</a></li><li><a href="#tabset-3-2">Polars</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div id="4937c7c5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
+<span id="cb7-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
+<span id="cb7-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pd)</span>
+<span id="cb7-4"><a href=""></a>display(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <style scoped="">
@@ -522,6 +598,158 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div id="12140ddc" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
+<span id="cb8-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">/%m/%Y'</span>)</span>
+<span id="cb8-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pl)</span>
+<span id="cb8-4"><a href=""></a>display(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3, 3)</small>
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">Date</th>
+</tr>
+<tr class="even">
+<th>i64</th>
+<th>i64</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>4</td>
+<td>2023-01-01</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>5</td>
+<td>2023-01-02</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>6</td>
+<td>2023-01-03</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparison" class="slide level2">
+<h2>Comparison</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Pandas</a></li><li><a href="#tabset-4-2">Polars</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="columns">
+<div class="column">
+<div id="59f66c8c" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="bu">print</span>(df_pd_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   B  D       Date
+0  2  4 2023-01-01
+1  3  5 2023-01-02
+2  2  6 2023-01-03</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div id="af596cd4" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   B  D       Date
+0  2  4 2023-01-01
+1  3  5 2023-01-02
+2  2  6 2023-01-03</code></pre>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-4-2">
+<div class="columns">
+<div class="column">
+<div id="b4bf828b" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="bu">print</span>(df_pl_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>shape: (3, 3)
+┌─────┬─────┬────────────┐
+│ B   ┆ D   ┆ Date       │
+│ --- ┆ --- ┆ ---        │
+│ i64 ┆ i64 ┆ date       │
+╞═════╪═════╪════════════╡
+│ 2   ┆ 4   ┆ 2023-01-01 │
+│ 3   ┆ 5   ┆ 2023-01-02 │
+│ 2   ┆ 6   ┆ 2023-01-03 │
+└─────┴─────┴────────────┘</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div id="3841ce7c" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="bu">print</span>(df_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>shape: (3, 3)
+┌─────┬─────┬────────────┐
+│ B   ┆ D   ┆ Date       │
+│ --- ┆ --- ┆ ---        │
+│ i64 ┆ i64 ┆ date       │
+╞═════╪═════╪════════════╡
+│ 2   ┆ 4   ┆ 2023-01-01 │
+│ 3   ┆ 5   ┆ 2023-01-02 │
+│ 2   ┆ 6   ┆ 2023-01-03 │
+└─────┴─────┴────────────┘</code></pre>
+</div>
+</div>
+</div></div>
+<!-- end columns -->
+</div>
+</div>
+</div>
+</section>
+<section id="encoding-datetime-features-with-pandaspolars" class="slide level2 smaller">
+<h2>Encoding datetime features with Pandas/Polars</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Pandas</a></li><li><a href="#tabset-5-2">Polars</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div id="b8ea1cd6" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a href=""></a>data <span class="op">=</span> {</span>
+<span id="cb17-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
+<span id="cb17-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb17-5"><a href=""></a>}</span>
+<span id="cb17-6"><a href=""></a>df_pd <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb17-7"><a href=""></a>datetime_column <span class="op">=</span> <span class="st">"date"</span></span>
+<span id="cb17-8"><a href=""></a>df_pd[datetime_column] <span class="op">=</span> pd.to_datetime(df_pd[datetime_column], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb17-9"><a href=""></a></span>
+<span id="cb17-10"><a href=""></a>df_pd[<span class="st">'year'</span>] <span class="op">=</span> df_pd[datetime_column].dt.year</span>
+<span id="cb17-11"><a href=""></a>df_pd[<span class="st">'month'</span>] <span class="op">=</span> df_pd[datetime_column].dt.month</span>
+<span id="cb17-12"><a href=""></a>df_pd[<span class="st">'day'</span>] <span class="op">=</span> df_pd[datetime_column].dt.day</span>
+<span id="cb17-13"><a href=""></a>df_pd[<span class="st">'hour'</span>] <span class="op">=</span> df_pd[datetime_column].dt.hour</span>
+<span id="cb17-14"><a href=""></a>df_pd[<span class="st">'minute'</span>] <span class="op">=</span> df_pd[datetime_column].dt.minute</span>
+<span id="cb17-15"><a href=""></a>df_pd[<span class="st">'second'</span>] <span class="op">=</span> df_pd[datetime_column].dt.second</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-5-2">
 
 </div>
 </div>
@@ -529,82 +757,57 @@ Riccardo Cappuzzo, Jérôme Dockès, Guillaume Lemaitre
 </section>
 <section id="encoding-datetime-features-with-pandas" class="slide level2 smaller">
 <h2>Encoding datetime features with Pandas</h2>
-<div id="227d422a" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-2"><a href=""></a>data <span class="op">=</span> {</span>
-<span id="cb6-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
-<span id="cb6-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb6-5"><a href=""></a>}</span>
-<span id="cb6-6"><a href=""></a>df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb6-7"><a href=""></a>df_expanded <span class="op">=</span> df.copy()</span>
-<span id="cb6-8"><a href=""></a>datetime_column <span class="op">=</span> <span class="st">"date"</span></span>
-<span id="cb6-9"><a href=""></a>df_expanded[datetime_column] <span class="op">=</span> pd.to_datetime(df_expanded[datetime_column], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb6-10"><a href=""></a></span>
-<span id="cb6-11"><a href=""></a>df_expanded[<span class="st">'year'</span>] <span class="op">=</span> df_expanded[datetime_column].dt.year</span>
-<span id="cb6-12"><a href=""></a>df_expanded[<span class="st">'month'</span>] <span class="op">=</span> df_expanded[datetime_column].dt.month</span>
-<span id="cb6-13"><a href=""></a>df_expanded[<span class="st">'day'</span>] <span class="op">=</span> df_expanded[datetime_column].dt.day</span>
-<span id="cb6-14"><a href=""></a>df_expanded[<span class="st">'hour'</span>] <span class="op">=</span> df_expanded[datetime_column].dt.hour</span>
-<span id="cb6-15"><a href=""></a>df_expanded[<span class="st">'minute'</span>] <span class="op">=</span> df_expanded[datetime_column].dt.minute</span>
-<span id="cb6-16"><a href=""></a>df_expanded[<span class="st">'second'</span>] <span class="op">=</span> df_expanded[datetime_column].dt.second</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Pandas</a></li><li><a href="#tabset-6-2">Polars</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<div id="fadbd51e" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>df_pd[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
+<span id="cb18-2"><a href=""></a>df_pd[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
+<span id="cb18-3"><a href=""></a></span>
+<span id="cb18-4"><a href=""></a>df_pd[<span class="st">'month_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
+<span id="cb18-5"><a href=""></a>df_pd[<span class="st">'month_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="encoding-datetime-features-with-pandas-1" class="slide level2 smaller">
-<h2>Encoding datetime features with Pandas</h2>
-<div id="4e7b32fe" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>df_expanded[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_expanded[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
-<span id="cb7-2"><a href=""></a>df_expanded[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_expanded[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a>df_expanded[<span class="st">'month_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_expanded[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
-<span id="cb7-5"><a href=""></a>df_expanded[<span class="st">'month_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_expanded[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
-<span id="cb7-6"><a href=""></a></span>
-<span id="cb7-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Original DataFrame:"</span>)</span>
-<span id="cb7-8"><a href=""></a><span class="bu">print</span>(df)</span>
-<span id="cb7-9"><a href=""></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">DataFrame with expanded datetime columns:"</span>)</span>
-<span id="cb7-10"><a href=""></a><span class="bu">print</span>(df_expanded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Original DataFrame:
-                  date  value
-0  2023-01-01 12:34:56     10
-1  2023-02-15 08:45:23     20
-2  2023-03-20 18:12:45     30
-
-DataFrame with expanded datetime columns:
-                 date  value  year  month  day  hour  minute  second  \
-0 2023-01-01 12:34:56     10  2023      1    1    12      34      56   
-1 2023-02-15 08:45:23     20  2023      2   15     8      45      23   
-2 2023-03-20 18:12:45     30  2023      3   20    18      12      45   
-
-       hour_sin      hour_cos  month_sin     month_cos  
-0  1.224647e-16 -1.000000e+00   0.500000  8.660254e-01  
-1  8.660254e-01 -5.000000e-01   0.866025  5.000000e-01  
-2 -1.000000e+00 -1.836970e-16   1.000000  6.123234e-17  </code></pre>
+</div>
+<div id="tabset-6-2">
+<div id="257743ec" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
+<span id="cb19-2"><a href=""></a>    hour_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
+<span id="cb19-3"><a href=""></a>    hour_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
+<span id="cb19-4"><a href=""></a>    </span>
+<span id="cb19-5"><a href=""></a>    month_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
+<span id="cb19-6"><a href=""></a>    month_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
+<span id="cb19-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </div>
 </div>
 </section>
 <section id="encoding-datetime-features-skrub.datetimeencoder" class="slide level2 smaller" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Encoding datetime features <code>skrub.DatetimeEncoder</code></h2>
-<div id="e77891ef" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb9-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
-<span id="cb9-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb9-3" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(periodic_encoding<span class="op">=</span><span class="st">"circular"</span>)</span>
-<span id="cb9-4" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
-<span id="cb9-5" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
-<span id="cb9-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ff6ee605" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
+<span id="cb20-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb20-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
+<span id="cb20-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(periodic_encoding<span class="op">=</span><span class="st">"circular"</span>)</span>
+<span id="cb20-5" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
+<span id="cb20-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   date_year  date_total_seconds  date_month_circular_0  \
-0     2023.0        1.672577e+09               0.500000   
-1     2023.0        1.676451e+09               0.866025   
-2     2023.0        1.679336e+09               1.000000   
-
-   date_month_circular_1  date_day_circular_0  date_day_circular_1  \
-0           8.660254e-01         2.079117e-01             0.978148   
-1           5.000000e-01         1.224647e-16            -1.000000   
-2           6.123234e-17        -8.660254e-01            -0.500000   
-
-   date_hour_circular_0  date_hour_circular_1  
-0          1.224647e-16         -1.000000e+00  
-1          8.660254e-01         -5.000000e-01  
-2         -1.000000e+00         -1.836970e-16  </code></pre>
+<pre><code>shape: (3, 8)
+┌───────────┬────────────┬────────────┬────────────┬───────────┬───────────┬───────────┬───────────┐
+│ date_year ┆ date_total ┆ date_month ┆ date_month ┆ date_day_ ┆ date_day_ ┆ date_hour ┆ date_hour │
+│ ---       ┆ _seconds   ┆ _circular_ ┆ _circular_ ┆ circular_ ┆ circular_ ┆ _circular ┆ _circular │
+│ f32       ┆ ---        ┆ 0          ┆ 1          ┆ 0         ┆ 1         ┆ _0        ┆ _1        │
+│           ┆ f32        ┆ ---        ┆ ---        ┆ ---       ┆ ---       ┆ ---       ┆ ---       │
+│           ┆            ┆ f64        ┆ f64        ┆ f64       ┆ f64       ┆ f64       ┆ f64       │
+╞═══════════╪════════════╪════════════╪════════════╪═══════════╪═══════════╪═══════════╪═══════════╡
+│ 2023.0    ┆ 1.6726e9   ┆ 0.5        ┆ 0.866025   ┆ 0.207912  ┆ 0.978148  ┆ 1.2246e-1 ┆ -1.0      │
+│           ┆            ┆            ┆            ┆           ┆           ┆ 6         ┆           │
+│ 2023.0    ┆ 1.6765e9   ┆ 0.866025   ┆ 0.5        ┆ 1.2246e-1 ┆ -1.0      ┆ 0.866025  ┆ -0.5      │
+│           ┆            ┆            ┆            ┆ 6         ┆           ┆           ┆           │
+│ 2023.0    ┆ 1.6793e9   ┆ 1.0        ┆ 6.1232e-17 ┆ -0.866025 ┆ -0.5      ┆ -1.0      ┆ -1.8370e- │
+│           ┆            ┆            ┆            ┆           ┆           ┆           ┆ 16        │
+└───────────┴────────────┴────────────┴────────────┴───────────┴───────────┴───────────┴───────────┘</code></pre>
 </div>
 </div>
 </section>
@@ -614,7 +817,13 @@ DataFrame with expanded datetime columns:
 <img data-src="images/periodic_features.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="encoding-numerical-features-with-skrub.squashingscaler" class="slide level2">
 <h2>Encoding numerical features with <code>skrub.SquashingScaler</code></h2>
-</section>
+<div id="150541c0" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>Text(0.02, 0.5, 'Value')</code></pre>
+</div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/cell-22-output-2.png" class="r-stretch"></section>
 <section id="encoding-categorical-features" class="slide level2">
 <h2>Encoding categorical features</h2>
 <ul>
@@ -629,928 +838,47 @@ DataFrame with expanded datetime columns:
 <img data-src="images/skrub-table-vectorizer.png" class="r-stretch"></section>
 <section id="build-a-predictive-pipeline" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Build a predictive pipeline</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb11-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb11-2" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> Ridge()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb23-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb23-2" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> Ridge()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="build-a-predictive-pipeline-1" class="slide level2" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Build a predictive pipeline</h2>
-<div class="sourceCode" id="cb12" data-code-line-numbers="3-6"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb12-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb12-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb12-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb12-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
-<span id="cb12-5" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb12-6" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(StandardScaler(), SimpleImputer(), Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="3-6"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb24-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb24-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb24-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb24-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb24-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb24-6" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(StandardScaler(), SimpleImputer(), Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="build-a-predictive-pipeline-2" class="slide level2" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Build a predictive pipeline</h2>
-<div class="sourceCode" id="cb13" data-code-line-numbers="3,5,6-17|"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb13-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb13-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb13-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
-<span id="cb13-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
-<span id="cb13-5" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
-<span id="cb13-6" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_transformer</span>
-<span id="cb13-7" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb13-8" class="hljs-ln-code"><a href=""></a>categorical_columns <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="bu">object</span>)(employees)</span>
-<span id="cb13-9" class="hljs-ln-code"><a href=""></a>numerical_columns <span class="op">=</span> selector(dtype_exclude<span class="op">=</span><span class="bu">object</span>)(employees)</span>
-<span id="cb13-10" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb13-11" class="hljs-ln-code"><a href=""></a>ct <span class="op">=</span> make_column_transformer(</span>
-<span id="cb13-12" class="hljs-ln-code"><a href=""></a>      (StandardScaler(),</span>
-<span id="cb13-13" class="hljs-ln-code"><a href=""></a>       numerical_columns),</span>
-<span id="cb13-14" class="hljs-ln-code"><a href=""></a>      (OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>),</span>
-<span id="cb13-15" class="hljs-ln-code"><a href=""></a>       categorical_columns))</span>
-<span id="cb13-16" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb13-17" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(ct, SimpleImputer(), Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-code-line-numbers="3,5,6-17|"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb25-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb25-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb25-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb25-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb25-5" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
+<span id="cb25-6" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_transformer</span>
+<span id="cb25-7" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb25-8" class="hljs-ln-code"><a href=""></a>categorical_columns <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="bu">object</span>)(employees)</span>
+<span id="cb25-9" class="hljs-ln-code"><a href=""></a>numerical_columns <span class="op">=</span> selector(dtype_exclude<span class="op">=</span><span class="bu">object</span>)(employees)</span>
+<span id="cb25-10" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb25-11" class="hljs-ln-code"><a href=""></a>ct <span class="op">=</span> make_column_transformer(</span>
+<span id="cb25-12" class="hljs-ln-code"><a href=""></a>      (StandardScaler(),</span>
+<span id="cb25-13" class="hljs-ln-code"><a href=""></a>       numerical_columns),</span>
+<span id="cb25-14" class="hljs-ln-code"><a href=""></a>      (OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>),</span>
+<span id="cb25-15" class="hljs-ln-code"><a href=""></a>       categorical_columns))</span>
+<span id="cb25-16" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb25-17" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(ct, SimpleImputer(), Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="build-a-predictive-pipeline-with-tabular_learner" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Build a predictive pipeline with <code>tabular_learner</code></h2>
-<div id="47796b41" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb14-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub</span>
-<span id="cb14-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb14-3" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> skrub.tabular_learner(Ridge())</span>
-<span id="cb14-4" class="hljs-ln-code"><a href=""></a>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<style>#sk-container-id-3 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: #000;
-  --sklearn-color-text-muted: #666;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-3 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-3 pre {
-  padding: 0;
-}
-
-#sk-container-id-3 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-3 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-3 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-3 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-3 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-3 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-3 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-3 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-3 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-3 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-3 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-3 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-3 label.sk-toggleable__label {
-  cursor: pointer;
-  display: flex;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-  align-items: start;
-  justify-content: space-between;
-  gap: 0.5em;
-}
-
-#sk-container-id-3 label.sk-toggleable__label .caption {
-  font-size: 0.6rem;
-  font-weight: lighter;
-  color: var(--sklearn-color-text-muted);
-}
-
-#sk-container-id-3 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-3 div.sk-toggleable__content {
-  display: none;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-3 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-3 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-3 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  display: block;
-  width: 100%;
-  overflow: visible;
-}
-
-#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-3 div.sk-label label.sk-toggleable__label,
-#sk-container-id-3 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-3 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-3 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-3 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-3 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-3 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-3 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 0.5em;
-  text-align: center;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-3 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-3 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-3 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-3 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-
-.estimator-table summary {
-    padding: .5rem;
-    font-family: monospace;
-    cursor: pointer;
-}
-
-.estimator-table details[open] {
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-    padding-bottom: 0.3rem;
-}
-
-.estimator-table .parameters-table {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.estimator-table .parameters-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-.estimator-table .parameters-table tr:nth-child(even) {
-    background-color: #f6f6f6;
-}
-
-.estimator-table .parameters-table tr:hover {
-    background-color: #e0e0e0;
-}
-
-.estimator-table table td {
-    border: 1px solid rgba(106, 105, 104, 0.232);
-}
-
-.user-set td {
-    color:rgb(255, 94, 0);
-    text-align: left;
-}
-
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
-}
-
-.default td {
-    color: black;
-    text-align: left;
-}
-
-.user-set td i,
-.default td i {
-    color: black;
-}
-
-.copy-paste-icon {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
-</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[('tablevectorizer',
-                 TableVectorizer(datetime=DatetimeEncoder(periodic_encoding='spline'))),
-                ('simpleimputer', SimpleImputer(add_indicator=True)),
-                ('standardscaler', StandardScaler()), ('ridge', Ridge())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-19" type="checkbox"><label for="sk-estimator-id-19" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">steps&nbsp;</td>
-<td class="value">[('tablevectorizer', ...), ('simpleimputer', ...), ...]</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">transform_input&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">memory&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">verbose&nbsp;</td>
-<td class="value">False</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-20" type="checkbox"><label for="sk-estimator-id-20" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>tablevectorizer: TableVectorizer</div></div></label><div class="sk-toggleable__content " data-param-prefix="tablevectorizer__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">cardinality_threshold&nbsp;</td>
-<td class="value">40</td>
-</tr>
-<tr class="user-set even">
-<td><em></em></td>
-<td class="param">low_cardinality&nbsp;</td>
-<td class="value">OneHotEncoder..._output=False)</td>
-</tr>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">high_cardinality&nbsp;</td>
-<td class="value">StringEncoder()</td>
-</tr>
-<tr class="user-set even">
-<td><em></em></td>
-<td class="param">numeric&nbsp;</td>
-<td class="value">PassThrough()</td>
-</tr>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">datetime&nbsp;</td>
-<td class="value">DatetimeEncod...ding='spline')</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">specific_transformers&nbsp;</td>
-<td class="value">()</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">drop_null_fraction&nbsp;</td>
-<td class="value">1.0</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">drop_if_constant&nbsp;</td>
-<td class="value">False</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">drop_if_unique&nbsp;</td>
-<td class="value">False</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">datetime_format&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">n_jobs&nbsp;</td>
-<td class="value">None</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>datetime</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-22" type="checkbox"><label for="sk-estimator-id-22" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>DatetimeEncoder</div></div></label><div class="sk-toggleable__content " data-param-prefix="tablevectorizer__datetime__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">resolution&nbsp;</td>
-<td class="value">'hour'</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">add_weekday&nbsp;</td>
-<td class="value">False</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">add_total_seconds&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">add_day_of_year&nbsp;</td>
-<td class="value">False</td>
-</tr>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">periodic_encoding&nbsp;</td>
-<td class="value">'spline'</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>low_cardinality</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-23" type="checkbox"><label for="sk-estimator-id-23" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OneHotEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.OneHotEncoder.html">?<span>Documentation for OneHotEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="tablevectorizer__low_cardinality__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">categories&nbsp;</td>
-<td class="value">'auto'</td>
-</tr>
-<tr class="user-set even">
-<td><em></em></td>
-<td class="param">drop&nbsp;</td>
-<td class="value">'if_binary'</td>
-</tr>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">sparse_output&nbsp;</td>
-<td class="value">False</td>
-</tr>
-<tr class="user-set even">
-<td><em></em></td>
-<td class="param">dtype&nbsp;</td>
-<td class="value">'float32'</td>
-</tr>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">handle_unknown&nbsp;</td>
-<td class="value">'ignore'</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">min_frequency&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">max_categories&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">feature_name_combiner&nbsp;</td>
-<td class="value">'concat'</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>high_cardinality</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-24" type="checkbox"><label for="sk-estimator-id-24" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StringEncoder</div></div></label><div class="sk-toggleable__content " data-param-prefix="tablevectorizer__high_cardinality__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">n_components&nbsp;</td>
-<td class="value">30</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">vectorizer&nbsp;</td>
-<td class="value">'tfidf'</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">ngram_range&nbsp;</td>
-<td class="value">(3, ...)</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">analyzer&nbsp;</td>
-<td class="value">'char_wb'</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">stop_words&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">random_state&nbsp;</td>
-<td class="value">None</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-25" type="checkbox"><label for="sk-estimator-id-25" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>SimpleImputer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.impute.SimpleImputer.html">?<span>Documentation for SimpleImputer</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="simpleimputer__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">missing_values&nbsp;</td>
-<td class="value">nan</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">strategy&nbsp;</td>
-<td class="value">'mean'</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">fill_value&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">copy&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="user-set odd">
-<td><em></em></td>
-<td class="param">add_indicator&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">keep_empty_features&nbsp;</td>
-<td class="value">False</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-26" type="checkbox"><label for="sk-estimator-id-26" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="standardscaler__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">copy&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">with_mean&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">with_std&nbsp;</td>
-<td class="value">True</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-27" type="checkbox"><label for="sk-estimator-id-27" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Ridge</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.Ridge.html">?<span>Documentation for Ridge</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="ridge__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top" data-quarto-postprocess="true">
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">alpha&nbsp;</td>
-<td class="value">1.0</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">fit_intercept&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">copy_X&nbsp;</td>
-<td class="value">True</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">max_iter&nbsp;</td>
-<td class="value">None</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">tol&nbsp;</td>
-<td class="value">0.0001</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">solver&nbsp;</td>
-<td class="value">'auto'</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param">positive&nbsp;</td>
-<td class="value">False</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param">random_state&nbsp;</td>
-<td class="value">None</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div></div></div></section></section></div><div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="images/skrub.svg" class="slide-logo"></p>
-<div class="footer footer-default">
-
+<div id="7d9a3b6b" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb26-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub</span>
+<span id="cb26-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb26-3" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> skrub.tabular_pipeline(Ridge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></div><script>function copyToClipboard(text, element) {
-    // Get the parameter prefix from the closest toggleable content
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
 
-    const originalStyle = element.style;
-    const computedStyle = window.getComputedStyle(element);
-    const originalWidth = computedStyle.width;
-    const originalHTML = element.innerHTML.replace('Copied!', '');
-
-    navigator.clipboard.writeText(fullParamName)
-        .then(() => {
-            element.style.width = originalWidth;
-            element.style.color = 'green';
-            element.innerHTML = "Copied!";
-
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        })
-        .catch(err => {
-            console.error('Failed to copy:', err);
-            element.style.color = 'red';
-            element.innerHTML = "Failed!";
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        });
-    return false;
-}
-
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
-    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
-
-    element.setAttribute('title', fullParamName);
-});
-</script>
-
-
-
+<img data-src="images/skrub-tabular-pipeline-linear-model.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section" class="slide level2">
 <h2></h2>
 
@@ -1581,7 +909,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <li class="fragment">???</li>
 <li class="fragment">Profit 📈</li>
 </ol>
-</section>
+</section></section>
 <section>
 <section id="what-if-we-had-a-better-pipeline" class="title-slide slide level1 center">
 <h1>What if we had a <em>better</em> pipeline?</h1>
@@ -1664,14 +992,14 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </section>
 <section id="starting-with-the-dataops" class="slide level2">
 <h2>Starting with the <code>DataOps</code></h2>
-<div id="1e6693f6" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>data <span class="op">=</span> skrub.datasets.fetch_credit_fraud()</span>
-<span id="cb15-2"><a href=""></a></span>
-<span id="cb15-3"><a href=""></a>baskets <span class="op">=</span> skrub.var(<span class="st">"baskets"</span>, data.baskets)</span>
-<span id="cb15-4"><a href=""></a>X <span class="op">=</span> baskets[[<span class="st">"ID"</span>]].skb.mark_as_X()</span>
-<span id="cb15-5"><a href=""></a>y <span class="op">=</span> baskets[<span class="st">"fraud_flag"</span>].skb.mark_as_y()</span>
-<span id="cb15-6"><a href=""></a></span>
-<span id="cb15-7"><a href=""></a>products <span class="op">=</span> skrub.var(<span class="st">"products"</span>, data.products) <span class="co"># add a new variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5bea815a" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a>data <span class="op">=</span> skrub.datasets.fetch_credit_fraud()</span>
+<span id="cb27-2"><a href=""></a></span>
+<span id="cb27-3"><a href=""></a>baskets <span class="op">=</span> skrub.var(<span class="st">"baskets"</span>, data.baskets)</span>
+<span id="cb27-4"><a href=""></a>X <span class="op">=</span> baskets[[<span class="st">"ID"</span>]].skb.mark_as_X()</span>
+<span id="cb27-5"><a href=""></a>y <span class="op">=</span> baskets[<span class="st">"fraud_flag"</span>].skb.mark_as_y()</span>
+<span id="cb27-6"><a href=""></a></span>
+<span id="cb27-7"><a href=""></a>products <span class="op">=</span> skrub.var(<span class="st">"products"</span>, data.products) <span class="co"># add a new variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <ul>
@@ -1682,42 +1010,42 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </section>
 <section id="building-a-full-data-plan" class="slide level2">
 <h2>Building a full data plan</h2>
-<div class="sourceCode" id="cb16" data-code-line-numbers="|4,5|1,5|6|7|8|9|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> selectors <span class="im">as</span> s</span>
-<span id="cb16-2"><a href=""></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier  </span>
-<span id="cb16-3"><a href=""></a></span>
-<span id="cb16-4"><a href=""></a>vectorizer <span class="op">=</span> skrub.TableVectorizer(high_cardinality<span class="op">=</span>skrub.StringEncoder(), n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb16-5"><a href=""></a>vectorized_products <span class="op">=</span> products.skb.<span class="bu">apply</span>(vectorizer, cols<span class="op">=</span>s.<span class="bu">all</span>() <span class="op">-</span> <span class="st">"basket_ID"</span>)</span>
-<span id="cb16-6"><a href=""></a>aggregated_products <span class="op">=</span> vectorized_products.groupby(<span class="st">"basket_ID"</span>).agg(<span class="st">"mean"</span>).reset_index()</span>
-<span id="cb16-7"><a href=""></a>features <span class="op">=</span> X.merge(aggregated_products, left_on<span class="op">=</span><span class="st">"ID"</span>, right_on<span class="op">=</span><span class="st">"basket_ID"</span>)</span>
-<span id="cb16-8"><a href=""></a>features <span class="op">=</span> features.drop(columns<span class="op">=</span>[<span class="st">"ID"</span>, <span class="st">"basket_ID"</span>])</span>
-<span id="cb16-9"><a href=""></a>predictions <span class="op">=</span> features.skb.<span class="bu">apply</span>(ExtraTreesClassifier(n_jobs<span class="op">=-</span><span class="dv">1</span>), y<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28" data-code-line-numbers="|4,5|1,5|6|7|8|9|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> selectors <span class="im">as</span> s</span>
+<span id="cb28-2"><a href=""></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier  </span>
+<span id="cb28-3"><a href=""></a></span>
+<span id="cb28-4"><a href=""></a>vectorizer <span class="op">=</span> skrub.TableVectorizer(high_cardinality<span class="op">=</span>skrub.StringEncoder(), n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb28-5"><a href=""></a>vectorized_products <span class="op">=</span> products.skb.<span class="bu">apply</span>(vectorizer, cols<span class="op">=</span>s.<span class="bu">all</span>() <span class="op">-</span> <span class="st">"basket_ID"</span>)</span>
+<span id="cb28-6"><a href=""></a>aggregated_products <span class="op">=</span> vectorized_products.groupby(<span class="st">"basket_ID"</span>).agg(<span class="st">"mean"</span>).reset_index()</span>
+<span id="cb28-7"><a href=""></a>features <span class="op">=</span> X.merge(aggregated_products, left_on<span class="op">=</span><span class="st">"ID"</span>, right_on<span class="op">=</span><span class="st">"basket_ID"</span>)</span>
+<span id="cb28-8"><a href=""></a>features <span class="op">=</span> features.drop(columns<span class="op">=</span>[<span class="st">"ID"</span>, <span class="st">"basket_ID"</span>])</span>
+<span id="cb28-9"><a href=""></a>predictions <span class="op">=</span> features.skb.<span class="bu">apply</span>(ExtraTreesClassifier(n_jobs<span class="op">=-</span><span class="dv">1</span>), y<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="inspecting-the-data-plan" class="slide level2">
 <h2>Inspecting the data plan</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>predictions.skb.full_report()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a>predictions.skb.full_report()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <p><a href="expression_report/index.html" target="_blank">report</a></p>
 </section>
 <section id="exporting-the-plan-in-a-learner" class="slide level2 smaller">
 <h2>Exporting the plan in a <code>learner</code></h2>
 <p>The data plan can be exported as a <code>learner</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="co"># anywhere</span></span>
-<span id="cb18-2"><a href=""></a>learner <span class="op">=</span> predictions.skb.make_learner()</span>
-<span id="cb18-3"><a href=""></a><span class="co"># search is a HPO object</span></span>
-<span id="cb18-4"><a href=""></a>best_learner <span class="op">=</span> search.skb.best_learner_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="co"># anywhere</span></span>
+<span id="cb30-2"><a href=""></a>learner <span class="op">=</span> predictions.skb.make_learner()</span>
+<span id="cb30-3"><a href=""></a><span class="co"># search is a HPO object</span></span>
+<span id="cb30-4"><a href=""></a>best_learner <span class="op">=</span> search.skb.best_learner_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Then, the <code>learner</code> can be pickled …</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="im">import</span> pickle</span>
-<span id="cb19-2"><a href=""></a></span>
-<span id="cb19-3"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fp:</span>
-<span id="cb19-4"><a href=""></a>    pickle.dump(learner, fp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a><span class="im">import</span> pickle</span>
+<span id="cb31-2"><a href=""></a></span>
+<span id="cb31-3"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fp:</span>
+<span id="cb31-4"><a href=""></a>    pickle.dump(learner, fp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>… and loaded</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"rb"</span>) <span class="im">as</span> fp:</span>
-<span id="cb20-2"><a href=""></a>    learner <span class="op">=</span> pickle.load(fp)</span>
-<span id="cb20-3"><a href=""></a></span>
-<span id="cb20-4"><a href=""></a>learner.predict({<span class="st">"baskets"</span>: new_baskets, <span class="st">"products"</span>: new_products})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"learner.bin"</span>, <span class="st">"rb"</span>) <span class="im">as</span> fp:</span>
+<span id="cb32-2"><a href=""></a>    learner <span class="op">=</span> pickle.load(fp)</span>
+<span id="cb32-3"><a href=""></a></span>
+<span id="cb32-4"><a href=""></a>learner.predict({<span class="st">"baskets"</span>: new_baskets, <span class="st">"products"</span>: new_products})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="hyperparameter-tuning-in-a-data-plan" class="slide level2">
@@ -1734,73 +1062,73 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <section id="hyperparameter-tuning-in-a-data-plan-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Hyperparameter tuning in a Data Plan</h2>
 <p>It’s possible to nest these functions to create complex grids:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a>X.skb.<span class="bu">apply</span>(</span>
-<span id="cb21-2" class="hljs-ln-code"><a href=""></a>    skrub.choose_from(</span>
-<span id="cb21-3" class="hljs-ln-code"><a href=""></a>        {</span>
-<span id="cb21-4" class="hljs-ln-code"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
-<span id="cb21-5" class="hljs-ln-code"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
-<span id="cb21-6" class="hljs-ln-code"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
-<span id="cb21-7" class="hljs-ln-code"><a href=""></a>    )</span>
-<span id="cb21-8" class="hljs-ln-code"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb33-1" class="hljs-ln-code"><a href=""></a>X.skb.<span class="bu">apply</span>(</span>
+<span id="cb33-2" class="hljs-ln-code"><a href=""></a>    skrub.choose_from(</span>
+<span id="cb33-3" class="hljs-ln-code"><a href=""></a>        {</span>
+<span id="cb33-4" class="hljs-ln-code"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
+<span id="cb33-5" class="hljs-ln-code"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
+<span id="cb33-6" class="hljs-ln-code"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
+<span id="cb33-7" class="hljs-ln-code"><a href=""></a>    )</span>
+<span id="cb33-8" class="hljs-ln-code"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tuning-in-scikit-learn-can-be-complex" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Tuning in <code>scikit-learn</code> can be complex</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb22-1" class="hljs-ln-code"><a href=""></a>pipe <span class="op">=</span> Pipeline([(<span class="st">"dim_reduction"</span>, PCA()), (<span class="st">"regressor"</span>, Ridge())])</span>
-<span id="cb22-2" class="hljs-ln-code"><a href=""></a>grid <span class="op">=</span> [</span>
-<span id="cb22-3" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb22-4" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
-<span id="cb22-5" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb22-6" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
-<span id="cb22-7" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
-<span id="cb22-8" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb22-9" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb22-10" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
-<span id="cb22-11" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb22-12" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
-<span id="cb22-13" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
-<span id="cb22-14" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb22-15" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb22-16" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
-<span id="cb22-17" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb22-18" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
-<span id="cb22-19" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
-<span id="cb22-20" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb22-21" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb22-22" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
-<span id="cb22-23" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb22-24" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
-<span id="cb22-25" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
-<span id="cb22-26" class="hljs-ln-code"><a href=""></a>    },</span>
-<span id="cb22-27" class="hljs-ln-code"><a href=""></a>]</span>
-<span id="cb22-28" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> RandomizedSearchCV(pipe, grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb34-1" class="hljs-ln-code"><a href=""></a>pipe <span class="op">=</span> Pipeline([(<span class="st">"dim_reduction"</span>, PCA()), (<span class="st">"regressor"</span>, Ridge())])</span>
+<span id="cb34-2" class="hljs-ln-code"><a href=""></a>grid <span class="op">=</span> [</span>
+<span id="cb34-3" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb34-4" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
+<span id="cb34-5" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb34-6" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
+<span id="cb34-7" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
+<span id="cb34-8" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb34-9" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb34-10" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
+<span id="cb34-11" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb34-12" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [Ridge()],</span>
+<span id="cb34-13" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__alpha"</span>: loguniform(<span class="fl">0.1</span>, <span class="fl">10.0</span>),</span>
+<span id="cb34-14" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb34-15" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb34-16" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [PCA()],</span>
+<span id="cb34-17" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__n_components"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb34-18" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
+<span id="cb34-19" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
+<span id="cb34-20" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb34-21" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb34-22" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction"</span>: [SelectKBest()],</span>
+<span id="cb34-23" class="hljs-ln-code"><a href=""></a>        <span class="st">"dim_reduction__k"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb34-24" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor"</span>: [RandomForestClassifier()],</span>
+<span id="cb34-25" class="hljs-ln-code"><a href=""></a>        <span class="st">"regressor__n_estimators"</span>: loguniform(<span class="dv">20</span>, <span class="dv">200</span>),</span>
+<span id="cb34-26" class="hljs-ln-code"><a href=""></a>    },</span>
+<span id="cb34-27" class="hljs-ln-code"><a href=""></a>]</span>
+<span id="cb34-28" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> RandomizedSearchCV(pipe, grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tuning-with-dataops-is-simple" class="slide level2 smaller">
 <h2>Tuning with <code>DataOps</code> is simple!</h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a>dim_reduction <span class="op">=</span> X.skb.<span class="bu">apply</span>(</span>
-<span id="cb23-2"><a href=""></a>    skrub.choose_from(</span>
-<span id="cb23-3"><a href=""></a>        {</span>
-<span id="cb23-4"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
-<span id="cb23-5"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
-<span id="cb23-6"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
-<span id="cb23-7"><a href=""></a>    )</span>
-<span id="cb23-8"><a href=""></a>)</span>
-<span id="cb23-9"><a href=""></a>regressor <span class="op">=</span> dim_reduction.skb.<span class="bu">apply</span>(</span>
-<span id="cb23-10"><a href=""></a>    skrub.choose_from(</span>
-<span id="cb23-11"><a href=""></a>        {</span>
-<span id="cb23-12"><a href=""></a>            <span class="st">"Ridge"</span>: Ridge(alpha<span class="op">=</span>skrub.choose_float(<span class="fl">0.1</span>, <span class="fl">10.0</span>, log<span class="op">=</span><span class="va">True</span>)),</span>
-<span id="cb23-13"><a href=""></a>            <span class="st">"RandomForest"</span>: RandomForestClassifier(</span>
-<span id="cb23-14"><a href=""></a>                n_estimators<span class="op">=</span>skrub.choose_int(<span class="dv">20</span>, <span class="dv">200</span>, log<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb23-15"><a href=""></a>            )</span>
-<span id="cb23-16"><a href=""></a>        }, name<span class="op">=</span><span class="st">"regressor"</span></span>
-<span id="cb23-17"><a href=""></a>    )</span>
-<span id="cb23-18"><a href=""></a>)</span>
-<span id="cb23-19"><a href=""></a>regressor.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>dim_reduction <span class="op">=</span> X.skb.<span class="bu">apply</span>(</span>
+<span id="cb35-2"><a href=""></a>    skrub.choose_from(</span>
+<span id="cb35-3"><a href=""></a>        {</span>
+<span id="cb35-4"><a href=""></a>            <span class="st">"PCA"</span>: PCA(n_components<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>)),</span>
+<span id="cb35-5"><a href=""></a>            <span class="st">"SelectKBest"</span>: SelectKBest(k<span class="op">=</span>skrub.choose_int(<span class="dv">10</span>, <span class="dv">30</span>))</span>
+<span id="cb35-6"><a href=""></a>        }, name<span class="op">=</span><span class="st">"dim_reduction"</span></span>
+<span id="cb35-7"><a href=""></a>    )</span>
+<span id="cb35-8"><a href=""></a>)</span>
+<span id="cb35-9"><a href=""></a>regressor <span class="op">=</span> dim_reduction.skb.<span class="bu">apply</span>(</span>
+<span id="cb35-10"><a href=""></a>    skrub.choose_from(</span>
+<span id="cb35-11"><a href=""></a>        {</span>
+<span id="cb35-12"><a href=""></a>            <span class="st">"Ridge"</span>: Ridge(alpha<span class="op">=</span>skrub.choose_float(<span class="fl">0.1</span>, <span class="fl">10.0</span>, log<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb35-13"><a href=""></a>            <span class="st">"RandomForest"</span>: RandomForestClassifier(</span>
+<span id="cb35-14"><a href=""></a>                n_estimators<span class="op">=</span>skrub.choose_int(<span class="dv">20</span>, <span class="dv">200</span>, log<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-15"><a href=""></a>            )</span>
+<span id="cb35-16"><a href=""></a>        }, name<span class="op">=</span><span class="st">"regressor"</span></span>
+<span id="cb35-17"><a href=""></a>    )</span>
+<span id="cb35-18"><a href=""></a>)</span>
+<span id="cb35-19"><a href=""></a>regressor.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="observe-the-impact-of-the-hyperparameters" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Observe the impact of the hyperparameters</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb24-1" class="hljs-ln-code"><a href=""></a>search <span class="op">=</span> pred.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb24-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb24-3" class="hljs-ln-code"><a href=""></a>search.plot_parallel_coord()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb36-1" class="hljs-ln-code"><a href=""></a>search <span class="op">=</span> pred.skb.get_randomized_search(scoring<span class="op">=</span><span class="st">"roc_auc"</span>, fitted<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb36-3" class="hljs-ln-code"><a href=""></a>search.plot_parallel_coord()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/plot-parallel-coord.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="tldw" class="slide level2">
@@ -1834,8 +1162,13 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <p><img data-src="images/qr-code.png" class="absolute" style="bottom: 0px; right: 0px; width: 250px; height: 250px; "></p>
 
 </section></section>
-    
-  
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/skrub.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>https://skrub-data.org</p>
+</div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
