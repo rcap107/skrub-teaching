@@ -30,7 +30,10 @@ I don't like the sea ![](images/nice.jpg){width=250}
 
 `skrub` simplifies many tedious data preparation operations
 
-## On compatibility
+## 
+![](images/here-we-go-again.png)
+
+## skrub compatibility
 - skrub is fully compatible with pandas and polars
 - skrub transformers are fully compatible with scikit-learn
 
@@ -38,11 +41,10 @@ I don't like the sea ![](images/nice.jpg){width=250}
 1. Gather some data
 2. Explore the data
 3. Preprocess the data 
-4. Perform feature engineering with pandas or polars
+4. Perform feature engineering 
 5. Build a scikit-learn pipeline
 6. ???
 7. Profit?  
-
 
 ## Exploring the data {.smaller auto-animate="true"}
 ```{.python}
@@ -147,7 +149,7 @@ Main features:
 
 :::
 
-## Data cleaning with pandas {.smaller auto-animate="true"}
+## Data cleaning with pandas/polars: setup {.smaller auto-animate="true"}
 
 ::: {.panel-tabset}
 
@@ -192,7 +194,7 @@ display(df_pl)
 :::
 
 
-## Data cleaning with pandas/polars {.smaller auto-animate="true"}
+## Nulls, datetimes, constant columns with pandas/polars {.smaller auto-animate="true"}
 
 :::{.panel-tabset}
 ### Pandas
@@ -258,7 +260,7 @@ df_pl_cleaned = drop_empty_columns(df_pl_cleaned)
 
 :::
 
-## Lightweight data cleaning: `Cleaner` {.smaller auto-animate="true"}
+## Data cleaning with `skrub.Cleaner` {.smaller auto-animate="true"}
 
 :::{.panel-tabset}
 ### Pandas
@@ -554,10 +556,23 @@ _ = axs[1].annotate(
 ```
 
 
-## Encoding categorical features
+## Encoding categorical (string/text) features
+Categorical features have a "cardinality": the number of unique values
+
 - Low cardinality features: `OneHotEncoder`
 - High cardinality features (>40 unique values): `skrub.StringEncoder`
-- Textual features: `skrub.TextEncoder` and Huggingface models
+- Textual features: `skrub.TextEncoder` and pretrained models from HuggingFace Hub
+
+## Encoding _all the features_: `TableVectorizer` { auto-animate="true"}
+
+```{.python}
+from skrub import TableVectorizer, TextEncoder
+
+text = TextEncoder()
+table_vec = TableVectorizer(high_cardinality=text)
+df_encoded = table_vec.fit_transform(df)
+
+```
 
 ## Encoding _all the features_: `TableVectorizer` {.smaller auto-animate="true"}
 
@@ -645,31 +660,12 @@ When a normal pipe is not enough...
 ... the `skrub` DataOps come to the rescue 🚒
 :::
 
-## A realistic scenario
-A data scientist needs to train a ML model, but features are spread across 
-multiple tables. 
-
-::: {.fragment}
-::: {.callout-warning}
-Many issues with this! 
-:::
-
-:::
-
-::: {.incremental}
-- `scikit-learn` pipelines support only a single feature matrix `X`
-- Dataframe operations cannot be tuned
-- Data leakage must be accounted for
-- Persisting and reproducing operations is complex
-:::
-
-
 
 ## DataOps...
-- Extend the `scikit-learn` machinery to complex multi-table operations
+- Extend the `scikit-learn` machinery to complex multi-table operations, and take care of data leakage
 - Track all operations with a computational graph (a *Data Ops plan*)
 - Allow tuning any operation in the data plan
-- Can be persisted and shared easily by generating a `learner`
+- Can be persisted and shared easily 
 
 ## DataOps, Plans, `learner`s: oh my!  
 - A `DataOp` (singular) wraps a single operation, and can be combined and concatenated with other `DataOps`. 
@@ -721,7 +717,6 @@ products = skrub.var("products", data.products) # add a new variable
 ```{python}
 #| echo: true
 from skrub import selectors as s
-from sklearn.ensemble import ExtraTreesClassifier  
 
 vectorizer = skrub.TableVectorizer(high_cardinality=skrub.StringEncoder(), n_jobs=-1)
 vectorized_products = products.skb.apply(vectorizer, cols=s.all() - "basket_ID")
@@ -738,6 +733,7 @@ features = features.drop(columns=["ID", "basket_ID"])
 ##  Building a full data plan {auto-animate="true"}
 ```{python}
 #| echo: true
+from sklearn.ensemble import ExtraTreesClassifier  
 predictions = features.skb.apply(ExtraTreesClassifier(n_jobs=-1), y=y)
 ```
 
@@ -757,14 +753,16 @@ The data plan can be exported as a `learner`:
 learner = predictions.skb.make_learner(fitted=True)
 ```
 
-```{.python}
-# search is a HPO object
-best_learner = search.skb.best_learner_
-```
 ::: {.fragment}
 Then, the `learner` can be pickled ...
+
 ```{python}
-#| echo: true
+import pickle 
+
+learner_bytes = pickle.dumps(learner)
+```
+
+```{.python}
 import pickle
 
 with open("learner.bin", "wb") as fp:
@@ -777,14 +775,20 @@ with open("learner.bin", "wb") as fp:
 ... and loaded
 
 ```{python}
-#| echo: true
-with open("learner.bin", "rb") as fp:
-    learner = pickle.load(fp)
+loaded_learner = pickle.loads(learner_bytes)
+```
 
+```{.python}
+with open("learner.bin", "rb") as fp:
+    loaded_learner = pickle.load(fp)
+```
+</br>
+```{python}
+#| echo: true
 data = skrub.datasets.fetch_credit_fraud(split="test")
 new_baskets = data.baskets
 new_products = data.products
-learner.predict({"baskets": new_baskets, "products": new_products})
+loaded_learner.predict({"baskets": new_baskets, "products": new_products})
 ```
 :::
 
@@ -866,9 +870,18 @@ regressor = dim_reduction.skb.apply(
         }, name="regressor"
     )
 )
-regressor.skb.get_randomized_search(scoring="roc_auc", fitted=True)
+search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True)
 ```
-## Tunings with `DataOps` is not limited to estimators
+## Run hyperparameter search
+```{.python}
+# fit the search 
+search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True)
+
+# save the best learner
+best_learner = search.best_learner_
+```
+
+## Tuningwith `DataOps` is not limited to estimators
 ::: {.panel-tabset}
 ### Pandas
 ```{python}
@@ -909,20 +922,27 @@ agg_grades.skb.describe_param_grid()
 
 :::
 
-## Observe the impact of the hyperparameters {auto-animate="true"} 
+## Observe the impact of the hyperparameters {auto-animate="true" .smaller} 
 
 ```{.python}
-search = pred.skb.get_randomized_search(scoring="roc_auc", fitted=True)
-
+search = pred.skb.get_randomized_search(fitted=True)
 search.plot_parallel_coord()
 ```
+```{python}
+from plotly.io import read_json
 
-![](images/plot-parallel-coord.png){fig-align="center"}
+fig = read_json("parallel_coordinates_hgbr.json")
+fig.update_layout(margin=dict(l=200))
+```
 
-## More Data Ops examples
+
+[source](https://skrub-data.org/EuroSciPy2025/content/notebooks/single_horizon_prediction.html)
+
+## More information about the Data Ops 
 - Skrub [example gallery](https://skrub-data.org/stable/auto_examples/data_ops/index.html)
 - [Tutorial](https://github.com/skrub-data/EuroSciPy2025) on timeseries 
 forecasting at Euroscipy 2025
+- Skrub [User guide](https://skrub-data.org/stable/documentation.html)
 
 # Wrapping up
 
@@ -939,9 +959,8 @@ forecasting at Euroscipy 2025
 - [Git repository](https://github.com/skrub-data/skrub/)
 - [Discord server](https://discord.gg/ABaPnm7fDC)
 - [Bluesky](https://bsky.app/profile/skrub-data.bsky.social)
+- [LinkedIn](https://www.linkedin.com/company/skrub-data/)
 :::
-
-![](images/qr-code.png){.absolute bottom=0 right=0 width="250" height="250"}
 
 ## Sprint on friday! 
 
