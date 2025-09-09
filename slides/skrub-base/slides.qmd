@@ -24,15 +24,12 @@ params:
 
 ## `whoami` 
 - I am a research engineer at Inria in the P16 team, and I am the lead developer of skrub ![](images/skrub.svg){width=70}
-
 ::: {.content-visible when="base"}
 - I'm Italian, but I don't drink coffee, wine, and I like pizza with fries
 :::
-
 ::: {.content-visible when="memes"}
 - I'm Italian, but I don't drink coffee, wine, and I like pizza with fries ![](images/raora.png){width=50}
 :::
-
 - I did my PhD in Côte d'Azur, and I moved away because it was too sunny and 
 I don't like the sea ![](images/nice.jpg){width=250}
 
@@ -988,7 +985,7 @@ forecasting at Euroscipy 2025
 - [LinkedIn](https://www.linkedin.com/company/skrub-data/)
 :::
 
-## Sprint on friday! {.content-visible when="event"}
+## Sprint on friday! {.content-visible when=""}
 
 ## tl;dw
 `skrub` provides
