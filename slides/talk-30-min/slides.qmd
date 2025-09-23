@@ -15,14 +15,14 @@ format:
         theme: simple
         logo: images/skrub.svg
         css: style.css
-        footer: "https://skrub-data.org"
+        footer: "https://skrub-data.org/skrub-materials/"
 incremental: false
 params: 
     version: "base"
 ---
 
 
-## `whoami` 
+## `whoami`  {visibility="hidden"}
 
 ::: {.incremental}
 
