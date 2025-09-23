@@ -1,0 +1,20 @@
+[workspace]
+authors = ["Riccardo Cappuzzo <riccardo.cappuzzo@gmail.com>"]
+channels = ["conda-forge"]
+name = "talk-30-min"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[tasks.render-slides-base]
+cmd = "quarto render slides/talk-30-min/slides.qmd"
+
+[tasks.render-slides-memes]
+cmd = "quarto render slides/talk-30-min/slides.qmd -P version=memes" 
+
+[dependencies]
+quarto = ">=1.7.33,<2"
+skrub = ">=0.6.1,<0.7"
+polars = ">=1.33.0,<2"
+papermill = ">=2.6.0,<3"
