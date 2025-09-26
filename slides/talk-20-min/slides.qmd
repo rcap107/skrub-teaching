@@ -655,13 +655,15 @@ y = baskets["fraud_flag"].skb.mark_as_y()
 
 ## Applying a transformer {auto-animate="true"}
 ```{python}
-#| echo: true
+# | echo: true
 from skrub import selectors as s
 
 vectorizer = skrub.TableVectorizer(
     high_cardinality=skrub.StringEncoder()
 )
-vectorized_products = products.skb.apply(vectorizer, cols=s.all() - "basket_ID")
+vectorized_products = products.skb.apply(
+    vectorizer, cols=s.all() - "basket_ID"
+)
 ```
 
 ##  Executing dataframe operations {auto-animate="true"}
@@ -671,7 +673,9 @@ aggregated_products = vectorized_products.groupby(
     "basket_ID"
 ).agg("mean").reset_index()
 
-features = X.merge(aggregated_products, left_on="ID", right_on="basket_ID")
+features = X.merge(
+    aggregated_products, left_on="ID", right_on="basket_ID"
+)
 features = features.drop(columns=["ID", "basket_ID"])
 ```
 
@@ -705,7 +709,6 @@ than just `X` and `y`.
 
 ```{python}
 #| echo: true
-# anywhere
 learner = predictions.skb.make_learner(fitted=True)
 ```
 
@@ -745,7 +748,9 @@ loaded_learner.predict({"baskets": new_baskets, "products": new_products})
 data = skrub.datasets.fetch_credit_fraud(split="test")
 new_baskets = data.baskets
 new_products = data.products
-loaded_learner.predict({"baskets": new_baskets, "products": new_products})
+loaded_learner.predict(
+    {"baskets": new_baskets, "products": new_products}
+)
 ```
 :::
 
@@ -790,7 +795,6 @@ grid = [
         "regressor__n_estimators": loguniform(20, 200),
     },
 ]
-model = RandomizedSearchCV(pipe, grid)
 ```
 ## Tuning with Data Ops is simple! {.smaller} 
 
@@ -813,13 +817,14 @@ regressor = dim_reduction.skb.apply(
         }, name="regressor"
     )
 )
-search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True)
 ```
 
 ## Run hyperparameter search
 ```{.python}
 # fit the search 
-search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True, cv=5)
+search = regressor.skb.make_randomized_search(
+    scoring="roc_auc", fitted=True, cv=5
+)
 
 # save the best learner
 best_learner = search.best_learner_
@@ -833,14 +838,16 @@ import pandas as pd
 import skrub
 ```
 ```{python}
-#| echo: true
+# | echo: true
 df = pd.DataFrame(
-    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
+    {"subject": ["math", "math", "art", "history"],
+    "grade": [10, 8, 4, 6]}
 )
 
 df_do = skrub.var("grades", df)
-
-agg_grades = df_do.groupby("subject").agg(skrub.choose_from(["count", "mean"]))
+agg_grades = df_do.groupby("subject").agg(
+    skrub.choose_from(["count", "mean"])
+)
 agg_grades.skb.describe_param_grid()
 ```
 
@@ -912,7 +919,7 @@ Follow skrub on:
 
 Star skrub on GitHub, or contribute directly: 
 
-- [Git repository](https://github.com/skrub-data/skrub/)
+- [GitHub repository](https://github.com/skrub-data/skrub/)
 :::
 
 ## Sprint on Thursday!!!
