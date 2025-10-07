@@ -934,11 +934,6 @@ Star skrub on GitHub, or contribute directly:
 - [GitHub repository](https://github.com/skrub-data/skrub/)
 :::
 
-## Sprint on Thursday!!!
-
-
-## We're hiring!!
-Come talk to me or go to the P16 booth 
 
 ## tl;dw: skrub 
 ::: {.nonincremental}

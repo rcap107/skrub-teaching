@@ -22,7 +22,7 @@ params:
 ---
 
 
-## `whoami`  {visibility="visible"}
+## `whoami`  {visibility="hidden"}
 
 ::: {.incremental}
 
@@ -69,84 +69,6 @@ fig.update_layout(margin=dict(l=200))
 
 ##  
 ![](images/here-we-go-again.png)
-
-## Exploring the data {.smaller auto-animate="true"}
-```{.python}
-import pandas as pd
-import matplotlib.pyplot as plt
-import skrub
-
-dataset = skrub.datasets.fetch_employee_salaries()
-employees, salaries = dataset.X, dataset.y
-
-df = pd.DataFrame(employees)
-
-# Plot the distribution of the numerical values using a histogram
-fig, axs = plt.subplots(2,1, figsize=(10, 6))
-ax1, ax2 = axs
-
-ax1.hist(df['year_first_hired'], bins=30, edgecolor='black', alpha=0.7)
-ax1.set_xlabel('Year first hired')
-ax1.set_ylabel('Frequency')
-ax1.grid(True, linestyle='--', alpha=0.5)
-
-# Count the frequency of each category
-category_counts = df['department'].value_counts()
-
-# Create a bar plot
-category_counts.plot(kind='bar', edgecolor='black', ax=ax2)
-
-# Add labels and title
-ax2.set_xlabel('Department')
-ax2.set_ylabel('Frequency')
-ax2.grid(True, linestyle='--', axis='y', alpha=0.5)  # Add grid lines for y-axis
-
-fig.suptitle("Distribution of values")
-
-# Show the plot
-plt.show()
-```
-## Exploring the data {.smaller auto-animate="true"}
-
-```{python}
-#| echo: false
-import pandas as pd
-import matplotlib.pyplot as plt
-import skrub
-from skrub.datasets import fetch_employee_salaries
-from pprint import pprint
-
-dataset = fetch_employee_salaries()
-employees, salaries = dataset.X, dataset.y
-
-df = pd.DataFrame(employees)
-
-# Plot the distribution of the numerical values using a histogram
-fig, axs = plt.subplots(2,1, figsize=(10, 6))
-ax1, ax2 = axs
-
-ax1.hist(df['year_first_hired'], bins=30, edgecolor='black', alpha=0.7)
-ax1.set_xlabel('Year first hired')
-ax1.set_ylabel('Frequency')
-ax1.grid(True, linestyle='--', alpha=0.5)
-
-# Count the frequency of each category
-category_counts = df['department'].value_counts()
-
-# Create a bar plot
-category_counts.plot(kind='bar', edgecolor='black', ax=ax2)
-
-# Add labels and title
-ax2.set_xlabel('Department')
-ax2.set_ylabel('Frequency')
-ax2.grid(True, linestyle='--', axis='y', alpha=0.5)  # Add grid lines for y-axis
-
-fig.suptitle("Distribution of values")
-
-# Show the plot
-plt.show()
-```
-
 
 ## Exploring the data with `skrub` {.smaller auto-animate="true"}
 
@@ -306,52 +228,6 @@ display(df_cleaned)
 
 :::
 
-## Encoding datetime features with pandas/polars {.smaller}
-:::{.panel-tabset}
-
-### Pandas
-```{python}
-#|echo: true
-import pandas as pd
-data = {
-    'date': ['2023-01-01 12:34:56', '2023-02-15 08:45:23', '2023-03-20 18:12:45'],
-    'value': [10, 20, 30]
-}
-df_pd = pd.DataFrame(data)
-datetime_column = "date"
-df_pd[datetime_column] = pd.to_datetime(df_pd[datetime_column], errors='coerce')
-
-df_pd['year'] = df_pd[datetime_column].dt.year
-df_pd['month'] = df_pd[datetime_column].dt.month
-df_pd['day'] = df_pd[datetime_column].dt.day
-df_pd['hour'] = df_pd[datetime_column].dt.hour
-df_pd['minute'] = df_pd[datetime_column].dt.minute
-df_pd['second'] = df_pd[datetime_column].dt.second
-```
-
-### Polars
-```{python}
-#|echo: true
-import polars as pl
-data = {
-    'date': ['2023-01-01 12:34:56', '2023-02-15 08:45:23', '2023-03-20 18:12:45'],
-    'value': [10, 20, 30]
-}
-df_pl = pl.DataFrame(data)
-df_pl = df_pl.with_columns(date=pl.col("date").str.to_datetime())
-
-df_pl = df_pl.with_columns(
-    year=pl.col("date").dt.year(),
-    month=pl.col("date").dt.month(),
-    day=pl.col("date").dt.day(),
-    hour=pl.col("date").dt.hour(),
-    minute=pl.col("date").dt.minute(),
-    second=pl.col("date").dt.second(),
-)
-```
-
-:::
-
 ## Encoding datetime features with `skrub.DatetimeEncoder` {auto-animate="true" visibility="uncounted" .smaller}
 ```{python}
 import polars as pl
@@ -371,10 +247,6 @@ de = DatetimeEncoder(resolution="second")
 X_enc = de.fit_transform(X_date)
 print(X_enc)
 ```
-
-
-## What periodic features look like
-![](images/periodic_features.png){fig-align="center"}
 
 ## Encoding numerical features with `skrub.SquashingScaler`
 ```{python}
@@ -934,12 +806,6 @@ Star skrub on GitHub, or contribute directly:
 - [GitHub repository](https://github.com/skrub-data/skrub/)
 :::
 
-## Sprint on Thursday!!!
-
-
-## We're hiring!!
-Come talk to me or go to the P16 booth 
-
 ## tl;dw: skrub 
 ::: {.nonincremental}
 - interactive data exploration: `TableReport`
@@ -947,47 +813,4 @@ Come talk to me or go to the P16 booth
 - powerful feature engineering: `TableVectorizer`, `tabular_pipeline`
 - column- and dataframe-level operations: `ApplyToCols`, selectors
 - DataOps, plans, hyperparameter tuning, (almost) no leakage 
-:::
-
-## Fine-grained column transformations with `ApplyToCols` {.smaller auto-animate="true" visibility="uncounted"}
-
-```{python}
-#| echo: true
-import pandas as pd
-df = pd.DataFrame({"text": ["foo", "bar", "baz"], "number": [1, 2, 3]})
-```
-
-::: {.panel-tabset}
-### `ColumnTransformer`
-```{python}
-# | echo: true
-from sklearn.compose import make_column_selector as selector
-from sklearn.compose import make_column_transformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-
-categorical_columns = selector(dtype_include=object)(df)
-numerical_columns = selector(dtype_exclude=object)(df)
-
-ct = make_column_transformer(
-    (StandardScaler(), numerical_columns),
-    (OneHotEncoder(handle_unknown="ignore"), categorical_columns),
-)
-transformed = ct.fit_transform(df)
-transformed
-```
-
-### `ApplyToCols`
-```{python}
-# | echo: true
-import skrub.selectors as s
-from sklearn.pipeline import make_pipeline
-from skrub import ApplyToCols
-
-numeric = ApplyToCols(StandardScaler(), cols=s.numeric())
-string = ApplyToCols(OneHotEncoder(sparse_output=False), cols=s.string())
-
-transformed = make_pipeline(numeric, string).fit_transform(df)
-transformed
-```
-
 :::
