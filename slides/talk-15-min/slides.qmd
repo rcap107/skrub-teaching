@@ -3,8 +3,8 @@ title: "Skrub"
 title-block-banner: true
 date: 2025-10-01
 subtitle: "Machine learning with dataframes"
-author: "Riccardo Cappuzzo, Guillaume Lemaître, Jérôme Dockès"
-institute: "Inria P16, probabl."
+author: "Riccardo Cappuzzo"
+institute: "Inria P16"
 format: 
     revealjs:
         slide-number: c/t
@@ -38,21 +38,6 @@ I don't like the sea ![](images/nice.jpg){width=250}
 # Boost your productivity with skrub! {auto-animate="true"}
 
 Skrub simplifies many tedious data preparation operations
-
-
-## A teaser for later... {auto-animate="true"}
-
-Inspect all the steps of your pipeline: 
-<a href="dataop_report/index.html" target="_blank">Execution report</a>
-
-## A teaser for later... {auto-animate="true"} 
-Explore your hyperparameter search space
-```{python}
-from plotly.io import read_json
-
-fig = read_json("parallel_coordinates_hgbr.json")
-fig.update_layout(margin=dict(l=200))
-```
 
 ## Skrub compatibility
 - Skrub is fully compatible with pandas and polars
@@ -711,52 +696,6 @@ search = regressor.skb.make_randomized_search(
 # save the best learner
 best_learner = search.best_learner_
 ```
-
-## Tuning with Data Ops is not limited to estimators
-::: {.panel-tabset}
-### Pandas
-```{python}
-import pandas as pd
-import skrub
-```
-```{python}
-# | echo: true
-df = pd.DataFrame(
-    {"subject": ["math", "math", "art", "history"],
-    "grade": [10, 8, 4, 6]}
-)
-
-df_do = skrub.var("grades", df)
-agg_grades = df_do.groupby("subject").agg(
-    skrub.choose_from(["count", "mean"])
-)
-agg_grades.skb.describe_param_grid()
-```
-
-### Polars
-```{python}
-import polars as pl
-import skrub
-```
-
-```{python}
-#| echo: true
-df = pl.DataFrame(
-    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
-)
-
-df_do = skrub.var("grades", df)
-
-agg_grades = df_do.group_by("subject").agg(
-    skrub.choose_from([
-        pl.mean("grade"), pl.count("grade")
-    ])
-)
-agg_grades.skb.describe_param_grid()
-```
-
-:::
-
 ## A parallel coordinate plot to explore hyperparameters{auto-animate="true" .smaller} 
 
 ```{.python}
