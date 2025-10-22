@@ -39,12 +39,13 @@ I don't like the sea ![](images/nice.jpg){width=250}
 
 ::: {.incremental}
 
-- How many work with Pandas? 
+- Who is familiar with Pandas or Polars? 
 
-- How many work with scikit-learn? 
+- Who has worked with scikit-learn? 
 
-- How many have heard of skrub before this sprint? 
+- Who has already made contributions in open source? 
 
+- Who has heard of skrub before today?
 :::
 
 ## Roadmap for the presentation
@@ -52,12 +53,15 @@ I don't like the sea ![](images/nice.jpg){width=250}
 - What is skrub
 - Contributing to skrub: subjects
 - Contributing to skrub: setting up the environment
-- Resources (qr code at the end)
+
+QR code for the presentation at the end! 
 
 # What is skrub? 
 
+::: {.callout-tip}
 Skrub is a Python library that sits between data stored in dataframes and machine
 learning with scikit-learn. 
+:::
 
 Skrub eases machine learning with dataframes. 
 
@@ -313,7 +317,7 @@ model = skrub.tabular_pipeline(Ridge())
 
 ![](images/skrub-tabular-pipeline-linear-model.png){fig-align="center"}
 
-# Advanced skrubbing: skrub Data Ops
+# Advanced skrub: Data Ops
 
 ## DataOps...
 
@@ -529,7 +533,7 @@ regressor = dim_reduction.skb.apply(
 )
 ```
 
-## A parallel coordinate plot to explore hyperparameters{auto-animate="true" .smaller} 
+## Exploring the hyperparameters {auto-animate="true" .smaller} 
 
 ```{.python}
 search = pred.skb.get_randomized_search(fitted=True)
@@ -573,14 +577,23 @@ Star skrub on GitHub, or contribute directly:
 # Contributing to skrub: open issues
 **[GitHub project](https://github.com/orgs/skrub-data/projects/9/)**
 
-Legend:
+## Before you start working on an issue
+
+::: {.callout-important}
+Write a comment on the issue so we know you're working on it.
+:::
+
+
+We want to avoid having multiple people working on the same issue in separate PRs. 
+
+## Legend:
 
 - 😴 : easy issue
-- 🍁 : slightly challenging
-- 👺 : likely complex problem
+- 🍁 : some complexity
+- 👺 : hard problem
 - 🏃‍♀️ : quick to solve
 - 🛌 : likely will take a while
-- 😿 : docs, need to deal with Sphinx
+- 🐈 : docs, need to deal with Sphinx
 
 ## `TableReport` {.smaller}
 - [#1175](https://github.com/skrub-data/skrub/issues/1175) - Better control over
@@ -611,21 +624,21 @@ is an empty polars column name. 👺 🏃
 ## Documentation {.smaller}
 
 - [#1476](https://github.com/skrub-data/skrub/issues/1476) - DOC: add an example 
-dedicated to showing the features of the `TableReport`. 🍁 🛌 😿
+dedicated to showing the features of the `TableReport`. 🍁 🛌🐈
 - [#991](https://github.com/skrub-data/skrub/issues/991) - Move the dev docs of
-the `TableReport` to the main documentation page. 🍁 😿
+the `TableReport` to the main documentation page. 🍁🐈
 - [#1582](https://github.com/skrub-data/skrub/issues/1582) - Reorganize the 
-"Development" section in the top bar. 👺 🛌 😿
+"Development" section in the top bar. 👺 🛌🐈
 - [#1425](https://github.com/skrub-data/skrub/issues/1425) - Shorten the note on the 
 single-column transformer. 😴 🏃
 - [#1660](https://github.com/skrub-data/skrub/issues/1660) - Add different doc
-versions to the switcher.  🍁 😿 🏃
+versions to the switcher.  🍁🐈 🏃
 - [#1616](https://github.com/skrub-data/skrub/issues/1616) - Change the numbering
-of examples. 😴 😿 🏃
+of examples. 😴🐈 🏃
 
 ## Examples  {.smaller}
 - [#1629](https://github.com/skrub-data/skrub/issues/1629) - Add an example for the 
-`DatetimeEncoder`. 👺 🛌 😿
+`DatetimeEncoder`. 👺 🛌🐈
 - [#1234](https://github.com/skrub-data/skrub/issues/1234) - Shuffle the toxicity
 dataset in the example. 😴  🏃
 - Any example you can come up with! 
@@ -636,7 +649,7 @@ Instructions are also available in the Installation page of the webiste:
 
 ## Setting up the repository {.smaller}
 First off, you need to fork the skrub repository:
-- https://github.com/skrub-data/skrub/fork
+`https://github.com/skrub-data/skrub/fork`
 
 Then, clone the repo on your local machine
 ```sh
@@ -723,7 +736,17 @@ My recommendation: use pixi!
 
 :::
 
-## Running tests
+## Note on the `pixi.lock` file
+
+::: {.callout-important}
+If you use pixi, it may happen that the `pixi.lock` file will be updated as you
+run commands. 
+
+**Revert** changes to this file before adding files and pushing upstream. 
+:::
+
+
+## Running tests {.smaller}
 ::: {.panel-tabset}
 ### Using environments
 From inside the root skrub folder, and after activating the environment
@@ -751,6 +774,7 @@ It is possible to run specific tests by providing a path. To test `TableVectoriz
 ```sh
 pytest -vsl skrub/tests/test_table_vectorizer.py 
 ```
+
 `-vsl` prints out more information compared to the default. 
 
 ## Working on the documentation {.smaller}
@@ -790,7 +814,11 @@ pixi run clean-doc
 After rendering the docs, open the `doc/_build/html/index.html` file with a 
 browser.
 
-## Opening a PR and contributing upstream
+## Writing an example
+Full guide: `https://skrub-data.org/stable/tutorial_example.html`
+
+
+## Opening a PR and contributing upstream {.smaller}
 More detail is available on the main website:
 `https://skrub-data.org/stable/CONTRIBUTING.html`
 
@@ -810,6 +838,50 @@ git push --set-upstream origin my-branch-name-eg-fix-issue-123
 At this point, visit the GitHub PR page and open a PR from there:
 `https://github.com/skrub-data/skrub/pulls`
 
+## Code formatting and `pre-commit` {.smaller}
+Formatting is enforced though pre-commit checks.
+
+::: {.panel-tabset}
+### From environment
+- Make sure `pre-commit` is installed in the environment and the folder
+```sh
+pre-commit install
+```
+- If missing, install it with `pip`
+```sh
+pip install pre-commit
+```
+Then, add modified files and run pre-commit on them. 
+
+```sh
+git add YOUR_FILE
+pre-commit
+# if the file has been formatted, add again
+git add YOUR_FILE
+# commit the changes
+git commit -m "MY COMMIT MESSAGE"
+# pre-commit will run again automatically
+# push the  commit
+git push
+```
+:::
+
+
+### Pixi
+If you're working entirely with pixi:
+
+```sh
+git add YOUR_FILE
+pixi run lint
+# if the file has been formatted, add again
+git add YOUR_FILE
+# commit the changes
+git commit -m "MY COMMIT MESSAGE"
+# pre-commit will run again automatically
+# push the  commit
+git push
+```
+:::
 
 
 ## Where to find this presentation
