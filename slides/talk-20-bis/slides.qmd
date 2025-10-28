@@ -1,10 +1,10 @@
 ---
 title: "Skrub"
 title-block-banner: true
-date: 2025-10-14
+date: 2025-10-01
 subtitle: "Machine learning with dataframes"
-author: "Riccardo Cappuzzo"
-institute: "Inria P16"
+author: "Riccardo Cappuzzo, Guillaume Lemaître, Jérôme Dockès"
+institute: "Inria P16, probabl."
 format: 
     revealjs:
         slide-number: c/t
@@ -22,7 +22,7 @@ params:
 ---
 
 
-## `whoami`  {visibility="hidden"}
+## `whoami`  {visibility="visible"}
 
 ::: {.incremental}
 
@@ -39,6 +39,21 @@ I don't like the sea ![](images/nice.jpg){width=250}
 
 Skrub simplifies many tedious data preparation operations
 
+
+## A teaser for later... {auto-animate="true"}
+
+Inspect all the steps of your pipeline: 
+<a href="dataop_report/index.html" target="_blank">Execution report</a>
+
+## A teaser for later... {auto-animate="true"} 
+Explore your hyperparameter search space
+```{python}
+from plotly.io import read_json
+
+fig = read_json("parallel_coordinates_hgbr.json")
+fig.update_layout(margin=dict(l=200))
+```
+
 ## Skrub compatibility
 - Skrub is fully compatible with pandas and polars
 - Skrub transformers are fully compatible with scikit-learn
@@ -54,6 +69,84 @@ Skrub simplifies many tedious data preparation operations
 
 ##  
 ![](images/here-we-go-again.png)
+
+## Exploring the data {.smaller auto-animate="true"}
+```{.python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import skrub
+
+dataset = skrub.datasets.fetch_employee_salaries()
+employees, salaries = dataset.X, dataset.y
+
+df = pd.DataFrame(employees)
+
+# Plot the distribution of the numerical values using a histogram
+fig, axs = plt.subplots(2,1, figsize=(10, 6))
+ax1, ax2 = axs
+
+ax1.hist(df['year_first_hired'], bins=30, edgecolor='black', alpha=0.7)
+ax1.set_xlabel('Year first hired')
+ax1.set_ylabel('Frequency')
+ax1.grid(True, linestyle='--', alpha=0.5)
+
+# Count the frequency of each category
+category_counts = df['department'].value_counts()
+
+# Create a bar plot
+category_counts.plot(kind='bar', edgecolor='black', ax=ax2)
+
+# Add labels and title
+ax2.set_xlabel('Department')
+ax2.set_ylabel('Frequency')
+ax2.grid(True, linestyle='--', axis='y', alpha=0.5)  # Add grid lines for y-axis
+
+fig.suptitle("Distribution of values")
+
+# Show the plot
+plt.show()
+```
+## Exploring the data {.smaller auto-animate="true"}
+
+```{python}
+#| echo: false
+import pandas as pd
+import matplotlib.pyplot as plt
+import skrub
+from skrub.datasets import fetch_employee_salaries
+from pprint import pprint
+
+dataset = fetch_employee_salaries()
+employees, salaries = dataset.X, dataset.y
+
+df = pd.DataFrame(employees)
+
+# Plot the distribution of the numerical values using a histogram
+fig, axs = plt.subplots(2,1, figsize=(10, 6))
+ax1, ax2 = axs
+
+ax1.hist(df['year_first_hired'], bins=30, edgecolor='black', alpha=0.7)
+ax1.set_xlabel('Year first hired')
+ax1.set_ylabel('Frequency')
+ax1.grid(True, linestyle='--', alpha=0.5)
+
+# Count the frequency of each category
+category_counts = df['department'].value_counts()
+
+# Create a bar plot
+category_counts.plot(kind='bar', edgecolor='black', ax=ax2)
+
+# Add labels and title
+ax2.set_xlabel('Department')
+ax2.set_ylabel('Frequency')
+ax2.grid(True, linestyle='--', axis='y', alpha=0.5)  # Add grid lines for y-axis
+
+fig.suptitle("Distribution of values")
+
+# Show the plot
+plt.show()
+```
+
 
 ## Exploring the data with `skrub` {.smaller auto-animate="true"}
 
@@ -213,6 +306,52 @@ display(df_cleaned)
 
 :::
 
+## Encoding datetime features with pandas/polars {.smaller}
+:::{.panel-tabset}
+
+### Pandas
+```{python}
+#|echo: true
+import pandas as pd
+data = {
+    'date': ['2023-01-01 12:34:56', '2023-02-15 08:45:23', '2023-03-20 18:12:45'],
+    'value': [10, 20, 30]
+}
+df_pd = pd.DataFrame(data)
+datetime_column = "date"
+df_pd[datetime_column] = pd.to_datetime(df_pd[datetime_column], errors='coerce')
+
+df_pd['year'] = df_pd[datetime_column].dt.year
+df_pd['month'] = df_pd[datetime_column].dt.month
+df_pd['day'] = df_pd[datetime_column].dt.day
+df_pd['hour'] = df_pd[datetime_column].dt.hour
+df_pd['minute'] = df_pd[datetime_column].dt.minute
+df_pd['second'] = df_pd[datetime_column].dt.second
+```
+
+### Polars
+```{python}
+#|echo: true
+import polars as pl
+data = {
+    'date': ['2023-01-01 12:34:56', '2023-02-15 08:45:23', '2023-03-20 18:12:45'],
+    'value': [10, 20, 30]
+}
+df_pl = pl.DataFrame(data)
+df_pl = df_pl.with_columns(date=pl.col("date").str.to_datetime())
+
+df_pl = df_pl.with_columns(
+    year=pl.col("date").dt.year(),
+    month=pl.col("date").dt.month(),
+    day=pl.col("date").dt.day(),
+    hour=pl.col("date").dt.hour(),
+    minute=pl.col("date").dt.minute(),
+    second=pl.col("date").dt.second(),
+)
+```
+
+:::
+
 ## Encoding datetime features with `skrub.DatetimeEncoder` {auto-animate="true" visibility="uncounted" .smaller}
 ```{python}
 import polars as pl
@@ -232,6 +371,10 @@ de = DatetimeEncoder(resolution="second")
 X_enc = de.fit_transform(X_date)
 print(X_enc)
 ```
+
+
+## What periodic features look like
+![](images/periodic_features.png){fig-align="center"}
 
 ## Encoding numerical features with `skrub.SquashingScaler`
 ```{python}
@@ -623,7 +766,7 @@ loaded_learner.predict(
 
 
 ## Hyperparameter tuning in a Data Ops plan 
-Skrub implements four `choose_*` functions:
+`skrub` implements four `choose_*` functions:
 
 - `choose_from`: select from the given list of options
 - `choose_int`: select an integer within a range
@@ -652,7 +795,7 @@ grid = [
     {
         "dim_reduction": [PCA()],
         "dim_reduction__n_components": [10, 20, 30],
-        "regressor": [RandomForestRegressor()],
+        "regressor": [RandomForestClassifier()],
         "regressor__n_estimators": loguniform(20, 200),
     },
     {
@@ -696,6 +839,52 @@ search = regressor.skb.make_randomized_search(
 # save the best learner
 best_learner = search.best_learner_
 ```
+
+## Tuning with Data Ops is not limited to estimators
+::: {.panel-tabset}
+### Pandas
+```{python}
+import pandas as pd
+import skrub
+```
+```{python}
+# | echo: true
+df = pd.DataFrame(
+    {"subject": ["math", "math", "art", "history"],
+    "grade": [10, 8, 4, 6]}
+)
+
+df_do = skrub.var("grades", df)
+agg_grades = df_do.groupby("subject").agg(
+    skrub.choose_from(["count", "mean"])
+)
+agg_grades.skb.describe_param_grid()
+```
+
+### Polars
+```{python}
+import polars as pl
+import skrub
+```
+
+```{python}
+#| echo: true
+df = pl.DataFrame(
+    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
+)
+
+df_do = skrub.var("grades", df)
+
+agg_grades = df_do.group_by("subject").agg(
+    skrub.choose_from([
+        pl.mean("grade"), pl.count("grade")
+    ])
+)
+agg_grades.skb.describe_param_grid()
+```
+
+:::
+
 ## A parallel coordinate plot to explore hyperparameters{auto-animate="true" .smaller} 
 
 ```{.python}
@@ -727,6 +916,16 @@ on the Titanic survival challenge
 ## {auto-animate="true" } 
 ![](images/powerpuff_girls_2.png)
 
+## Install skrub
+
+```{shell}
+# with pip
+pip install skrub
+
+# with conda
+conda install -c conda-forge skrub
+```
+
 ##  Getting involved {.smaller}
 ::: {.nonincremental}
 Do you want to learn more? 
@@ -744,6 +943,12 @@ Star skrub on GitHub, or contribute directly:
 
 - [GitHub repository](https://github.com/skrub-data/skrub/)
 :::
+
+## Sprint on Thursday!!!
+
+
+## We're hiring!!
+Come talk to me or go to the P16 booth 
 
 ## tl;dw: skrub 
 ::: {.nonincremental}

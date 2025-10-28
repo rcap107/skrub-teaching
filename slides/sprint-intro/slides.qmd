@@ -607,7 +607,6 @@ the `TableReport` example in the home page.  😴 🏃
 - [#1001](https://github.com/skrub-data/skrub/issues/1001) - Add a `DropSimilar`
 transformer. 👺 🛌 
 - [#710](https://github.com/skrub-data/skrub/issues/710) - Add holidays as features. 👺 🛌
-- [#1677](https://github.com/skrub-data/skrub/issues/1677) - Make a public `ToFloat`.🍁 🛌
 - [#1542](https://github.com/skrub-data/skrub/issues/1542) - Add a transformer 
 that parses string columns that include units (kg, $ etc). 👺 🛌
 - [#1430](https://github.com/skrub-data/skrub/issues/1430) - Extend `ToDatetime` 
@@ -616,31 +615,29 @@ so that it can take a list of datetime formats. 🍁 🛌
 ## Bugfixes and maintenance {.smaller}
 - [#1675](https://github.com/skrub-data/skrub/issues/1675) - Improve error message 
 when the `TableReport` receives a lazy Polars dataframe.   😴 🏃
-- [#1665](https://github.com/skrub-data/skrub/issues/1665) - Remove `black` from
-the project.  😴 🏃
 - [#1490](https://github.com/skrub-data/skrub/issues/1490) - Cleaner fails when there 
 is an empty polars column name. 👺 🏃
 
 ## Documentation {.smaller}
 
 - [#1476](https://github.com/skrub-data/skrub/issues/1476) - DOC: add an example 
-dedicated to showing the features of the `TableReport`. 🍁 🛌🐈
+dedicated to showing the features of the `TableReport`. 🍁 🛌 🐈
 - [#991](https://github.com/skrub-data/skrub/issues/991) - Move the dev docs of
-the `TableReport` to the main documentation page. 🍁🐈
+the `TableReport` to the main documentation page. 🍁 🐈
 - [#1582](https://github.com/skrub-data/skrub/issues/1582) - Reorganize the 
-"Development" section in the top bar. 👺 🛌🐈
+"Development" section in the top bar. 🍁 🛌 🐈
 - [#1425](https://github.com/skrub-data/skrub/issues/1425) - Shorten the note on the 
 single-column transformer. 😴 🏃
 - [#1660](https://github.com/skrub-data/skrub/issues/1660) - Add different doc
-versions to the switcher.  🍁🐈 🏃
+versions to the switcher.  🍁 🐈 🏃
 - [#1616](https://github.com/skrub-data/skrub/issues/1616) - Change the numbering
-of examples. 😴🐈 🏃
+of examples. 😴 🐈 🏃
 
 ## Examples  {.smaller}
 - [#1629](https://github.com/skrub-data/skrub/issues/1629) - Add an example for the 
-`DatetimeEncoder`. 👺 🛌🐈
+`DatetimeEncoder`. 👺 🛌 🐈
 - [#1234](https://github.com/skrub-data/skrub/issues/1234) - Shuffle the toxicity
-dataset in the example. 😴  🏃
+dataset in the example. 😴 🏃
 - Any example you can come up with! 
 
 # Contributing to skrub: preparation
@@ -864,7 +861,6 @@ git commit -m "MY COMMIT MESSAGE"
 # push the  commit
 git push
 ```
-:::
 
 
 ### Pixi
