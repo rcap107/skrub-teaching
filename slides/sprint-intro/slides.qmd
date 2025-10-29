@@ -39,10 +39,6 @@ I don't like the sea ![](images/nice.jpg){width=250}
 
 ::: {.incremental}
 
-- Who is familiar with Pandas or Polars? 
-
-- Who has worked with scikit-learn? 
-
 - Who has already made contributions in open source? 
 
 - Who has heard of skrub before today?
@@ -884,12 +880,12 @@ git push
 ::: {.columns}
 ::: {.column}
 
-TODO: change this with the proper QR code
-![](images/qr-code-github-project.png)
+Slides
+![](images/qr-code.png)
 
 :::
 ::: {.column}
-GitHub project tracking the issues
+GitHub project
 ![](images/qr-code-github-project.png)
 
 :::
