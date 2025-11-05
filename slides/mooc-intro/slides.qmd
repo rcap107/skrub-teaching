@@ -1,0 +1,39 @@
+---
+title: "Welcome to skrub"
+title-block-banner: true
+institute: "Inria P16, :probabl."
+format: 
+    revealjs:
+        slide-number: c/t
+        show-slide-number: all
+        preview-links: auto
+        embed-resources: false
+        transition: slide
+        theme: simple
+        logo: images/skrub.svg
+        css: style.css
+        footer: "https://skrub-data.org/skrub-materials/"
+incremental: false
+params: 
+    version: "base"
+---
+
+## What is the problem we are trying to solve
+
+Provide an example of a machine learning task that involves tasks that skrub
+can simplify. 
+
+## How does skrub help with this problem? 
+
+## Prerequisites for the course
+
+- Basic Python programming knowledge
+- Some experience with a Python dataframe library (either Pandas or Polars)
+- Knowledge of the basic concepts of machine learning
+    - Pre-processing (scaling, imputation)
+    - Feature engineering
+    - Classification, regression
+- Some experience with scikit-learn and how it can be applied to machine learning
+problems. 
+
+## 
