@@ -8,7 +8,7 @@ version = "0.1.0"
 [tasks]
 
 [tasks.render-slides]
-cmd = "quarto render"
+cmd = """quarto render"""
 
 [dependencies]
 quarto = ">=1.8.25,<2"
@@ -19,3 +19,4 @@ pandas = ">=2.3.3,<3"
 pyarrow = ">=22.0.0,<23"
 ipykernel = ">=7.1.0,<8"
 pip = ">=25.2,<26"
+plotly = ">=6.4.0,<7"
