@@ -34,7 +34,7 @@ params:
 
 {{< include /includes/preparation/_data_cleaning_base.md >}}
 
-{{< include /includes/preparation/_data_cleaning_cleaner.md >}}
+{{< include /includes/preparation/_data_cleaning_skrub.md >}}
 
 {{< include /includes/encoders/_datetimes_skrub.md >}}
 
@@ -44,7 +44,7 @@ params:
 
 {{< include /includes/encoders/_table_vectorizer.md >}}
 
-{{< include /includes/encoders/_tabular_pipeline.md >}}
+{{< include /includes/encoders/_tabular_pipeline_short.md >}}
 
 {{< include /includes/talk-sections/_final_pipeline.md >}}
 
