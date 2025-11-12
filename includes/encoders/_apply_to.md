@@ -1,10 +1,10 @@
 ## Column transformations with `ApplyToCols` and `ApplyToFrame` {.smaller auto-animate="true"}
 
-![](images/ApplyToCols.png)
+![](images/ApplyToCols.png){fig-align="center"}
 
 ## Column transformations with `ApplyToCols` and `ApplyToFrame` {.smaller auto-animate="true"}
 
-![](images/ApplyToFrame.png)
+![](images/ApplyToFrame.png){fig-align="center"}
 
 ## Replacing `ColumnTransformer` with `ApplyToCols` {.smaller auto-animate="true"}
 
@@ -42,3 +42,4 @@ string = ApplyToCols(OneHotEncoder(sparse_output=False), cols=s.string())
 transformed = make_pipeline(numeric, string).fit_transform(df)
 transformed
 ```
+

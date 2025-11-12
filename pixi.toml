@@ -10,6 +10,9 @@ version = "0.1.0"
 [tasks.render-slides]
 cmd = """quarto render"""
 
+[tasks.render-master-course]
+cmd = """quarto render slides/skrub-class-master/slides.qmd"""
+
 [dependencies]
 quarto = ">=1.8.25,<2"
 skrub = ">=0.6.2,<0.7"
