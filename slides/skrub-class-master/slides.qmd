@@ -26,7 +26,8 @@ params:
 
 ::: {.incremental}
 
-- I am a research engineer at Inria as part of the P16 project, and I am the lead developer of skrub ![](images/inria.png){width=250}
+- I am a research engineer at Inria as part of the SODA team and the P16 project, 
+and I am the lead developer of skrub ![](images/inria.png){width=250}
 
 - I'm Italian, but I don't drink coffee, wine, and I like pizza with fries ![](images/raora.png){width=50}
 
@@ -94,32 +95,36 @@ import pandas as pd
 pd.read_csv(file_path)
 ```
 
-## Parsing data is difficult! 
-- CSV files are plain text files and do not store any info besides what you can see
-- Any information about dtypes is lost 
-- It is very hard to automate discovering the separator
-- Plain text is uncompressed and can take up a very large amount of space
+## Parsing CSV files is difficult!  
+- CSV files are plain text files and do not store any info besides what you can see.
+- Any information about dtypes is lost.
+- It is very hard to automate discovering the separator.
+- Files cannot be seeked: to get to a line, all the previous lines must be read first.
+- Plain text is uncompressed and can take up a very large amount of space.
+
 
 ## CSV vs Parquet {.smaller}
 ::: {.incremental}
-- Parquet files are a binary dtype that addresses various issues with storing data
-- Dtypes are well defined and fixed
+- [Apache Parquet](https://en.wikipedia.org/wiki/Apache_Parquet) is a binary data 
+storage format that addresses various issues with storing data.
+- Dtypes are well defined and fixed.
 - No separators to deal with: each column is defined in a schema when the parquet
-file is created
-- Additional metadata can be stored to provide context to the data
+file is created.
+- Additional metadata can be stored to provide context to the data.
 - Parquet files are seekable: no need to read through the entire thing to get to
-a specific line
+a specific line.
 - Parquet files are compressed, reducing the size by multiple times (depending on
 data)
 - Parquet files **are not human-readable**. CSV files are, but are you really 
 going to manually go through a few million lines of text? 
 :::
 
+# Exploring the data
 
 ## Exploratory analysis {.smaller}
 Before starting any kind of training, it's important to explore the data:
 
-- How big it is (on disk, in rows/columns etc.)
+- How big is the dataset (on disk, in rows/columns etc.)?
 - What kind of datatypes are we dealing with? Anything that needs more attention? 
 - What is the distribution of values in a column?
 - Are there null values? In what columns? 
@@ -137,7 +142,7 @@ import skrub
 from skrub.datasets import fetch_employee_salaries
 
 df = fetch_employee_salaries().X
-df 
+df.head(5)
 ```
 
 ## Exploring the data: describe {.smaller auto-animate="true"}
@@ -231,13 +236,26 @@ Things to notice:
 - Column associations
     - Are there correlated columns? 
 
-
+# Pre-processing
 {{< include /includes/preparation/_data_cleaning_base.md >}}
 {{< include /includes/preparation/_data_cleaning_skrub.md >}}
+
+## Cleaning `employee_salaries` {auto-animate="true"}
+```{python}
+# | echo: true
+df = fetch_employee_salaries().X
+df.info()
+```
+
+## Cleaning `employee_salaries` {auto-animate="true"}
+```{python}
+# | echo: true
+cleaned = Cleaner().fit_transform(df)
+cleaned.info()
+```
+
+# Feature engineering
 {{< include /includes/encoders/_datetimes_base.md >}}
-
-## What happens if we train directly on a datetime? 
-
 {{< include /includes/encoders/_periodic_features_base.md >}}
 {{< include /includes/encoders/_datetimes_skrub.md >}}
 {{< include /includes/encoders/_periodic_features_skrub.md >}}
@@ -403,7 +421,10 @@ print("The shape of the OneHotEncoding of column `division` is: ", enc.shape)
 ```
 
 ::: {.fragment}
+
+::: {.callout-warning}
 That's ~700 features that are mostly 0's.
+:::
 
 Remember that more features mean:
 
@@ -431,7 +452,7 @@ that may not make any sense in reality.
 ## Encoding categorical (string/text) features {.smaller}
 Categorical features have a "cardinality": the number of unique values
 
-- Low cardinality features: `OneHotEncoder`
+- Low cardinality features: `OneHotEncoder`.
     - The `OneHotEncoder` produces **sparse** matrices. Dataframes are **dense**.
 - High cardinality features (>40 unique values): 
     - Using `OneHotEncoder` generates too many (dense) features.
@@ -449,8 +470,9 @@ Categorical features have a "cardinality": the number of unique values
     - Encoding is much slower.
     - However, performance can be much better depending on the dataset. 
 
-Deeper dive in this [post](https://skrub-data.org/skrub-materials/pages/notebooks/categorical-encoders/categorical-encoders.html)
+Deeper dive in this [post](https://skrub-data.org/skrub-materials/pages/notebooks/categorical-encoders/categorical-encoders.html).
 
+# Building pipelines
 {{< include /includes/encoders/_table_vectorizer.md >}}
 {{< include /includes/encoders/_apply_to.md >}}
 
@@ -492,23 +514,73 @@ Select columns based on dtypes, and invert selections:
 SelectCols(~s.numeric()).fit_transform(df)
 ```
 
-More info in the [selectors user guide](https://skrub-data.org/stable/modules/multi_column_operations/selectors.html)
+More info in the [selectors user guide](https://skrub-data.org/stable/modules/multi_column_operations/selectors.html).
+
+
+{{< include /includes/encoders/_tabular_pipeline_full.md >}}
 
 ## We now have a pipeline! {.smaller}
 
 1. Gather some data
 2. Explore the data
-    - `skrub.TableReport`
+    - `TableReport`
 3. Pre-process the data 
-    - `Cleaner`, `ToDatetime` ... 
+    - `Cleaner` ... 
 4. Perform feature engineering
-    - `skrub.TableVectorizer`,`SquashingScaler`, `TextEncoder`, `StringEncoder `...
+    - `TableVectorizer`, `SquashingScaler`, `TextEncoder`, `StringEncoder `...
 5. Build a scikit-learn pipeline
     - `tabular_pipeline`, `sklearn.pipeline.make_pipeline` ... 
 6. ???
 7. Profit 📈 
 
-## More information about the Data Ops 
+# Skrub Data Ops
+## What if... {.smaller}
+
+::: {.incremental}
+
+- Your data is spread over multiple tables? 
+- You want to avoid data leakage? 
+- You want to tune more than just the hyperparameters of your model? 
+- You want to guarantee that your pipeline is replayed exactly on new data? 
+
+:::
+
+::: {.fragment}
+When a normal pipeline is not enough...
+::: 
+
+::: {.fragment }
+... the `skrub` DataOps come to the rescue 🚒
+:::
+
+## DataOps...
+
+::: {.incremental}
+- Extend the `scikit-learn` machinery to complex multi-table operations, and take care of data leakage.
+- Track all operations with a computational graph (a *Data Ops plan*).
+- Are transparent and give direct access to the underlying object.
+- Allow tuning any operation in the Data Ops plan.
+- Guarantee that all operations are reproducible.
+- Can be persisted and shared easily.
+:::
+
+## How do DataOps work, though?  {.smaller}
+DataOps **wrap** around *user operations*, where user operations are:
+
+- any dataframe operation (e.g., merge, group by, aggregate etc.).
+- scikit-learn estimators (a Random Forest, RidgeCV etc.).
+- custom user code (load data from a path, fetch from an URL etc.).
+
+::: {.fragment}
+
+::: {.callout-important}
+DataOps _record_ user operations, so that they can later be _replayed_ in the same
+order and with the same arguments on unseen data. 
+:::
+::: 
+
+
+## More information about Data Ops
 - Skrub [example gallery](https://skrub-data.org/stable/auto_examples/data_ops/index.html)
 - [Tutorial](https://github.com/skrub-data/EuroSciPy2025) on timeseries 
 forecasting at Euroscipy 2025

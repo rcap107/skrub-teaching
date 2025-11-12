@@ -217,7 +217,7 @@ Riccardo Cappuzzo
 <section id="whoami" class="slide level2">
 <h2><code>whoami</code></h2>
 <ul>
-<li class="fragment"><p>I am a research engineer at Inria as part of the P16 project, and I am the lead developer of skrub <img data-src="images/inria.png" width="250"></p></li>
+<li class="fragment"><p>I am a research engineer at Inria as part of the SODA team and the P16 project, and I am the lead developer of skrub <img data-src="images/inria.png" width="250"></p></li>
 <li class="fragment"><p>I’m Italian, but I don’t drink coffee, wine, and I like pizza with fries <img data-src="images/raora.png" width="50"></p></li>
 <li class="fragment"><p>I did my PhD in Côte d’Azur, and I moved away because it was too sunny and I don’t like the sea <img data-src="images/nice.jpg" width="250"></p></li>
 </ul>
@@ -271,7 +271,7 @@ Riccardo Cappuzzo
 </section>
 <section id="what-happens-if-pandas-parses-this" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">What happens if pandas parses this?</h2>
-<div id="0dd3a176" class="cell" data-execution_count="1">
+<div id="9206a0de" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>id,code,name,slug
 15,76,Occitanie,occitanie
@@ -284,10 +284,10 @@ Riccardo Cappuzzo
 </section>
 <section id="what-happens-if-pandas-parses-this-1" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">What happens if pandas parses this?</h2>
-<div id="84b807a6" class="cell" data-execution_count="2">
+<div id="b2ee0b08" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2" class="hljs-ln-code"><a href=""></a>pd.read_csv(file_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -358,7 +358,7 @@ Riccardo Cappuzzo
 </section>
 <section id="how-about-now" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">How about now?</h2>
-<div id="7258cb16" class="cell" data-execution_count="3">
+<div id="cc2e7774" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>Department code;Department name;Town code;Town name;Registered;Abstentions;Null;Choice A;Choice B
 ZZ;FRANCAIS DE L'ETRANGER;8;Europe du Sud, Turquie, Israël;109763;84466;292;9299;15706
@@ -370,10 +370,10 @@ ZZ;FRANCAIS DE L'ETRANGER;11;Europe de l'est, Asie, Océanie;80061;42911;488;139
 </section>
 <section id="how-about-now-1" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">How about now?</h2>
-<div id="ea8dbbbc" class="cell" data-execution_count="4">
+<div id="cbcf4199" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb4-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2" class="hljs-ln-code"><a href=""></a>pd.read_csv(file_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -425,32 +425,38 @@ ZZ;FRANCAIS DE L'ETRANGER;11;Europe de l'est, Asie, Océanie;80061;42911;488;139
 </div>
 </div>
 </section>
-<section id="parsing-data-is-difficult" class="slide level2">
-<h2>Parsing data is difficult!</h2>
+<section id="parsing-csv-files-is-difficult" class="slide level2">
+<h2>Parsing CSV files is difficult!</h2>
 <ul>
-<li>CSV files are plain text files and do not store any info besides what you can see</li>
-<li>Any information about dtypes is lost</li>
-<li>It is very hard to automate discovering the separator</li>
-<li>Plain text is uncompressed and can take up a very large amount of space</li>
+<li>CSV files are plain text files and do not store any info besides what you can see.</li>
+<li>Any information about dtypes is lost.</li>
+<li>It is very hard to automate discovering the separator.</li>
+<li>Files cannot be seeked: to get to a line, all the previous lines must be read first.</li>
+<li>Plain text is uncompressed and can take up a very large amount of space.</li>
 </ul>
 </section>
 <section id="csv-vs-parquet" class="slide level2 smaller">
 <h2>CSV vs Parquet</h2>
 <ul>
-<li class="fragment">Parquet files are a binary dtype that addresses various issues with storing data</li>
-<li class="fragment">Dtypes are well defined and fixed</li>
-<li class="fragment">No separators to deal with: each column is defined in a schema when the parquet file is created</li>
-<li class="fragment">Additional metadata can be stored to provide context to the data</li>
-<li class="fragment">Parquet files are seekable: no need to read through the entire thing to get to a specific line</li>
+<li class="fragment"><a href="https://en.wikipedia.org/wiki/Apache_Parquet">Apache Parquet</a> is a binary data storage format that addresses various issues with storing data.</li>
+<li class="fragment">Dtypes are well defined and fixed.</li>
+<li class="fragment">No separators to deal with: each column is defined in a schema when the parquet file is created.</li>
+<li class="fragment">Additional metadata can be stored to provide context to the data.</li>
+<li class="fragment">Parquet files are seekable: no need to read through the entire thing to get to a specific line.</li>
 <li class="fragment">Parquet files are compressed, reducing the size by multiple times (depending on data)</li>
 <li class="fragment">Parquet files <strong>are not human-readable</strong>. CSV files are, but are you really going to manually go through a few million lines of text?</li>
 </ul>
+</section></section>
+<section>
+<section id="exploring-the-data" class="title-slide slide level1 center">
+<h1>Exploring the data</h1>
+
 </section>
 <section id="exploratory-analysis" class="slide level2 smaller">
 <h2>Exploratory analysis</h2>
 <p>Before starting any kind of training, it’s important to explore the data:</p>
 <ul>
-<li>How big it is (on disk, in rows/columns etc.)</li>
+<li>How big is the dataset (on disk, in rows/columns etc.)?</li>
 <li>What kind of datatypes are we dealing with? Anything that needs more attention?</li>
 <li>What is the distribution of values in a column?</li>
 <li>Are there null values? In what columns?</li>
@@ -461,14 +467,14 @@ ZZ;FRANCAIS DE L'ETRANGER;11;Europe de l'est, Asie, Océanie;80061;42911;488;139
 </section>
 <section id="exploring-the-data-with-pandas-parsing" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Exploring the data with Pandas: parsing</h2>
-<div id="932943c9" class="cell" data-execution_count="5">
+<div id="33e556b7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb5-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub</span>
 <span id="cb5-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub.datasets <span class="im">import</span> fetch_employee_salaries</span>
 <span id="cb5-4" class="hljs-ln-code"><a href=""></a></span>
 <span id="cb5-5" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> fetch_employee_salaries().X</span>
-<span id="cb5-6" class="hljs-ln-code"><a href=""></a>df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="73">
+<span id="cb5-6" class="hljs-ln-code"><a href=""></a>df.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -554,84 +560,17 @@ ZZ;FRANCAIS DE L'ETRANGER;11;Europe de l'est, Asie, Océanie;80061;42911;488;139
 <td>03/05/2007</td>
 <td>2007</td>
 </tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">9223</th>
-<td>F</td>
-<td>HHS</td>
-<td>Department of Health and Human Services</td>
-<td>School Based Health Centers</td>
-<td>Fulltime-Regular</td>
-<td>Community Health Nurse II</td>
-<td>11/03/2015</td>
-<td>2015</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">9224</th>
-<td>F</td>
-<td>FRS</td>
-<td>Fire and Rescue Services</td>
-<td>Human Resources Division</td>
-<td>Fulltime-Regular</td>
-<td>Fire/Rescue Division Chief</td>
-<td>11/28/1988</td>
-<td>1988</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">9225</th>
-<td>M</td>
-<td>HHS</td>
-<td>Department of Health and Human Services</td>
-<td>Child and Adolescent Mental Health Clinic Serv...</td>
-<td>Parttime-Regular</td>
-<td>Medical Doctor IV - Psychiatrist</td>
-<td>04/30/2001</td>
-<td>2001</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">9226</th>
-<td>M</td>
-<td>CCL</td>
-<td>County Council</td>
-<td>Council Central Staff</td>
-<td>Fulltime-Regular</td>
-<td>Manager II</td>
-<td>09/05/2006</td>
-<td>2006</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">9227</th>
-<td>M</td>
-<td>DLC</td>
-<td>Department of Liquor Control</td>
-<td>Licensure, Regulation and Education</td>
-<td>Fulltime-Regular</td>
-<td>Alcohol/Tobacco Enforcement Specialist II</td>
-<td>01/30/2012</td>
-<td>2012</td>
-</tr>
 </tbody>
 </table>
 
-<p>9228 rows × 8 columns</p>
 </div>
 </div>
 </div>
 </section>
 <section id="exploring-the-data-describe" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Exploring the data: describe</h2>
-<div id="2b7ef30f" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="74">
+<div id="3bac74c6" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -792,7 +731,7 @@ ZZ;FRANCAIS DE L'ETRANGER;11;Europe de l'est, Asie, Océanie;80061;42911;488;139
 </section>
 <section id="exploring-the-data-column-info" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Exploring the data: column info</h2>
-<div id="7108de57" class="cell" data-execution_count="7">
+<div id="e1648203" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 9228 entries, 0 to 9227
@@ -844,7 +783,7 @@ memory usage: 576.9+ KB</code></pre>
 </section>
 <section id="exploring-the-data-distributions-1" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Exploring the data: distributions</h2>
-<div id="dd0ccb08" class="cell" data-execution_count="8">
+<div id="c1f40e2b" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -896,6 +835,11 @@ memory usage: 576.9+ KB</code></pre>
 <li>Are there correlated columns?</li>
 </ul></li>
 </ul>
+</section></section>
+<section>
+<section id="pre-processing" class="title-slide slide level1 center">
+<h1>Pre-processing</h1>
+
 </section>
 <section id="data-cleaning-with-pandaspolars-setup" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Data cleaning with pandas/polars: setup</h2>
@@ -903,7 +847,7 @@ memory usage: 576.9+ KB</code></pre>
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Pandas</a></li><li><a href="#tabset-1-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="6bac1669" class="cell" data-execution_count="9">
+<div id="0b57b423" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-3"><a href=""></a></span>
@@ -982,7 +926,7 @@ memory usage: 576.9+ KB</code></pre>
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="4495255c" class="cell" data-execution_count="10">
+<div id="fb544870" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb10-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-3"><a href=""></a>data <span class="op">=</span> {</span>
@@ -1064,7 +1008,7 @@ memory usage: 576.9+ KB</code></pre>
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Pandas</a></li><li><a href="#tabset-2-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div id="99a13f56" class="cell" data-execution_count="11">
+<div id="c0ce42d8" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
 <span id="cb11-2"><a href=""></a>df_pd[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df_pd[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st"> %b %Y'</span>)</span>
 <span id="cb11-3"><a href=""></a></span>
@@ -1085,7 +1029,7 @@ memory usage: 576.9+ KB</code></pre>
 </div>
 </div>
 <div id="tabset-2-2">
-<div id="4b6b0b1c" class="cell" data-execution_count="12">
+<div id="ee600057" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="co"># Parse the datetime strings with a specific format</span></span>
 <span id="cb12-2"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns([</span>
 <span id="cb12-3"><a href=""></a>    pl.col(<span class="st">"Date"</span>).<span class="bu">str</span>.strptime(pl.Date, <span class="st">"</span><span class="sc">%d</span><span class="st"> %b %Y"</span>, strict<span class="op">=</span><span class="va">False</span>).alias(<span class="st">"Date"</span>)</span>
@@ -1131,7 +1075,7 @@ memory usage: 576.9+ KB</code></pre>
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Pandas</a></li><li><a href="#tabset-3-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div id="8d3c12c7" class="cell" data-execution_count="13">
+<div id="a129275a" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
 <span id="cb13-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st"> %b %Y'</span>)</span>
 <span id="cb13-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pd)</span>
@@ -1188,7 +1132,7 @@ memory usage: 576.9+ KB</code></pre>
 </div>
 </div>
 <div id="tabset-3-2">
-<div id="d967c3a6" class="cell" data-execution_count="14">
+<div id="9e4bc77e" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> Cleaner</span>
 <span id="cb14-2"><a href=""></a>cleaner <span class="op">=</span> Cleaner(drop_if_constant<span class="op">=</span><span class="va">True</span>, datetime_format<span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st"> %b %Y'</span>)</span>
 <span id="cb14-3"><a href=""></a>df_cleaned <span class="op">=</span> cleaner.fit_transform(df_pl)</span>
@@ -1240,55 +1184,105 @@ memory usage: 576.9+ KB</code></pre>
 </div>
 </div>
 </section>
+<section id="cleaning-employee_salaries" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Cleaning <code>employee_salaries</code></h2>
+<div id="2055a411" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb15-1" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> fetch_employee_salaries().X</span>
+<span id="cb15-2" class="hljs-ln-code"><a href=""></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 9228 entries, 0 to 9227
+Data columns (total 8 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   gender                   9211 non-null   object
+ 1   department               9228 non-null   object
+ 2   department_name          9228 non-null   object
+ 3   division                 9228 non-null   object
+ 4   assignment_category      9228 non-null   object
+ 5   employee_position_title  9228 non-null   object
+ 6   date_first_hired         9228 non-null   object
+ 7   year_first_hired         9228 non-null   int64 
+dtypes: int64(1), object(7)
+memory usage: 576.9+ KB</code></pre>
+</div>
+</div>
+</section>
+<section id="cleaning-employee_salaries-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Cleaning <code>employee_salaries</code></h2>
+<div id="8d335d87" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb17-1" class="hljs-ln-code"><a href=""></a>cleaned <span class="op">=</span> Cleaner().fit_transform(df)</span>
+<span id="cb17-2" class="hljs-ln-code"><a href=""></a>cleaned.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 9228 entries, 0 to 9227
+Data columns (total 8 columns):
+ #   Column                   Non-Null Count  Dtype         
+---  ------                   --------------  -----         
+ 0   gender                   9211 non-null   object        
+ 1   department               9228 non-null   object        
+ 2   department_name          9228 non-null   object        
+ 3   division                 9228 non-null   object        
+ 4   assignment_category      9228 non-null   object        
+ 5   employee_position_title  9228 non-null   object        
+ 6   date_first_hired         9228 non-null   datetime64[ns]
+ 7   year_first_hired         9228 non-null   int64         
+dtypes: datetime64[ns](1), int64(1), object(6)
+memory usage: 576.9+ KB</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="feature-engineering" class="title-slide slide level1 center">
+<h1>Feature engineering</h1>
+
+</section>
 <section id="encoding-datetime-features-with-pandaspolars" class="slide level2 smaller">
 <h2>Encoding datetime features with pandas/polars</h2>
 <div class="panel-tabset">
 <ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Pandas</a></li><li><a href="#tabset-4-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
-<div id="229c147a" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a href=""></a>data <span class="op">=</span> {</span>
-<span id="cb15-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
-<span id="cb15-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb15-5"><a href=""></a>}</span>
-<span id="cb15-6"><a href=""></a>df_pd <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb15-7"><a href=""></a>datetime_column <span class="op">=</span> <span class="st">"date"</span></span>
-<span id="cb15-8"><a href=""></a>df_pd[datetime_column] <span class="op">=</span> pd.to_datetime(df_pd[datetime_column], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb15-9"><a href=""></a></span>
-<span id="cb15-10"><a href=""></a>df_pd[<span class="st">'year'</span>] <span class="op">=</span> df_pd[datetime_column].dt.year</span>
-<span id="cb15-11"><a href=""></a>df_pd[<span class="st">'month'</span>] <span class="op">=</span> df_pd[datetime_column].dt.month</span>
-<span id="cb15-12"><a href=""></a>df_pd[<span class="st">'day'</span>] <span class="op">=</span> df_pd[datetime_column].dt.day</span>
-<span id="cb15-13"><a href=""></a>df_pd[<span class="st">'hour'</span>] <span class="op">=</span> df_pd[datetime_column].dt.hour</span>
-<span id="cb15-14"><a href=""></a>df_pd[<span class="st">'minute'</span>] <span class="op">=</span> df_pd[datetime_column].dt.minute</span>
-<span id="cb15-15"><a href=""></a>df_pd[<span class="st">'second'</span>] <span class="op">=</span> df_pd[datetime_column].dt.second</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1e7019d6" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href=""></a>data <span class="op">=</span> {</span>
+<span id="cb19-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
+<span id="cb19-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb19-5"><a href=""></a>}</span>
+<span id="cb19-6"><a href=""></a>df_pd <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb19-7"><a href=""></a>datetime_column <span class="op">=</span> <span class="st">"date"</span></span>
+<span id="cb19-8"><a href=""></a>df_pd[datetime_column] <span class="op">=</span> pd.to_datetime(df_pd[datetime_column], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb19-9"><a href=""></a></span>
+<span id="cb19-10"><a href=""></a>df_pd[<span class="st">'year'</span>] <span class="op">=</span> df_pd[datetime_column].dt.year</span>
+<span id="cb19-11"><a href=""></a>df_pd[<span class="st">'month'</span>] <span class="op">=</span> df_pd[datetime_column].dt.month</span>
+<span id="cb19-12"><a href=""></a>df_pd[<span class="st">'day'</span>] <span class="op">=</span> df_pd[datetime_column].dt.day</span>
+<span id="cb19-13"><a href=""></a>df_pd[<span class="st">'hour'</span>] <span class="op">=</span> df_pd[datetime_column].dt.hour</span>
+<span id="cb19-14"><a href=""></a>df_pd[<span class="st">'minute'</span>] <span class="op">=</span> df_pd[datetime_column].dt.minute</span>
+<span id="cb19-15"><a href=""></a>df_pd[<span class="st">'second'</span>] <span class="op">=</span> df_pd[datetime_column].dt.second</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-4-2">
-<div id="2d9ecc2f" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb16-2"><a href=""></a>data <span class="op">=</span> {</span>
-<span id="cb16-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
-<span id="cb16-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb16-5"><a href=""></a>}</span>
-<span id="cb16-6"><a href=""></a>df_pl <span class="op">=</span> pl.DataFrame(data)</span>
-<span id="cb16-7"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(date<span class="op">=</span>pl.col(<span class="st">"date"</span>).<span class="bu">str</span>.to_datetime())</span>
-<span id="cb16-8"><a href=""></a></span>
-<span id="cb16-9"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
-<span id="cb16-10"><a href=""></a>    year<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.year(),</span>
-<span id="cb16-11"><a href=""></a>    month<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.month(),</span>
-<span id="cb16-12"><a href=""></a>    day<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.day(),</span>
-<span id="cb16-13"><a href=""></a>    hour<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.hour(),</span>
-<span id="cb16-14"><a href=""></a>    minute<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.minute(),</span>
-<span id="cb16-15"><a href=""></a>    second<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.second(),</span>
-<span id="cb16-16"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ab5fbeaa" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb20-2"><a href=""></a>data <span class="op">=</span> {</span>
+<span id="cb20-3"><a href=""></a>    <span class="st">'date'</span>: [<span class="st">'2023-01-01 12:34:56'</span>, <span class="st">'2023-02-15 08:45:23'</span>, <span class="st">'2023-03-20 18:12:45'</span>],</span>
+<span id="cb20-4"><a href=""></a>    <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb20-5"><a href=""></a>}</span>
+<span id="cb20-6"><a href=""></a>df_pl <span class="op">=</span> pl.DataFrame(data)</span>
+<span id="cb20-7"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(date<span class="op">=</span>pl.col(<span class="st">"date"</span>).<span class="bu">str</span>.to_datetime())</span>
+<span id="cb20-8"><a href=""></a></span>
+<span id="cb20-9"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
+<span id="cb20-10"><a href=""></a>    year<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.year(),</span>
+<span id="cb20-11"><a href=""></a>    month<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.month(),</span>
+<span id="cb20-12"><a href=""></a>    day<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.day(),</span>
+<span id="cb20-13"><a href=""></a>    hour<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.hour(),</span>
+<span id="cb20-14"><a href=""></a>    minute<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.minute(),</span>
+<span id="cb20-15"><a href=""></a>    second<span class="op">=</span>pl.col(<span class="st">"date"</span>).dt.second(),</span>
+<span id="cb20-16"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="what-happens-if-we-train-directly-on-a-datetime" class="slide level2">
-<h2>What happens if we train directly on a datetime?</h2>
 </section>
 <section id="adding-periodic-features-with-pandaspolars" class="slide level2 smaller">
 <h2>Adding periodic features with pandas/polars</h2>
@@ -1296,23 +1290,23 @@ memory usage: 576.9+ KB</code></pre>
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Pandas</a></li><li><a href="#tabset-5-2">Polars</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div id="f8f05be3" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>df_pd[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
-<span id="cb17-2"><a href=""></a>df_pd[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
-<span id="cb17-3"><a href=""></a></span>
-<span id="cb17-4"><a href=""></a>df_pd[<span class="st">'month_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
-<span id="cb17-5"><a href=""></a>df_pd[<span class="st">'month_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4a1ba298" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a>df_pd[<span class="st">'hour_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
+<span id="cb21-2"><a href=""></a>df_pd[<span class="st">'hour_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'hour'</span>] <span class="op">/</span> <span class="dv">24</span>)</span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a>df_pd[<span class="st">'month_sin'</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
+<span id="cb21-5"><a href=""></a>df_pd[<span class="st">'month_cos'</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> df_pd[<span class="st">'month'</span>] <span class="op">/</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-5-2">
-<div id="f56da21d" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
-<span id="cb18-2"><a href=""></a>    hour_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
-<span id="cb18-3"><a href=""></a>    hour_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
-<span id="cb18-4"><a href=""></a>    </span>
-<span id="cb18-5"><a href=""></a>    month_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
-<span id="cb18-6"><a href=""></a>    month_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
-<span id="cb18-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2566f3c8" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>df_pl <span class="op">=</span> df_pl.with_columns(</span>
+<span id="cb22-2"><a href=""></a>    hour_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
+<span id="cb22-3"><a href=""></a>    hour_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"hour"</span>) <span class="op">/</span> <span class="dv">24</span>),</span>
+<span id="cb22-4"><a href=""></a>    </span>
+<span id="cb22-5"><a href=""></a>    month_sin <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
+<span id="cb22-6"><a href=""></a>    month_cos <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> pl.col(<span class="st">"month"</span>) <span class="op">/</span> <span class="dv">12</span>),</span>
+<span id="cb22-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1320,14 +1314,14 @@ memory usage: 576.9+ KB</code></pre>
 </section>
 <section id="encoding-datetime-features-with-skrub.datetimeencoder" class="slide level2 smaller" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Encoding datetime features with <code>skrub.DatetimeEncoder</code></h2>
-<div id="bb703f20" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb19-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
-<span id="cb19-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb19-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
-<span id="cb19-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(resolution<span class="op">=</span><span class="st">"second"</span>)</span>
-<span id="cb19-5" class="hljs-ln-code"><a href=""></a><span class="co"># de = DatetimeEncoder(periodic_encoding="spline")</span></span>
-<span id="cb19-6" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
-<span id="cb19-7" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f974d37a" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb23-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
+<span id="cb23-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb23-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
+<span id="cb23-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(resolution<span class="op">=</span><span class="st">"second"</span>)</span>
+<span id="cb23-5" class="hljs-ln-code"><a href=""></a><span class="co"># de = DatetimeEncoder(periodic_encoding="spline")</span></span>
+<span id="cb23-6" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
+<span id="cb23-7" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 7)
 ┌───────────┬────────────┬──────────┬───────────┬─────────────┬─────────────┬────────────────────┐
@@ -1344,13 +1338,13 @@ memory usage: 576.9+ KB</code></pre>
 </section>
 <section id="encoding-datetime-features-skrub.datetimeencoder" class="slide level2 smaller" data-auto-animate="true" data-visibility="uncounted">
 <h2 data-id="quarto-animate-title">Encoding datetime features <code>skrub.DatetimeEncoder</code></h2>
-<div id="954f25bd" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
-<span id="cb21-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb21-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
-<span id="cb21-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(periodic_encoding<span class="op">=</span><span class="st">"circular"</span>)</span>
-<span id="cb21-5" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
-<span id="cb21-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cb5ba1a0" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb25-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> DatetimeEncoder, ToDatetime</span>
+<span id="cb25-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb25-3" class="hljs-ln-code"><a href=""></a>X_date <span class="op">=</span> ToDatetime().fit_transform(df[<span class="st">"date"</span>])</span>
+<span id="cb25-4" class="hljs-ln-code"><a href=""></a>de <span class="op">=</span> DatetimeEncoder(periodic_encoding<span class="op">=</span><span class="st">"circular"</span>)</span>
+<span id="cb25-5" class="hljs-ln-code"><a href=""></a>X_enc <span class="op">=</span> de.fit_transform(X_date)</span>
+<span id="cb25-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(X_enc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>shape: (3, 8)
 ┌───────────┬────────────┬────────────┬────────────┬───────────┬───────────┬───────────┬───────────┐
@@ -1376,11 +1370,11 @@ memory usage: 576.9+ KB</code></pre>
 <img data-src="images/periodic_features.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="scaling-numerical-features-outliers" class="slide level2">
 <h2>Scaling numerical features: outliers!</h2>
-<div id="95e33bc8" class="cell" data-execution_count="24">
+<div id="8a773fdc" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/cell-25-output-1.png" class="quarto-figure quarto-figure-center" width="587" height="395"></p>
+<p><img data-src="slides_files/figure-revealjs/cell-27-output-1.png" class="quarto-figure quarto-figure-center" width="587" height="395"></p>
 </figure>
 </div>
 </div>
@@ -1388,11 +1382,11 @@ memory usage: 576.9+ KB</code></pre>
 </section>
 <section id="comparing-different-scalers-in-presence-of-outliers" class="slide level2">
 <h2>Comparing different scalers in presence of outliers</h2>
-<div id="f36df103" class="cell" data-execution_count="25">
+<div id="9f3dedf9" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/cell-26-output-1.png" class="quarto-figure quarto-figure-center" width="815" height="491"></p>
+<p><img data-src="slides_files/figure-revealjs/cell-28-output-1.png" class="quarto-figure quarto-figure-center" width="815" height="491"></p>
 </figure>
 </div>
 </div>
@@ -1414,14 +1408,14 @@ memory usage: 576.9+ KB</code></pre>
 <li>The <code>OneHotEncoder</code> creates an indicator column for each unique value in a column.</li>
 <li>Fine if you have few categories, problematic if you have many.</li>
 </ul>
-<div id="11c14e0e" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb23-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
-<span id="cb23-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb23-3" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> fetch_employee_salaries().X</span>
-<span id="cb23-4" class="hljs-ln-code"><a href=""></a>enc <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>).fit_transform(X<span class="op">=</span>df[[<span class="st">"gender"</span>]])</span>
-<span id="cb23-5" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb23-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The number of unique values in column `gender` is: "</span>, df[[<span class="st">"gender"</span>]].nunique().item())</span>
-<span id="cb23-7" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The shape of the OneHotEncoding of column `gender` is: "</span>, enc.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4337f5a2" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb27-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
+<span id="cb27-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb27-3" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> fetch_employee_salaries().X</span>
+<span id="cb27-4" class="hljs-ln-code"><a href=""></a>enc <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>).fit_transform(X<span class="op">=</span>df[[<span class="st">"gender"</span>]])</span>
+<span id="cb27-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb27-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The number of unique values in column `gender` is: "</span>, df[[<span class="st">"gender"</span>]].nunique().item())</span>
+<span id="cb27-7" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The shape of the OneHotEncoding of column `gender` is: "</span>, enc.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The number of unique values in column `gender` is:  2
 The shape of the OneHotEncoding of column `gender` is:  (9228, 3)</code></pre>
@@ -1434,18 +1428,30 @@ The shape of the OneHotEncoding of column `gender` is:  (9228, 3)</code></pre>
 <section id="basic-strategies-onehotencoder-1" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Basic strategies: <code>OneHotEncoder</code></h2>
 <p>What about a different column?</p>
-<div id="f49d92e4" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb25-1" class="hljs-ln-code"><a href=""></a>enc <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>).fit_transform(X<span class="op">=</span>df[[<span class="st">"division"</span>]])</span>
-<span id="cb25-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb25-3" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The number of unique values in column `division` is: "</span>, df[[<span class="st">"division"</span>]].nunique().item())</span>
-<span id="cb25-4" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The shape of the OneHotEncoding of column `division` is: "</span>, enc.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1dbc35b3" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb29-1" class="hljs-ln-code"><a href=""></a>enc <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>).fit_transform(X<span class="op">=</span>df[[<span class="st">"division"</span>]])</span>
+<span id="cb29-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb29-3" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The number of unique values in column `division` is: "</span>, df[[<span class="st">"division"</span>]].nunique().item())</span>
+<span id="cb29-4" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The shape of the OneHotEncoding of column `division` is: "</span>, enc.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The number of unique values in column `division` is:  694
 The shape of the OneHotEncoding of column `division` is:  (9228, 694)</code></pre>
 </div>
 </div>
 <div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
 <p>That’s ~700 features that are mostly 0’s.</p>
+</div>
+</div>
+</div>
 <p>Remember that more features mean:</p>
 <ul>
 <li>Overfitting</li>
@@ -1457,13 +1463,13 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 694)</code></pr
 </section>
 <section id="basic-strategies-ordinalencoder" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Basic strategies: <code>OrdinalEncoder</code></h2>
-<div id="a19b3b95" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb27-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OrdinalEncoder</span>
-<span id="cb27-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb27-3" class="hljs-ln-code"><a href=""></a>enc <span class="op">=</span> OrdinalEncoder().fit_transform(X<span class="op">=</span>df[[<span class="st">"division"</span>]])</span>
-<span id="cb27-4" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb27-5" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The number of unique values in column `division` is: "</span>, df[[<span class="st">"division"</span>]].nunique().item())</span>
-<span id="cb27-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The shape of the OneHotEncoding of column `division` is: "</span>, enc.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e74c7c4b" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb31-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OrdinalEncoder</span>
+<span id="cb31-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb31-3" class="hljs-ln-code"><a href=""></a>enc <span class="op">=</span> OrdinalEncoder().fit_transform(X<span class="op">=</span>df[[<span class="st">"division"</span>]])</span>
+<span id="cb31-4" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb31-5" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The number of unique values in column `division` is: "</span>, df[[<span class="st">"division"</span>]].nunique().item())</span>
+<span id="cb31-6" class="hljs-ln-code"><a href=""></a><span class="bu">print</span>(<span class="st">"The shape of the OneHotEncoding of column `division` is: "</span>, enc.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The number of unique values in column `division` is:  694
 The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
@@ -1475,7 +1481,7 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 <h2>Encoding categorical (string/text) features</h2>
 <p>Categorical features have a “cardinality”: the number of unique values</p>
 <ul>
-<li>Low cardinality features: <code>OneHotEncoder</code>
+<li>Low cardinality features: <code>OneHotEncoder</code>.
 <ul>
 <li>The <code>OneHotEncoder</code> produces <strong>sparse</strong> matrices. Dataframes are <strong>dense</strong>.</li>
 </ul></li>
@@ -1502,15 +1508,20 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 <li>However, performance can be much better depending on the dataset.</li>
 </ul></li>
 </ul>
-<p>Deeper dive in this <a href="https://skrub-data.org/skrub-materials/pages/notebooks/categorical-encoders/categorical-encoders.html">post</a></p>
+<p>Deeper dive in this <a href="https://skrub-data.org/skrub-materials/pages/notebooks/categorical-encoders/categorical-encoders.html">post</a>.</p>
+</section></section>
+<section>
+<section id="building-pipelines" class="title-slide slide level1 center">
+<h1>Building pipelines</h1>
+
 </section>
 <section id="encoding-all-the-features-tablevectorizer" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Encoding <em>all the features</em>: <code>TableVectorizer</code></h2>
-<div id="a4deb771" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb29-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> TableVectorizer</span>
-<span id="cb29-2" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb29-3" class="hljs-ln-code"><a href=""></a>table_vec <span class="op">=</span> TableVectorizer()</span>
-<span id="cb29-4" class="hljs-ln-code"><a href=""></a>df_encoded <span class="op">=</span> table_vec.fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2d42fce7" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb33-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> TableVectorizer</span>
+<span id="cb33-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb33-3" class="hljs-ln-code"><a href=""></a>table_vec <span class="op">=</span> TableVectorizer()</span>
+<span id="cb33-4" class="hljs-ln-code"><a href=""></a>df_encoded <span class="op">=</span> table_vec.fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <ul>
@@ -1534,25 +1545,25 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 <img data-src="images/ApplyToFrame.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="replacing-columntransformer-with-applytocols" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Replacing <code>ColumnTransformer</code> with <code>ApplyToCols</code></h2>
-<div id="24b53e69" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb30-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
-<span id="cb30-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_transformer</span>
-<span id="cb30-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
-<span id="cb30-5" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb30-6" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"text"</span>: [<span class="st">"foo"</span>, <span class="st">"bar"</span>, <span class="st">"baz"</span>], <span class="st">"number"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]})</span>
-<span id="cb30-7" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb30-8" class="hljs-ln-code"><a href=""></a>categorical_columns <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="bu">object</span>)(df)</span>
-<span id="cb30-9" class="hljs-ln-code"><a href=""></a>numerical_columns <span class="op">=</span> selector(dtype_exclude<span class="op">=</span><span class="bu">object</span>)(df)</span>
-<span id="cb30-10" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb30-11" class="hljs-ln-code"><a href=""></a>ct <span class="op">=</span> make_column_transformer(</span>
-<span id="cb30-12" class="hljs-ln-code"><a href=""></a>      (StandardScaler(),</span>
-<span id="cb30-13" class="hljs-ln-code"><a href=""></a>       numerical_columns),</span>
-<span id="cb30-14" class="hljs-ln-code"><a href=""></a>      (OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>),</span>
-<span id="cb30-15" class="hljs-ln-code"><a href=""></a>       categorical_columns))</span>
-<span id="cb30-16" class="hljs-ln-code"><a href=""></a>transformed <span class="op">=</span> ct.fit_transform(df)</span>
-<span id="cb30-17" class="hljs-ln-code"><a href=""></a>transformed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="98">
+<div id="338f4e89" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb34-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
+<span id="cb34-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_transformer</span>
+<span id="cb34-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb34-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb34-6" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"text"</span>: [<span class="st">"foo"</span>, <span class="st">"bar"</span>, <span class="st">"baz"</span>], <span class="st">"number"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]})</span>
+<span id="cb34-7" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb34-8" class="hljs-ln-code"><a href=""></a>categorical_columns <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="bu">object</span>)(df)</span>
+<span id="cb34-9" class="hljs-ln-code"><a href=""></a>numerical_columns <span class="op">=</span> selector(dtype_exclude<span class="op">=</span><span class="bu">object</span>)(df)</span>
+<span id="cb34-10" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb34-11" class="hljs-ln-code"><a href=""></a>ct <span class="op">=</span> make_column_transformer(</span>
+<span id="cb34-12" class="hljs-ln-code"><a href=""></a>      (StandardScaler(),</span>
+<span id="cb34-13" class="hljs-ln-code"><a href=""></a>       numerical_columns),</span>
+<span id="cb34-14" class="hljs-ln-code"><a href=""></a>      (OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>),</span>
+<span id="cb34-15" class="hljs-ln-code"><a href=""></a>       categorical_columns))</span>
+<span id="cb34-16" class="hljs-ln-code"><a href=""></a>transformed <span class="op">=</span> ct.fit_transform(df)</span>
+<span id="cb34-17" class="hljs-ln-code"><a href=""></a>transformed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>array([[-1.22474487,  0.        ,  0.        ,  1.        ],
        [ 0.        ,  1.        ,  0.        ,  0.        ],
        [ 1.22474487,  0.        ,  1.        ,  0.        ]])</code></pre>
@@ -1561,17 +1572,17 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 </section>
 <section id="replacing-columntransformer-with-applytocols-1" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Replacing <code>ColumnTransformer</code> with <code>ApplyToCols</code></h2>
-<div id="4be31c26" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb32-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub.selectors <span class="im">as</span> s</span>
-<span id="cb32-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb32-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> ApplyToCols</span>
-<span id="cb32-4" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb32-5" class="hljs-ln-code"><a href=""></a>numeric <span class="op">=</span> ApplyToCols(StandardScaler(), cols<span class="op">=</span>s.numeric())</span>
-<span id="cb32-6" class="hljs-ln-code"><a href=""></a>string <span class="op">=</span> ApplyToCols(OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>), cols<span class="op">=</span>s.string())</span>
-<span id="cb32-7" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb32-8" class="hljs-ln-code"><a href=""></a>transformed <span class="op">=</span> make_pipeline(numeric, string).fit_transform(df)</span>
-<span id="cb32-9" class="hljs-ln-code"><a href=""></a>transformed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
+<div id="a84c2559" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb36-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub.selectors <span class="im">as</span> s</span>
+<span id="cb36-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb36-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> ApplyToCols</span>
+<span id="cb36-4" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb36-5" class="hljs-ln-code"><a href=""></a>numeric <span class="op">=</span> ApplyToCols(StandardScaler(), cols<span class="op">=</span>s.numeric())</span>
+<span id="cb36-6" class="hljs-ln-code"><a href=""></a>string <span class="op">=</span> ApplyToCols(OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>), cols<span class="op">=</span>s.string())</span>
+<span id="cb36-7" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb36-8" class="hljs-ln-code"><a href=""></a>transformed <span class="op">=</span> make_pipeline(numeric, string).fit_transform(df)</span>
+<span id="cb36-9" class="hljs-ln-code"><a href=""></a>transformed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1636,20 +1647,20 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 </section>
 <section id="selecting-columns-with-the-skrub-selectors" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Selecting columns with the skrub selectors</h2>
-<div id="c6289f21" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb33-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb33-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> SelectCols</span>
-<span id="cb33-3" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub.selectors <span class="im">as</span> s</span>
-<span id="cb33-4" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb33-5" class="hljs-ln-code"><a href=""></a>    {</span>
-<span id="cb33-6" class="hljs-ln-code"><a href=""></a>        <span class="st">"height_mm"</span>: [<span class="fl">297.0</span>, <span class="fl">420.0</span>],</span>
-<span id="cb33-7" class="hljs-ln-code"><a href=""></a>        <span class="st">"width_mm"</span>: [<span class="fl">210.0</span>, <span class="fl">297.0</span>],</span>
-<span id="cb33-8" class="hljs-ln-code"><a href=""></a>        <span class="st">"kind"</span>: [<span class="st">"A4"</span>, <span class="st">"A3"</span>],</span>
-<span id="cb33-9" class="hljs-ln-code"><a href=""></a>        <span class="st">"ID"</span>: [<span class="dv">4</span>, <span class="dv">3</span>],</span>
-<span id="cb33-10" class="hljs-ln-code"><a href=""></a>    }</span>
-<span id="cb33-11" class="hljs-ln-code"><a href=""></a>)</span>
-<span id="cb33-12" class="hljs-ln-code"><a href=""></a>SelectCols(cols<span class="op">=</span>s.<span class="bu">all</span>()).fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="100">
+<div id="49b601d3" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb37-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb37-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> skrub <span class="im">import</span> SelectCols</span>
+<span id="cb37-3" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub.selectors <span class="im">as</span> s</span>
+<span id="cb37-4" class="hljs-ln-code"><a href=""></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb37-5" class="hljs-ln-code"><a href=""></a>    {</span>
+<span id="cb37-6" class="hljs-ln-code"><a href=""></a>        <span class="st">"height_mm"</span>: [<span class="fl">297.0</span>, <span class="fl">420.0</span>],</span>
+<span id="cb37-7" class="hljs-ln-code"><a href=""></a>        <span class="st">"width_mm"</span>: [<span class="fl">210.0</span>, <span class="fl">297.0</span>],</span>
+<span id="cb37-8" class="hljs-ln-code"><a href=""></a>        <span class="st">"kind"</span>: [<span class="st">"A4"</span>, <span class="st">"A3"</span>],</span>
+<span id="cb37-9" class="hljs-ln-code"><a href=""></a>        <span class="st">"ID"</span>: [<span class="dv">4</span>, <span class="dv">3</span>],</span>
+<span id="cb37-10" class="hljs-ln-code"><a href=""></a>    }</span>
+<span id="cb37-11" class="hljs-ln-code"><a href=""></a>)</span>
+<span id="cb37-12" class="hljs-ln-code"><a href=""></a>SelectCols(cols<span class="op">=</span>s.<span class="bu">all</span>()).fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1700,9 +1711,9 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 <section id="selecting-columns-with-the-skrub-selectors-1" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Selecting columns with the skrub selectors</h2>
 <p>Select all columns based on the name:</p>
-<div id="d6c3cc2e" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>SelectCols(s.glob(<span class="st">'*_mm'</span>)).fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="101">
+<div id="a46579e7" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>SelectCols(s.glob(<span class="st">'*_mm'</span>)).fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1744,9 +1755,9 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 </div>
 </div>
 <p>Select columns based on dtypes, and invert selections:</p>
-<div id="449341bc" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>SelectCols(<span class="op">~</span>s.numeric()).fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
+<div id="884f9ab5" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a>SelectCols(<span class="op">~</span>s.numeric()).fit_transform(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1784,23 +1795,70 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 </div>
 </div>
 </div>
-<p>More info in the <a href="https://skrub-data.org/stable/modules/multi_column_operations/selectors.html">selectors user guide</a></p>
+<p>More info in the <a href="https://skrub-data.org/stable/modules/multi_column_operations/selectors.html">selectors user guide</a>.</p>
 </section>
+<section id="lets-build-a-predictive-pipeline" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Let’s build a predictive pipeline</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb40-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb40-2" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> Ridge()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lets-build-a-predictive-pipeline-1" class="slide level2" data-auto-animate="true" data-visibility="uncounted">
+<h2 data-id="quarto-animate-title">Let’s build a predictive pipeline</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41" data-code-line-numbers="3-6"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb41-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb41-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb41-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb41-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb41-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb41-6" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(StandardScaler(), SimpleImputer(), Ridge())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lets-build-a-predictive-pipeline-2" class="slide level2" data-auto-animate="true" data-visibility="uncounted">
+<h2 data-id="quarto-animate-title">Let’s build a predictive pipeline</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42" data-code-line-numbers="3,5,6-17|"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb42-1" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb42-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb42-3" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb42-4" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb42-5" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
+<span id="cb42-6" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_transformer</span>
+<span id="cb42-7" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb42-8" class="hljs-ln-code"><a href=""></a>categorical_columns <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="bu">object</span>)(employees)</span>
+<span id="cb42-9" class="hljs-ln-code"><a href=""></a>numerical_columns <span class="op">=</span> selector(dtype_exclude<span class="op">=</span><span class="bu">object</span>)(employees)</span>
+<span id="cb42-10" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb42-11" class="hljs-ln-code"><a href=""></a>ct <span class="op">=</span> make_column_transformer(</span>
+<span id="cb42-12" class="hljs-ln-code"><a href=""></a>      (StandardScaler(),</span>
+<span id="cb42-13" class="hljs-ln-code"><a href=""></a>       numerical_columns),</span>
+<span id="cb42-14" class="hljs-ln-code"><a href=""></a>      (OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>),</span>
+<span id="cb42-15" class="hljs-ln-code"><a href=""></a>       categorical_columns))</span>
+<span id="cb42-16" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb42-17" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> make_pipeline(ct, SimpleImputer(), Ridge())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="now-with-tabular_pipeline" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Now with <code>tabular_pipeline</code></h2>
+<div id="4246d47b" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb43-1" class="hljs-ln-code"><a href=""></a><span class="im">import</span> skrub</span>
+<span id="cb43-2" class="hljs-ln-code"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb43-3" class="hljs-ln-code"><a href=""></a>model <span class="op">=</span> skrub.tabular_pipeline(Ridge())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<img data-src="images/skrub-tabular-pipeline-linear-model.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="images/drakeno.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="we-now-have-a-pipeline" class="slide level2 smaller">
 <h2>We now have a pipeline!</h2>
 <ol type="1">
 <li>Gather some data</li>
 <li>Explore the data
 <ul>
-<li><code>skrub.TableReport</code></li>
+<li><code>TableReport</code></li>
 </ul></li>
 <li>Pre-process the data
 <ul>
-<li><code>Cleaner</code>, <code>ToDatetime</code> …</li>
+<li><code>Cleaner</code> …</li>
 </ul></li>
 <li>Perform feature engineering
 <ul>
-<li><code>skrub.TableVectorizer</code>,<code>SquashingScaler</code>, <code>TextEncoder</code>, <code>StringEncoder</code>…</li>
+<li><code>TableVectorizer</code>, <code>SquashingScaler</code>, <code>TextEncoder</code>, <code>StringEncoder</code>…</li>
 </ul></li>
 <li>Build a scikit-learn pipeline
 <ul>
@@ -1809,9 +1867,64 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 <li>???</li>
 <li>Profit 📈</li>
 </ol>
+</section></section>
+<section>
+<section id="skrub-data-ops" class="title-slide slide level1 center">
+<h1>Skrub Data Ops</h1>
+
 </section>
-<section id="more-information-about-the-data-ops" class="slide level2">
-<h2>More information about the Data Ops</h2>
+<section id="what-if" class="slide level2 smaller">
+<h2>What if…</h2>
+<ul>
+<li class="fragment">Your data is spread over multiple tables?</li>
+<li class="fragment">You want to avoid data leakage?</li>
+<li class="fragment">You want to tune more than just the hyperparameters of your model?</li>
+<li class="fragment">You want to guarantee that your pipeline is replayed exactly on new data?</li>
+</ul>
+<div class="fragment">
+<p>When a normal pipeline is not enough…</p>
+</div>
+<div class="fragment">
+<p>… the <code>skrub</code> DataOps come to the rescue 🚒</p>
+</div>
+</section>
+<section id="dataops" class="slide level2">
+<h2>DataOps…</h2>
+<ul>
+<li class="fragment">Extend the <code>scikit-learn</code> machinery to complex multi-table operations, and take care of data leakage.</li>
+<li class="fragment">Track all operations with a computational graph (a <em>Data Ops plan</em>).</li>
+<li class="fragment">Are transparent and give direct access to the underlying object.</li>
+<li class="fragment">Allow tuning any operation in the Data Ops plan.</li>
+<li class="fragment">Guarantee that all operations are reproducible.</li>
+<li class="fragment">Can be persisted and shared easily.</li>
+</ul>
+</section>
+<section id="how-do-dataops-work-though" class="slide level2 smaller">
+<h2>How do DataOps work, though?</h2>
+<p>DataOps <strong>wrap</strong> around <em>user operations</em>, where user operations are:</p>
+<ul>
+<li>any dataframe operation (e.g., merge, group by, aggregate etc.).</li>
+<li>scikit-learn estimators (a Random Forest, RidgeCV etc.).</li>
+<li>custom user code (load data from a path, fetch from an URL etc.).</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>DataOps <em>record</em> user operations, so that they can later be <em>replayed</em> in the same order and with the same arguments on unseen data.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-information-about-data-ops" class="slide level2">
+<h2>More information about Data Ops</h2>
 <ul>
 <li>Skrub <a href="https://skrub-data.org/stable/auto_examples/data_ops/index.html">example gallery</a></li>
 <li><a href="https://github.com/skrub-data/EuroSciPy2025">Tutorial</a> on timeseries forecasting at Euroscipy 2025</li>
@@ -1824,11 +1937,11 @@ The shape of the OneHotEncoding of column `division` is:  (9228, 1)</code></pre>
 <h1>Wrapping up</h1>
 
 </section>
-<section id="section-1" class="slide level2" data-auto-animate="true">
+<section id="section-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
 
 <img data-src="images/powerpuff_girls_1.png" class="r-stretch"></section>
-<section id="section-2" class="slide level2" data-auto-animate="true">
+<section id="section-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
 
 <img data-src="images/powerpuff_girls_2.png" class="r-stretch"></section>
