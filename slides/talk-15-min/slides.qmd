@@ -64,14 +64,7 @@ params:
 
 {{< include /includes/data_ops/_parallel_coordinate_plot.md >}}
 
-
-## More information about the Data Ops 
-- Skrub [example gallery](https://skrub-data.org/stable/auto_examples/data_ops/index.html)
-- Skrub [user guide](https://skrub-data.org/stable/documentation.html)
-- [Tutorial](https://github.com/skrub-data/EuroSciPy2025) on timeseries 
-forecasting at Euroscipy 2025
-- [Kaggle notebook](https://www.kaggle.com/code/ryye107/titanic-challenge-with-the-skrub-data-ops) 
-on the Titanic survival challenge
+{{< include /includes/data_ops/_references.md >}}
 
 
 # Wrapping up
@@ -80,11 +73,4 @@ on the Titanic survival challenge
 
 {{< include /includes/talk-sections/_getting_involved.md >}}
 
-## tl;dw: skrub 
-::: {.nonincremental}
-- interactive data exploration: `TableReport`
-- automated pre-processing of pandas and polars dataframes: `Cleaner`
-- powerful feature engineering: `TableVectorizer`, `tabular_pipeline`
-- column- and dataframe-level operations: `ApplyToCols`, selectors
-- DataOps, plans, hyperparameter tuning, (almost) no leakage 
-:::
+{{< include /includes/talk-sections/_tldw.md >}}
