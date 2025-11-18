@@ -1,13 +1,3 @@
-## Hyperparameter tuning in a Data Ops plan 
-Skrub implements four `choose_*` functions:
-
-- `choose_from`: select from the given list of options
-- `choose_int`: select an integer within a range
-- `choose_float`: select a float within a range
-- `choose_bool`: select a bool 
-- `optional`: chooses whether to execute the given operation
-
-
 ## Tuning in `scikit-learn` can be complex {.smaller auto-animate="true"}
 
 ```{.python}
@@ -34,7 +24,7 @@ grid = [
     {
         "dim_reduction": [SelectKBest()],
         "dim_reduction__k": [10, 20, 30],
-        "regressor": [RandomForestClassifier()],
+        "regressor": [RandomForestRegressor()],
         "regressor__n_estimators": loguniform(20, 200),
     },
 ]
@@ -54,7 +44,7 @@ regressor = dim_reduction.skb.apply(
     skrub.choose_from(
         {
             "Ridge": Ridge(alpha=skrub.choose_float(0.1, 10.0, log=True)),
-            "RandomForest": RandomForestClassifier(
+            "RandomForest": RandomForestRegressor(
                 n_estimators=skrub.choose_int(20, 200, log=True)
             )
         }, name="regressor"

@@ -4,7 +4,7 @@ predictions.skb.full_report()
 ```
 <br/>
 
-<a href="/resources/dataop_report/index.html" target="_blank">Execution report</a>
+<a href="dataop_report/index.html" target="_blank">Execution report</a>
 
 Each node:
 

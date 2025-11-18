@@ -1,11 +1,10 @@
 ## DataOps...
 
 ::: {.incremental}
-- Extend the `scikit-learn` machinery to complex multi-table operations, and take care of data leakage
+- Extend the `scikit-learn` machinery to complex multi-table operations 
+- Take care of data leakage
 - Track all operations with a computational graph (a *Data Ops plan*)
-- Are transparent and give direct access to the underlying object
 - Allow tuning any operation in the Data Ops plan
-- Guarantee that all operations are reproducible
 - Can be persisted and shared easily 
 :::
 

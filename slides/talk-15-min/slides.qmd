@@ -60,7 +60,7 @@ params:
 
 {{< include /includes/data_ops/_full_report.md >}}
 
-{{< include /includes/data_ops/_hyperparameter_tuning.md >}}
+{{< include /includes/data_ops/_hpo_short.md >}}
 
 {{< include /includes/data_ops/_parallel_coordinate_plot.md >}}
 

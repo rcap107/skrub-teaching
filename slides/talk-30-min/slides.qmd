@@ -60,24 +60,6 @@ params:
 
 {{< include /includes/talk-sections/_final_pipeline.md >}}
 
-
-# what if this is not enough?? 
-
-
-{{< include /includes/data_ops/_what_if.md >}}
-
-{{< include /includes/data_ops/_data_ops_intro.md >}}
-
-{{< include /includes/data_ops/_data_ops_example.md >}}
-
-{{< include /includes/data_ops/_full_report.md >}}
-
-{{< include /includes/data_ops/_hyperparameter_tuning.md >}}
-
-{{< include /includes/data_ops/_parallel_coordinate_plot.md >}}
-
-
-
 # What if this is not enough?? 
 
 {{< include /includes/data_ops/_what_if.md >}}
@@ -100,7 +82,7 @@ than just `X` and `y`.
 
 {{< include /includes/data_ops/_learner.md >}}
 
-{{< include /includes/data_ops/_hyperparameter_tuning.md >}}
+{{< include /includes/data_ops/_hpo_full.md >}}
 
 {{< include /includes/data_ops/_tuning_more.md >}}
 

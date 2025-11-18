@@ -254,6 +254,15 @@ cleaned = Cleaner().fit_transform(df)
 cleaned.info()
 ```
 
+## The `Cleaner`...
+- Automatically parses numerical values, even if they have string as dtype
+- Tries to parse datetimes, or takes a format from the user 
+- Allows to drop uninformative columns:
+    - All nulls
+    - A single value
+    - All unique values (careful!)
+
+
 # Feature engineering
 {{< include /includes/encoders/_datetimes_base.md >}}
 {{< include /includes/encoders/_periodic_features_base.md >}}
@@ -484,6 +493,12 @@ what columns should be modified.
 can take `cols` as a parameter. 
 - Complex selection rules can be implemented with `skrub.selectors`. 
 
+## Why is column selection important?
+- There is an index I don't want to touch
+- Column names give me information about the content
+- I want to transform only datetimes (or numbers, or strings...)
+- I need to combine conditions (column has nulls AND column is numeric)
+
 ## Selecting columns with the skrub selectors {.smaller auto-animate="true"}
 ```{python}
 #| echo: true
@@ -534,6 +549,15 @@ More info in the [selectors user guide](https://skrub-data.org/stable/modules/mu
 7. Profit 📈 
 
 # Skrub Data Ops
+
+## Disclaimer
+
+::: {.callout-warning}
+This section covers more advanced topics that are more representative of what 
+happens in the industry, and how skrub can help addressing some of them. 
+:::
+
+
 ## What if... {.smaller}
 
 ::: {.incremental}
@@ -556,11 +580,10 @@ When a normal pipeline is not enough...
 ## DataOps...
 
 ::: {.incremental}
-- Extend the `scikit-learn` machinery to complex multi-table operations, and take care of data leakage.
+- Extend the `scikit-learn` machinery to complex multi-table operations.
+- Take care of data leakage.
 - Track all operations with a computational graph (a *Data Ops plan*).
-- Are transparent and give direct access to the underlying object.
 - Allow tuning any operation in the Data Ops plan.
-- Guarantee that all operations are reproducible.
 - Can be persisted and shared easily.
 :::
 
