@@ -483,7 +483,6 @@ Deeper dive in this [post](https://skrub-data.org/skrub-materials/pages/notebook
 
 # Building pipelines
 {{< include /includes/encoders/_table_vectorizer.md >}}
-{{< include /includes/encoders/_apply_to.md >}}
 
 
 ## Fine-grained column transformations {.smaller}
@@ -531,6 +530,7 @@ SelectCols(~s.numeric()).fit_transform(df)
 
 More info in the [selectors user guide](https://skrub-data.org/stable/modules/multi_column_operations/selectors.html).
 
+{{< include /includes/encoders/_apply_to.md >}}
 
 {{< include /includes/encoders/_tabular_pipeline_full.md >}}
 
@@ -601,6 +601,151 @@ DataOps _record_ user operations, so that they can later be _replayed_ in the sa
 order and with the same arguments on unseen data. 
 :::
 ::: 
+
+## Looking at the computational graph
+```{.python}
+predictions.skb.full_report()
+```
+<br/>
+
+<a href="dataop_report/index.html" target="_blank">Execution report</a>
+
+Each node:
+
+- Shows a preview of the data resulting from the operation
+- Reports the location in the code where the code is defined
+- Shows the run time of the node
+
+
+## Tuning in `scikit-learn` can be complex {.smaller auto-animate="true"}
+
+```{.python}
+pipe = Pipeline([("dim_reduction", PCA()), ("regressor", Ridge())])
+grid = [
+    {
+        "dim_reduction": [PCA()],
+        "dim_reduction__n_components": [10, 20, 30],
+        "regressor": [Ridge()],
+        "regressor__alpha": loguniform(0.1, 10.0),
+    },
+    {
+        "dim_reduction": [SelectKBest()],
+        "dim_reduction__k": [10, 20, 30],
+        "regressor": [Ridge()],
+        "regressor__alpha": loguniform(0.1, 10.0),
+    },
+    {
+        "dim_reduction": [PCA()],
+        "dim_reduction__n_components": [10, 20, 30],
+        "regressor": [RandomForestRegressor()],
+        "regressor__n_estimators": loguniform(20, 200),
+    },
+    {
+        "dim_reduction": [SelectKBest()],
+        "dim_reduction__k": [10, 20, 30],
+        "regressor": [RandomForestRegressor()],
+        "regressor__n_estimators": loguniform(20, 200),
+    },
+]
+model = RandomizedSearchCV(pipe, grid)
+```
+
+## Hyperparameter tuning in a Data Plan 
+`skrub` implements four `choose_*` functions:
+
+- `choose_from`: select from the given list of options
+- `choose_int`: select an integer within a range
+- `choose_float`: select a float within a range
+- `choose_bool`: select a bool 
+- `optional`: chooses whether to execute the given operation
+
+## Tuning with `DataOps` is simple! {.smaller} 
+
+```python
+dim_reduction = X.skb.apply(
+    skrub.choose_from(
+        {
+            "PCA": PCA(n_components=skrub.choose_int(10, 30)),
+            "SelectKBest": SelectKBest(k=skrub.choose_int(10, 30))
+        }, name="dim_reduction"
+    )
+)
+regressor = dim_reduction.skb.apply(
+    skrub.choose_from(
+        {
+            "Ridge": Ridge(alpha=skrub.choose_float(0.1, 10.0, log=True)),
+            "RandomForest": RandomForestRegressor(
+                n_estimators=skrub.choose_int(20, 200, log=True)
+            )
+        }, name="regressor"
+    )
+)
+search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True)
+```
+
+## Run hyperparameter search
+```{.python}
+# fit the search 
+search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True, cv=5)
+
+# save the best learner
+best_learner = search.best_learner_
+```
+
+## Tuning with `DataOps` is not limited to estimators
+::: {.panel-tabset}
+### Pandas
+```{python}
+import pandas as pd
+import skrub
+```
+```{python}
+#| echo: true
+df = pd.DataFrame(
+    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
+)
+
+df_do = skrub.var("grades", df)
+
+agg_grades = df_do.groupby("subject").agg(skrub.choose_from(["count", "mean", "max"]))
+agg_grades.skb.describe_param_grid()
+```
+
+### Polars
+```{python}
+import polars as pl
+import skrub
+```
+
+```{python}
+#| echo: true
+df = pl.DataFrame(
+    {"subject": ["math", "math", "art", "history"], "grade": [10, 8, 4, 6]}
+)
+
+df_do = skrub.var("grades", df)
+
+agg_grades = df_do.group_by("subject").agg(
+    skrub.choose_from([pl.mean("grade"), pl.count("grade")])
+)
+agg_grades.skb.describe_param_grid()
+```
+
+:::
+
+## How does tuning affect the results?  {auto-animate="true" .smaller} 
+Data Ops provide a built-in parallel coordinate plot. 
+
+```{.python}
+search = pred.skb.get_randomized_search(fitted=True)
+search.plot_parallel_coord()
+```
+```{python}
+from plotly.io import read_json
+
+fig = read_json("parallel_coordinates_hgbr.json")
+fig.update_layout(margin=dict(l=200))
+```
 
 
 ## More information about Data Ops
