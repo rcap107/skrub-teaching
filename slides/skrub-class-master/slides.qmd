@@ -49,7 +49,7 @@ you can refer back to if you encounter the same issue later on.
 {{< include /includes/talk-sections/_skrub_compatibility.md >}}
 {{< include /includes/talk-sections/_example_pipeline.md >}}
 
-## Before we start: reading files, parsing dtypes
+## Gathering the data: reading files, parsing dtypes
 
 ## What happens if pandas parses this? {.smaller auto-animate="true"}
 ```{python}
@@ -98,10 +98,10 @@ pd.read_csv(file_path)
 ## Parsing CSV files is difficult!  
 - CSV files are plain text files and do not store any info besides what you can see.
 - Any information about dtypes is lost.
-- It is very hard to automate discovering the separator.
+- It is very hard to automate discovering the separator (ambiguity is unavoidable).
 - Files cannot be seeked: to get to a line, all the previous lines must be read first.
 - Plain text is uncompressed and can take up a very large amount of space.
-
+- Adding metadata is difficult and may make parsing harder.
 
 ## CSV vs Parquet {.smaller}
 ::: {.incremental}
@@ -118,6 +118,12 @@ data)
 - Parquet files **are not human-readable**. CSV files are, but are you really 
 going to manually go through a few million lines of text? 
 :::
+
+## Pandas vs Polars with Parquet
+- Pandas requires additional dependencies to read Parquet files (`pyarrow` or `fastparquet`).
+- Polars supports Parquet files natively and includes additional features that 
+make use of the format. 
+
 
 # Exploring the data
 
@@ -147,11 +153,13 @@ df.head(5)
 
 ## Exploring the data: describe {.smaller auto-animate="true"}
 ```{python}
+#| echo: true
 df.describe(include="all")
 ```
 
 ## Exploring the data: column info {.smaller auto-animate="true"}
 ```{python}
+#| echo: true
 df.info()
 ```
 
@@ -554,7 +562,7 @@ More info in the [selectors user guide](https://skrub-data.org/stable/modules/mu
 
 ::: {.callout-warning}
 This section covers more advanced topics that are more representative of what 
-happens in the industry, and how skrub can help addressing some of them. 
+happens in real scenarios, and how skrub can help addressing some of them. 
 :::
 
 
@@ -615,6 +623,7 @@ Each node:
 - Shows a preview of the data resulting from the operation
 - Reports the location in the code where the code is defined
 - Shows the run time of the node
+- Offline and in HTML, no need for a running kernel
 
 
 ## Tuning in `scikit-learn` can be complex {.smaller auto-animate="true"}
@@ -650,14 +659,6 @@ grid = [
 model = RandomizedSearchCV(pipe, grid)
 ```
 
-## Hyperparameter tuning in a Data Plan 
-`skrub` implements four `choose_*` functions:
-
-- `choose_from`: select from the given list of options
-- `choose_int`: select an integer within a range
-- `choose_float`: select a float within a range
-- `choose_bool`: select a bool 
-- `optional`: chooses whether to execute the given operation
 
 ## Tuning with `DataOps` is simple! {.smaller} 
 
@@ -691,6 +692,15 @@ search = regressor.skb.make_randomized_search(scoring="roc_auc", fitted=True, cv
 # save the best learner
 best_learner = search.best_learner_
 ```
+
+## Hyperparameter tuning with `choose_*`
+`skrub` implements four `choose_*` functions:
+
+- `choose_from`: select from the given list of options
+- `choose_int`: select an integer within a range
+- `choose_float`: select a float within a range
+- `choose_bool`: select a bool 
+- `optional`: chooses whether to execute the given operation
 
 ## Tuning with `DataOps` is not limited to estimators
 ::: {.panel-tabset}
@@ -746,6 +756,46 @@ from plotly.io import read_json
 fig = read_json("parallel_coordinates_hgbr.json")
 fig.update_layout(margin=dict(l=200))
 ```
+
+## Exporting the plan in a `learner` {.smaller}
+The **Learner** is a stand-alone object that works like
+a scikit-learn estimator that takes a dictionary as input rather
+than just `X` and `y`. 
+
+::: {.fragment}
+
+```{.python}
+learner = predictions.skb.make_learner(fitted=True)
+```
+
+:::
+
+
+::: {.fragment}
+Then, the `learner` can be pickled ...
+
+```{.python}
+import pickle
+
+with open("learner.bin", "wb") as fp:
+    pickle.dump(learner, fp)
+```
+
+:::
+
+::: {.fragment}
+... loaded and applied to new data:
+
+```{.python}
+with open("learner.bin", "rb") as fp:
+    loaded_learner = pickle.load(fp)
+data = skrub.datasets.fetch_credit_fraud(split="test")
+new_baskets = data.baskets
+new_products = data.products
+loaded_learner.predict({"baskets": new_baskets, "products": new_products})
+```
+:::
+
 
 
 ## More information about Data Ops
